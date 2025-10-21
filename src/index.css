@@ -1,4 +1,7 @@
-@import 'tailwindcss';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 /* Global Base Styles */
@@ -12,50 +15,46 @@
   }
 
   body {
-    @apply bg-white text-secondary-900 font-sans;
-    @apply selection:bg-primary-100 selection:text-primary-900;
+    @apply bg-white font-sans text-secondary-900;
+  }
+
+  body::selection {
+    @apply bg-primary-100 text-primary-900;
   }
 
   /* Typography Hierarchy */
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold text-secondary-900 leading-tight;
-    @apply mb-6;
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-secondary-900;
   }
 
   h2 {
-    @apply text-3xl md:text-4xl lg:text-5xl font-semibold text-secondary-800 leading-tight;
-    @apply mb-5;
+    @apply text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight mb-5 text-secondary-800;
   }
 
   h3 {
-    @apply text-2xl md:text-3xl lg:text-4xl font-semibold text-secondary-800 leading-snug;
-    @apply mb-4;
+    @apply text-2xl md:text-3xl lg:text-4xl font-semibold leading-snug mb-4 text-secondary-800;
   }
 
   h4 {
-    @apply text-xl md:text-2xl lg:text-3xl font-medium text-secondary-700 leading-snug;
-    @apply mb-4;
+    @apply text-xl md:text-2xl lg:text-3xl font-medium leading-snug mb-4 text-secondary-700;
   }
 
   h5 {
-    @apply text-lg md:text-xl lg:text-2xl font-medium text-secondary-700 leading-normal;
-    @apply mb-3;
+    @apply text-lg md:text-xl lg:text-2xl font-medium leading-normal mb-3 text-secondary-700;
   }
 
   h6 {
-    @apply text-base md:text-lg lg:text-xl font-medium text-secondary-600 leading-normal;
-    @apply mb-3;
+    @apply text-base md:text-lg lg:text-xl font-medium leading-normal mb-3 text-secondary-600;
   }
 
   /* Paragraph styles */
   p {
-    @apply text-base lg:text-lg text-secondary-600 leading-relaxed mb-4;
+    @apply text-base lg:text-lg leading-relaxed mb-4 text-secondary-600;
   }
 
   /* Link styles */
   a {
-    @apply text-primary-600 hover:text-primary-700 transition-colors duration-200;
-    @apply hover:underline underline-offset-2;
+    @apply text-primary-600 hover:text-primary-700 transition-colors duration-200 hover:underline underline-offset-2;
   }
 
   /* List styles */
@@ -176,7 +175,7 @@
 
   /* Utility patterns */
   .text-gradient {
-    @apply bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent;
+    @apply bg-linear-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent;
   }
 
   .bg-gradient-primary {
