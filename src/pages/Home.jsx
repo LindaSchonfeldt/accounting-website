@@ -5,11 +5,11 @@ import FAQ from '../sections/FAQ.jsx'
 
 const Home = () => (
   <div className='min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50'>
-    <main className='container-lg py-16'>
+    <main className='container-lg py-16' role='main'>
       <Hero />
       <Services />
-      <Contact />
       <FAQ />
+      <Contact />
     </main>
   </div>
 )
