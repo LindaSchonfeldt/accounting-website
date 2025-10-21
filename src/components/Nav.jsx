@@ -3,7 +3,7 @@ const Nav = () => {
     <header className='sticky top-0 z-50 bg-white'>
       <div className='container-lg py-1'>
         <nav
-          className='flex items-center justify-between h-14' // Added h-14 for consistent height
+          className='flex items-center justify-between h-14'
           aria-label='Main navigation'
         >
           <h1 className='flex items-center h-full'>
@@ -12,7 +12,7 @@ const Nav = () => {
               className='text-gradient text-2xl font-bold flex items-center h-full'
               aria-label='Go to top'
             >
-              Your Brand
+              Billig Bokföring
             </a>
           </h1>
           <ul className='flex items-center space-x-4 h-full'>
