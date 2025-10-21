@@ -1,17 +1,6 @@
 const Styling = () => {
   return (
     <div className='min-h-screen bg-linear-to-br from-primary-50 to-secondary-50'>
-      {/* Header */}
-      <header className='container-xl py-8'>
-        <nav className='flex justify-between items-center'>
-          <div className='text-gradient text-2xl font-bold'>Your Brand</div>
-          <div className='space-x-4'>
-            <button className='btn btn-outline btn-sm'>Sign In</button>
-            <button className='btn btn-primary btn-sm'>Get Started</button>
-          </div>
-        </nav>
-      </header>
-
       {/* Hero Section */}
       <main className='container-lg py-16'>
         <div className='text-center animate-fade-in'>
