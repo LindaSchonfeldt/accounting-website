@@ -126,74 +126,65 @@
   .btn-lg {
     @apply px-8 py-4 text-lg;
   }
+}
 
-  /* Card component */
-  .card {
-    @apply bg-white rounded-xl shadow-sm border border-secondary-200 p-6;
-    @apply hover:shadow-md transition-shadow duration-200;
-  }
+/* Card component */
+.card {
+  @apply bg-white rounded-xl shadow-sm border border-secondary-200 p-6;
+  @apply hover:shadow-md transition-shadow duration-200;
+}
 
-  .card-header {
-    @apply border-b border-secondary-200 pb-4 mb-4;
-  }
+.card-header {
+  @apply border-b border-secondary-200 pb-4 mb-4;
+}
 
-  /* Container sizes */
-  .container-sm {
-    @apply max-w-2xl mx-auto px-4;
-  }
+/* Container sizes */
+.container-sm {
+  @apply max-w-2xl mx-auto px-4;
+}
 
-  .container-md {
-    @apply max-w-4xl mx-auto px-4;
-  }
+.container-md {
+  @apply max-w-4xl mx-auto px-4;
+}
 
-  .container-lg {
-    @apply max-w-6xl mx-auto px-4;
-  }
+.container-lg {
+  @apply max-w-6xl mx-auto px-4;
+}
 
-  .container-xl {
-    @apply max-w-7xl mx-auto px-4;
-  }
+.container-xl {
+  @apply max-w-7xl mx-auto px-4;
+}
 
-  /* Form group */
-  .form-group {
-    @apply mb-4;
-  }
+/* Form group */
+.form-group {
+  @apply mb-4;
+}
 
-  .form-label {
-    @apply block text-sm font-medium text-secondary-700 mb-2;
-  }
+.form-label {
+  @apply block text-sm font-medium text-secondary-700 mb-2;
+}
 
-  .form-input {
-    @apply w-full px-4 py-2 border border-secondary-300 rounded-lg;
-    @apply focus:ring-2 focus:ring-primary-500 focus:border-primary-500;
-    @apply transition-colors duration-200;
-  }
+.form-input {
+  @apply w-full px-4 py-2 border border-secondary-300 rounded-lg;
+  @apply focus:ring-2 focus:ring-primary-500 focus:border-primary-500;
+  @apply transition-colors duration-200;
+}
 
-  .form-error {
-    @apply text-error text-sm mt-1;
-  }
+.form-error {
+  @apply text-error text-sm mt-1;
+}
 
-  /* Utility patterns */
-  .text-gradient {
-    @apply bg-linear-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent;
-  }
+/* Utility patterns */
+.text-gradient {
+  @apply bg-gradient-to-r from-primary-600 to-accent-600 bg-clip-text text-transparent;
+}
 
-  .bg-gradient-primary {
-    @apply bg-gradient-to-r from-primary-500 to-primary-700;
-  }
+.bg-gradient-primary {
+  @apply bg-gradient-to-r from-primary-500 to-primary-700;
+}
 
-  .bg-gradient-accent {
-    @apply bg-gradient-to-r from-accent-500 to-accent-700;
-  }
-
-  /* Animation classes */
-  .animate-fade-in {
-    @apply animate-fade-in;
-  }
-
-  .animate-slide-up {
-    @apply animate-slide-up;
-  }
+.bg-gradient-accent {
+  @apply bg-gradient-to-r from-accent-500 to-accent-700;
 }
 
 /* Utility Layer - Custom utilities */
