@@ -1,6 +1,6 @@
 const Styling = () => {
   return (
-    <div className='min-h-screen bg-gradient-to-br from-primary-50 to-secondary-50'>
+    <div className='min-h-screen bg-linear-to-br from-primary-50 to-secondary-50'>
       {/* Header */}
       <header className='container-xl py-8'>
         <nav className='flex justify-between items-center'>
