@@ -1,12 +1,4 @@
-import {
-  Box,
-  Container,
-  Flex,
-  Heading,
-  Link,
-  List,
-  ListItem
-} from '@chakra-ui/react'
+import { Box, Container, Flex, Heading, Link } from '@chakra-ui/react'
 
 const Nav = () => {
   return (
@@ -48,8 +40,14 @@ const Nav = () => {
               Billig Bokföring
             </Link>
           </Heading>
-          <List display='flex' alignItems='center' gap={4} h='full'>
-            <ListItem>
+          <Flex
+            as='ul'
+            alignItems='center'
+            gap={4}
+            h='full'
+            listStyleType='none'
+          >
+            <Box as='li'>
               <Link
                 href='#services'
                 color='gray.600'
@@ -64,8 +62,8 @@ const Nav = () => {
               >
                 Tjänster
               </Link>
-            </ListItem>
-            <ListItem>
+            </Box>
+            <Box as='li'>
               <Link
                 href='#contact'
                 color='gray.600'
@@ -80,8 +78,8 @@ const Nav = () => {
               >
                 Kontakt
               </Link>
-            </ListItem>
-          </List>
+            </Box>
+          </Flex>
         </Flex>
       </Container>
     </Box>

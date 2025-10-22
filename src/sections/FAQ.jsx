@@ -5,13 +5,7 @@ const FAQ = () => {
   return (
     <Box as='section' id='faq' py={16} bg='white'>
       <Container maxW='container.md' textAlign='center'>
-        <Heading
-          as='h2'
-          size='xl'
-          mb={6}
-          bgGradient='linear(to-r, blue.600, pink.600)'
-          bgClip='text'
-        >
+        <Heading as='h2' size='xl' mb={6} color='blue.600'>
           Vanliga Frågor
         </Heading>
         <Text fontSize='xl' color='gray.600' mb={8} maxW='2xl' mx='auto'>

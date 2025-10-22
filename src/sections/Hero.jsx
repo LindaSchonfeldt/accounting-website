@@ -5,13 +5,7 @@ const Hero = () => {
   return (
     <Box as='section' id='hero' py={16} textAlign='center'>
       <Container maxW='container.lg'>
-        <Heading
-          as='h1'
-          size='2xl'
-          bgGradient='linear(to-r, blue.600, pink.600)'
-          bgClip='text'
-          mb={6}
-        >
+        <Heading as='h1' size='2xl' mb={6} color='blue.600'>
           Din personliga och kostnadseffektiva redovisningskonsult
         </Heading>
         <Text fontSize='xl' color='gray.600' mb={8} maxW='2xl' mx='auto'>
