@@ -1,15 +1,21 @@
+import { Box } from '@chakra-ui/react'
 import Hero from '../sections/Hero.jsx'
 import Services from '../sections/Services.jsx'
 import Contact from '../sections/Contact.jsx'
 import FAQ from '../sections/FAQ.jsx'
 
 const Home = () => (
-  <main className='container-lg py-16' role='main'>
+  <Box
+    as='main'
+    minH='100vh'
+    bgGradient='linear(to-br, blue.50, gray.50)'
+    role='main'
+  >
     <Hero />
     <Services />
     <FAQ />
     <Contact />
-  </main>
+  </Box>
 )
 
 export default Home

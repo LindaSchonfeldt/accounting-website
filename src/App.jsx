@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Box, Center, Spinner, Text } from '@chakra-ui/react'
 import Home from './pages/Home.jsx'
 import Nav from './components/Nav.jsx'
 import Footer from './components/Footer.jsx'
@@ -9,15 +10,19 @@ const Styling = lazy(() => import('./pages/Styling.jsx'))
 
 // Loading fallback component
 const LoadingFallback = () => (
-  <div className='min-h-screen flex items-center justify-center bg-gradient-to-br from-primary-50 to-secondary-50'>
-    <div className='text-center'>
-      <div className='animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600 mx-auto mb-4'></div>
-      <p className='text-secondary-600'>Laddar...</p>
-    </div>
-  </div>
+  <Box
+    minH='100vh'
+    display='flex'
+    alignItems='center'
+    justifyContent='center'
+    bgGradient='linear(to-br, blue.50, gray.50)'
+  >
+    <Center flexDirection='column'>
+      <Spinner size='xl' color='blue.600' thickness='4px' mb={4} />
+      <Text color='gray.600'>Laddar...</Text>
+    </Center>
+  </Box>
 )
-
-// Home page
 
 export const App = () => {
   return (

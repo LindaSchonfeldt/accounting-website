@@ -1,53 +1,60 @@
-const Services = () => {
-  return (
-    <section id='services' className='py-16 bg-white'>
-      <div className='container-md'>
-        <h2 className='text-3xl font-bold text-center mb-8 text-gradient'>
-          Våra Tjänster
-        </h2>
-        <div className='grid md:grid-cols-3 gap-8'>
-          <div className='p-6 border rounded-lg hover:shadow-lg transition'>
-            <h3 className='text-xl font-semibold mb-4'>Löpande bokföring</h3>
-            <p className='text-secondary-600'>
-              Vi hanterar din bokföring noggrant och effektivt, så att du kan
-              fokusera på din verksamhet.
-            </p>
-          </div>
-          <div className='p-6 border rounded-lg hover:shadow-lg transition'>
-            <h3 className='text-xl font-semibold mb-4'>Momsrapport</h3>
-            <p className='text-secondary-600'>
-              Få expertråd för att optimera din skattesituation och säkerställa
-              efterlevnad.
-            </p>
-          </div>
-          <div className='p-6 border rounded-lg hover:shadow-lg transition'>
-            <h3 className='text-xl font-semibold mb-4'>
-              Årsbokslut/Årsredovisning
-            </h3>
-            <p className='text-secondary-600'>
-              Vi sköter hela löneprocessen, från beräkning till utbetalning.
-            </p>
-          </div>
-          <div className='p-6 border rounded-lg hover:shadow-lg transition'>
-            <h3 className='text-xl font-semibold mb-4'>
-              Inkomstdeklaration (INK1/INK2)
-            </h3>
-            <p className='text-secondary-600'>
-              Vi hanterar din bokföring noggrant och effektivt, så att du kan
-              fokusera på din verksamhet.
-            </p>
-          </div>
-          <div className='p-6 border rounded-lg hover:shadow-lg transition'>
-            <h3 className='text-xl font-semibold mb-4'>Faktureringstjänst</h3>
-            <p className='text-secondary-600'>
-              Vi hanterar din bokföring noggrant och effektivt, så att du kan
-              fokusera på din verksamhet.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
+import { Box, Container, Heading, SimpleGrid, Text } from '@chakra-ui/react'
+
+const services = [
+  {
+    title: 'Löpande bokföring',
+    desc: 'Vi hanterar din bokföring noggrant och effektivt, så att du kan fokusera på din verksamhet.'
+  },
+  {
+    title: 'Momsrapport',
+    desc: 'Få expertråd för att optimera din skattesituation och säkerställa efterlevnad.'
+  },
+  {
+    title: 'Årsbokslut/Årsredovisning',
+    desc: 'Vi sköter hela löneprocessen, från beräkning till utbetalning.'
+  },
+  {
+    title: 'Inkomstdeklaration (INK1/INK2)',
+    desc: 'Vi hanterar din bokföring noggrant och effektivt, så att du kan fokusera på din verksamhet.'
+  },
+  {
+    title: 'Faktureringstjänst',
+    desc: 'Vi hanterar din bokföring noggrant och effektivt, så att du kan fokusera på din verksamhet.'
+  }
+]
+
+const Services = () => (
+  <Box as='section' id='services' py={16} bg='white'>
+    <Container maxW='container.md'>
+      <Heading
+        as='h2'
+        size='xl'
+        textAlign='center'
+        mb={8}
+        bgGradient='linear(to-r, blue.600, pink.600)'
+        bgClip='text'
+      >
+        Våra Tjänster
+      </Heading>
+      <SimpleGrid columns={{ base: 1, md: 3 }} spacing={8}>
+        {services.map((service) => (
+          <Box
+            key={service.title}
+            p={6}
+            borderWidth='1px'
+            borderRadius='lg'
+            _hover={{ boxShadow: 'lg' }}
+            transition='box-shadow 0.2s'
+          >
+            <Heading as='h3' size='md' mb={4}>
+              {service.title}
+            </Heading>
+            <Text color='gray.600'>{service.desc}</Text>
+          </Box>
+        ))}
+      </SimpleGrid>
+    </Container>
+  </Box>
+)
 
 export default Services
