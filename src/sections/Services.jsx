@@ -7,23 +7,41 @@ const Services = () => {
         </h2>
         <div className='grid md:grid-cols-3 gap-8'>
           <div className='p-6 border rounded-lg hover:shadow-lg transition'>
-            <h3 className='text-xl font-semibold mb-4'>Bokföring</h3>
+            <h3 className='text-xl font-semibold mb-4'>Löpande bokföring</h3>
             <p className='text-secondary-600'>
               Vi hanterar din bokföring noggrant och effektivt, så att du kan
               fokusera på din verksamhet.
             </p>
           </div>
           <div className='p-6 border rounded-lg hover:shadow-lg transition'>
-            <h3 className='text-xl font-semibold mb-4'>Skatterådgivning</h3>
+            <h3 className='text-xl font-semibold mb-4'>Momsrapport</h3>
             <p className='text-secondary-600'>
               Få expertråd för att optimera din skattesituation och säkerställa
               efterlevnad.
             </p>
           </div>
           <div className='p-6 border rounded-lg hover:shadow-lg transition'>
-            <h3 className='text-xl font-semibold mb-4'>Lönehantering</h3>
+            <h3 className='text-xl font-semibold mb-4'>
+              Årsbokslut/Årsredovisning
+            </h3>
             <p className='text-secondary-600'>
               Vi sköter hela löneprocessen, från beräkning till utbetalning.
+            </p>
+          </div>
+          <div className='p-6 border rounded-lg hover:shadow-lg transition'>
+            <h3 className='text-xl font-semibold mb-4'>
+              Inkomstdeklaration (INK1/INK2)
+            </h3>
+            <p className='text-secondary-600'>
+              Vi hanterar din bokföring noggrant och effektivt, så att du kan
+              fokusera på din verksamhet.
+            </p>
+          </div>
+          <div className='p-6 border rounded-lg hover:shadow-lg transition'>
+            <h3 className='text-xl font-semibold mb-4'>Faktureringstjänst</h3>
+            <p className='text-secondary-600'>
+              Vi hanterar din bokföring noggrant och effektivt, så att du kan
+              fokusera på din verksamhet.
             </p>
           </div>
         </div>
