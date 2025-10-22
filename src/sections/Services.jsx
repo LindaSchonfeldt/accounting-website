@@ -36,8 +36,10 @@ const Services = () => (
             p={6}
             borderWidth='1px'
             borderRadius='lg'
+            boxShadow='md'
             _hover={{ boxShadow: 'lg' }}
             transition='box-shadow 0.2s'
+            bg='gray.50'
           >
             <Heading as='h3' size='md' mb={4}>
               {service.title}
