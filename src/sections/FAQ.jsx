@@ -1,18 +1,25 @@
+import { Box, Container, Heading, Text } from '@chakra-ui/react'
 import Accordion from '../components/Accordion'
 
 const FAQ = () => {
   return (
-    <section id='faq' className='py-16 bg-white'>
-      <div className='container-md text-center'>
-        <h2 className='text-3xl font-bold mb-6 text-gradient'>
+    <Box as='section' id='faq' py={16} bg='white'>
+      <Container maxW='container.md' textAlign='center'>
+        <Heading
+          as='h2'
+          size='xl'
+          mb={6}
+          bgGradient='linear(to-r, blue.600, pink.600)'
+          bgClip='text'
+        >
           Vanliga Frågor
-        </h2>
-        <p className='text-xl text-secondary-600 mb-8 max-w-2xl mx-auto'>
+        </Heading>
+        <Text fontSize='xl' color='gray.600' mb={8} maxW='2xl' mx='auto'>
           Här besvarar vi några av de vanligaste frågorna våra kunder har.
-        </p>
+        </Text>
         <Accordion />
-      </div>
-    </section>
+      </Container>
+    </Box>
   )
 }
 

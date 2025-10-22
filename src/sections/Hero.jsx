@@ -1,21 +1,35 @@
-import { Link } from 'react-router-dom'
+import { Box, Button, Container, Heading, Text } from '@chakra-ui/react'
+import { Link as RouterLink } from 'react-router-dom'
 
 const Hero = () => {
   return (
-    <section
-      id='hero'
-      className='container-lg py-16 text-center animate-fade-in'
-    >
-      <h1 className='text-gradient mb-6'>
-        Din personliga och kostnadseffektiva redovisningskonsult
-      </h1>
-      <p className='text-xl text-secondary-600 mb-8 max-w-2xl mx-auto'>
-        Här kommer ditt största argument för att anlita dig stå.
-      </p>
-      <Link to='/styling' className='btn btn-primary btn-lg'>
-        Få kostnadsfri offert
-      </Link>
-    </section>
+    <Box as='section' id='hero' py={16} textAlign='center'>
+      <Container maxW='container.lg'>
+        <Heading
+          as='h1'
+          size='2xl'
+          bgGradient='linear(to-r, blue.600, pink.600)'
+          bgClip='text'
+          mb={6}
+        >
+          Din personliga och kostnadseffektiva redovisningskonsult
+        </Heading>
+        <Text fontSize='xl' color='gray.600' mb={8} maxW='2xl' mx='auto'>
+          Här kommer ditt största argument för att anlita dig stå.
+        </Text>
+        <Button
+          as={RouterLink}
+          to='/styling'
+          colorScheme='blue'
+          size='lg'
+          px={8}
+          py={6}
+          fontSize='lg'
+        >
+          Få kostnadsfri offert
+        </Button>
+      </Container>
+    </Box>
   )
 }
 

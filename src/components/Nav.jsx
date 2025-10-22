@@ -1,47 +1,90 @@
+import {
+  Box,
+  Container,
+  Flex,
+  Heading,
+  Link,
+  List,
+  ListItem
+} from '@chakra-ui/react'
+
 const Nav = () => {
   return (
-    <header className='sticky top-0 z-50 bg-white'>
-      <div className='container-lg py-1'>
-        <nav
-          className='flex items-center justify-between h-14'
+    <Box
+      as='header'
+      position='sticky'
+      top={0}
+      zIndex={50}
+      bg='white'
+      boxShadow='sm'
+    >
+      <Container maxW='container.lg' py={1}>
+        <Flex
+          as='nav'
+          align='center'
+          justify='space-between'
+          h={14}
           aria-label='Main navigation'
         >
-          <h1 className='flex items-center h-full'>
-            <a
+          <Heading
+            as='h1'
+            size='lg'
+            display='flex'
+            alignItems='center'
+            h='full'
+          >
+            <Link
               href='#hero'
-              className='text-gradient text-2xl font-bold flex items-center h-full'
+              bgGradient='linear(to-r, blue.600, pink.600)'
+              bgClip='text'
+              fontSize='2xl'
+              fontWeight='bold'
+              display='flex'
+              alignItems='center'
+              h='full'
+              _hover={{ textDecoration: 'none' }}
               aria-label='Go to top'
             >
               Billig Bokföring
-            </a>
-          </h1>
-          <ul className='flex items-center space-x-4 h-full'>
-            <li>
-              <a
+            </Link>
+          </Heading>
+          <List display='flex' alignItems='center' gap={4} h='full'>
+            <ListItem>
+              <Link
                 href='#services'
-                className='text-secondary-600 hover:text-primary-600 transition flex items-center h-full'
+                color='gray.600'
+                _hover={{ color: 'blue.600' }}
+                transition='color 0.2s'
+                display='flex'
+                alignItems='center'
+                h='full'
                 aria-current={
-                  window.location.hash === '#services' ? 'section' : undefined
+                  window.location.hash === '#services' ? 'page' : undefined
                 }
               >
                 Tjänster
-              </a>
-            </li>
-            <li>
-              <a
+              </Link>
+            </ListItem>
+            <ListItem>
+              <Link
                 href='#contact'
-                className='text-secondary-600 hover:text-primary-600 transition flex items-center h-full'
+                color='gray.600'
+                _hover={{ color: 'blue.600' }}
+                transition='color 0.2s'
+                display='flex'
+                alignItems='center'
+                h='full'
                 aria-current={
-                  window.location.hash === '#contact' ? 'section' : undefined
+                  window.location.hash === '#contact' ? 'page' : undefined
                 }
               >
                 Kontakt
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+              </Link>
+            </ListItem>
+          </List>
+        </Flex>
+      </Container>
+    </Box>
   )
 }
 

@@ -1,180 +1,300 @@
+import {
+  Box,
+  Button,
+  Container,
+  Heading,
+  Text,
+  SimpleGrid,
+  VStack,
+  HStack,
+  Input,
+  FormControl,
+  FormLabel,
+  List,
+  ListItem,
+  Link,
+  Flex
+} from '@chakra-ui/react'
+
 const Styling = () => {
   return (
-    <div className='min-h-screen bg-linear-to-br from-primary-50 to-secondary-50'>
+    <Box minH='100vh' bgGradient='linear(to-br, blue.50, gray.50)'>
       {/* Hero Section */}
-      <main className='container-lg py-16'>
-        <div className='text-center animate-fade-in'>
-          <h1 className='text-gradient mb-6'>Beautiful Tailwind Setup</h1>
-          <p className='text-xl text-secondary-600 mb-8 max-w-2xl mx-auto'>
-            This is your custom Tailwind CSS setup with predefined colors,
+      <Container as='main' maxW='container.lg' py={16}>
+        <VStack spacing={8} textAlign='center'>
+          <Heading
+            as='h1'
+            size='2xl'
+            bgGradient='linear(to-r, blue.600, pink.600)'
+            bgClip='text'
+          >
+            Beautiful Chakra UI Setup
+          </Heading>
+          <Text fontSize='xl' color='gray.600' maxW='2xl'>
+            This is your custom Chakra UI setup with predefined colors,
             typography, and component styles ready to use.
-          </p>
-          <div className='space-x-4'>
-            <button className='btn btn-primary btn-lg'>Primary Action</button>
-            <button className='btn btn-secondary btn-lg'>
+          </Text>
+          <HStack spacing={4}>
+            <Button colorScheme='blue' size='lg'>
+              Primary Action
+            </Button>
+            <Button variant='outline' colorScheme='blue' size='lg'>
               Secondary Action
-            </button>
-          </div>
-        </div>
+            </Button>
+          </HStack>
+        </VStack>
 
         {/* Feature Cards */}
-        <div className='grid md:grid-cols-3 gap-8 mt-16'>
-          <div className='card animate-slide-up'>
-            <div className='w-12 h-12 bg-gradient-primary rounded-lg mb-4 flex items-center justify-center'>
-              <span className='text-white text-xl'>🎨</span>
-            </div>
-            <h3>Custom Colors</h3>
-            <p>
-              Primary, secondary, and accent color palettes with 50-950 shades
-              for complete design flexibility.
-            </p>
-          </div>
-
-          <div
-            className='card animate-slide-up'
-            style={{ animationDelay: '0.1s' }}
+        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={8} mt={16}>
+          <Box
+            bg='white'
+            p={6}
+            borderRadius='lg'
+            boxShadow='md'
+            _hover={{ boxShadow: 'lg' }}
+            transition='box-shadow 0.2s'
           >
-            <div className='w-12 h-12 bg-gradient-accent rounded-lg mb-4 flex items-center justify-center'>
-              <span className='text-white text-xl'>📝</span>
-            </div>
-            <h3>Typography System</h3>
-            <p>
+            <Box
+              w={12}
+              h={12}
+              bgGradient='linear(to-r, blue.500, blue.700)'
+              borderRadius='lg'
+              mb={4}
+              display='flex'
+              alignItems='center'
+              justifyContent='center'
+              fontSize='xl'
+            >
+              🎨
+            </Box>
+            <Heading as='h3' size='md' mb={3}>
+              Custom Colors
+            </Heading>
+            <Text color='gray.600'>
+              Primary, secondary, and accent color palettes with complete design
+              flexibility.
+            </Text>
+          </Box>
+
+          <Box
+            bg='white'
+            p={6}
+            borderRadius='lg'
+            boxShadow='md'
+            _hover={{ boxShadow: 'lg' }}
+            transition='box-shadow 0.2s'
+          >
+            <Box
+              w={12}
+              h={12}
+              bgGradient='linear(to-r, pink.500, pink.700)'
+              borderRadius='lg'
+              mb={4}
+              display='flex'
+              alignItems='center'
+              justifyContent='center'
+              fontSize='xl'
+            >
+              📝
+            </Box>
+            <Heading as='h3' size='md' mb={3}>
+              Typography System
+            </Heading>
+            <Text color='gray.600'>
               Consistent heading hierarchy and paragraph styles with responsive
               sizing and proper spacing.
-            </p>
-          </div>
+            </Text>
+          </Box>
 
-          <div
-            className='card animate-slide-up'
-            style={{ animationDelay: '0.2s' }}
+          <Box
+            bg='white'
+            p={6}
+            borderRadius='lg'
+            boxShadow='md'
+            _hover={{ boxShadow: 'lg' }}
+            transition='box-shadow 0.2s'
           >
-            <div className='w-12 h-12 bg-secondary-600 rounded-lg mb-4 flex items-center justify-center'>
-              <span className='text-white text-xl'>🧩</span>
-            </div>
-            <h3>Component Library</h3>
-            <p>
+            <Box
+              w={12}
+              h={12}
+              bg='gray.600'
+              borderRadius='lg'
+              mb={4}
+              display='flex'
+              alignItems='center'
+              justifyContent='center'
+              fontSize='xl'
+            >
+              🧩
+            </Box>
+            <Heading as='h3' size='md' mb={3}>
+              Component Library
+            </Heading>
+            <Text color='gray.600'>
               Pre-built button variants, cards, forms, and utility classes ready
               to use in your projects.
-            </p>
-          </div>
-        </div>
+            </Text>
+          </Box>
+        </SimpleGrid>
 
         {/* Demo Section */}
-        <div className='mt-16 grid lg:grid-cols-2 gap-12 items-center'>
-          <div>
-            <h2>Typography Showcase</h2>
-            <h3>This is an H3 heading</h3>
-            <h4>This is an H4 heading</h4>
-            <h5>This is an H5 heading</h5>
-            <p>
+        <SimpleGrid
+          columns={{ base: 1, lg: 2 }}
+          spacing={12}
+          mt={16}
+          alignItems='center'
+        >
+          <Box>
+            <Heading as='h2' size='xl' mb={4}>
+              Typography Showcase
+            </Heading>
+            <Heading as='h3' size='lg' mb={3}>
+              This is an H3 heading
+            </Heading>
+            <Heading as='h4' size='md' mb={3}>
+              This is an H4 heading
+            </Heading>
+            <Heading as='h5' size='sm' mb={3}>
+              This is an H5 heading
+            </Heading>
+            <Text mb={4}>
               This is a paragraph with proper spacing and typography. It
               includes
-              <a href='#' className='mx-1'>
+              <Link href='#' color='blue.600' mx={1}>
                 a sample link
-              </a>
+              </Link>
               and demonstrates the default text styling.
-            </p>
-            <ul>
-              <li>List item with proper spacing</li>
-              <li>Another list item</li>
-              <li>Third list item for demonstration</li>
-            </ul>
-          </div>
+            </Text>
+            <List spacing={2} pl={6} styleType='disc'>
+              <ListItem>List item with proper spacing</ListItem>
+              <ListItem>Another list item</ListItem>
+              <ListItem>Third list item for demonstration</ListItem>
+            </List>
+          </Box>
 
-          <div className='space-y-4'>
-            <h2>Component Examples</h2>
+          <VStack spacing={4} align='stretch'>
+            <Heading as='h2' size='xl' mb={2}>
+              Component Examples
+            </Heading>
 
             {/* Form Example */}
-            <div className='form-group'>
-              <label className='form-label'>Email Address</label>
-              <input
-                type='email'
-                className='form-input'
-                placeholder='Enter your email'
-              />
-            </div>
+            <FormControl>
+              <FormLabel>Email Address</FormLabel>
+              <Input type='email' placeholder='Enter your email' />
+            </FormControl>
 
             {/* Button Examples */}
-            <div className='space-y-3'>
-              <div className='flex space-x-3'>
-                <button className='btn btn-primary'>Primary</button>
-                <button className='btn btn-secondary'>Secondary</button>
-                <button className='btn btn-accent'>Accent</button>
-              </div>
-              <div className='flex space-x-3'>
-                <button className='btn btn-outline'>Outline</button>
-                <button className='btn btn-primary btn-sm'>Small</button>
-                <button className='btn btn-secondary btn-lg'>Large</button>
-              </div>
-            </div>
-          </div>
-        </div>
+            <VStack spacing={3} align='stretch'>
+              <HStack spacing={3}>
+                <Button colorScheme='blue'>Primary</Button>
+                <Button colorScheme='gray'>Secondary</Button>
+                <Button colorScheme='pink'>Accent</Button>
+              </HStack>
+              <HStack spacing={3}>
+                <Button variant='outline' colorScheme='blue'>
+                  Outline
+                </Button>
+                <Button colorScheme='blue' size='sm'>
+                  Small
+                </Button>
+                <Button colorScheme='gray' size='lg'>
+                  Large
+                </Button>
+              </HStack>
+            </VStack>
+          </VStack>
+        </SimpleGrid>
 
         {/* Color Palette Demo */}
-        <div className='mt-16'>
-          <h2 className='text-center mb-8'>Color Palette</h2>
-          <div className='grid md:grid-cols-3 gap-8'>
-            {/* Primary Colors */}
-            <div>
-              <h4 className='mb-4'>Primary Colors</h4>
-              <div className='space-y-2'>
+        <Box mt={16}>
+          <Heading as='h2' size='xl' textAlign='center' mb={8}>
+            Color Palette
+          </Heading>
+          <SimpleGrid columns={{ base: 1, md: 3 }} spacing={8}>
+            {/* Blue Colors */}
+            <Box>
+              <Heading as='h4' size='md' mb={4}>
+                Blue Colors
+              </Heading>
+              <VStack spacing={2} align='stretch'>
                 {[50, 100, 200, 300, 400, 500, 600, 700, 800, 900].map(
                   (shade) => (
-                    <div key={shade} className='flex items-center space-x-3'>
-                      <div
-                        className={`w-8 h-8 rounded bg-primary-${shade} border border-secondary-200`}
-                      ></div>
-                      <span className='text-sm'>primary-{shade}</span>
-                    </div>
+                    <Flex key={shade} align='center' gap={3}>
+                      <Box
+                        w={8}
+                        h={8}
+                        borderRadius='md'
+                        bg={`blue.${shade}`}
+                        border='1px'
+                        borderColor='gray.200'
+                      />
+                      <Text fontSize='sm'>blue.{shade}</Text>
+                    </Flex>
                   )
                 )}
-              </div>
-            </div>
+              </VStack>
+            </Box>
 
-            {/* Secondary Colors */}
-            <div>
-              <h4 className='mb-4'>Secondary Colors</h4>
-              <div className='space-y-2'>
+            {/* Gray Colors */}
+            <Box>
+              <Heading as='h4' size='md' mb={4}>
+                Gray Colors
+              </Heading>
+              <VStack spacing={2} align='stretch'>
                 {[50, 100, 200, 300, 400, 500, 600, 700, 800, 900].map(
                   (shade) => (
-                    <div key={shade} className='flex items-center space-x-3'>
-                      <div
-                        className={`w-8 h-8 rounded bg-secondary-${shade} border border-secondary-200`}
-                      ></div>
-                      <span className='text-sm'>secondary-{shade}</span>
-                    </div>
+                    <Flex key={shade} align='center' gap={3}>
+                      <Box
+                        w={8}
+                        h={8}
+                        borderRadius='md'
+                        bg={`gray.${shade}`}
+                        border='1px'
+                        borderColor='gray.200'
+                      />
+                      <Text fontSize='sm'>gray.{shade}</Text>
+                    </Flex>
                   )
                 )}
-              </div>
-            </div>
+              </VStack>
+            </Box>
 
-            {/* Accent Colors */}
-            <div>
-              <h4 className='mb-4'>Accent Colors</h4>
-              <div className='space-y-2'>
+            {/* Pink Colors */}
+            <Box>
+              <Heading as='h4' size='md' mb={4}>
+                Pink Colors
+              </Heading>
+              <VStack spacing={2} align='stretch'>
                 {[50, 100, 200, 300, 400, 500, 600, 700, 800, 900].map(
                   (shade) => (
-                    <div key={shade} className='flex items-center space-x-3'>
-                      <div
-                        className={`w-8 h-8 rounded bg-accent-${shade} border border-secondary-200`}
-                      ></div>
-                      <span className='text-sm'>accent-{shade}</span>
-                    </div>
+                    <Flex key={shade} align='center' gap={3}>
+                      <Box
+                        w={8}
+                        h={8}
+                        borderRadius='md'
+                        bg={`pink.${shade}`}
+                        border='1px'
+                        borderColor='gray.200'
+                      />
+                      <Text fontSize='sm'>pink.{shade}</Text>
+                    </Flex>
                   )
                 )}
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
+              </VStack>
+            </Box>
+          </SimpleGrid>
+        </Box>
+      </Container>
 
       {/* Footer */}
-      <footer className='container-xl py-8 mt-16 border-t border-secondary-200'>
-        <div className='text-center text-secondary-500'>
-          <p>Built with Tailwind CSS • Vite • React</p>
-        </div>
-      </footer>
-    </div>
+      <Box as='footer' borderTop='1px' borderColor='gray.200' py={8} mt={16}>
+        <Container maxW='container.xl'>
+          <Text textAlign='center' color='gray.500'>
+            Built with Chakra UI • Vite • React
+          </Text>
+        </Container>
+      </Box>
+    </Box>
   )
 }
 
