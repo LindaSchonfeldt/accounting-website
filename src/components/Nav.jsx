@@ -27,8 +27,7 @@ const Nav = () => {
           >
             <Link
               href='#hero'
-              bgGradient='linear(to-r, blue.600, pink.600)'
-              bgClip='text'
+              color='blue.600'
               fontSize='2xl'
               fontWeight='bold'
               display='flex'
@@ -61,6 +60,22 @@ const Nav = () => {
                 }
               >
                 Tjänster
+              </Link>
+            </Box>
+            <Box as='li'>
+              <Link
+                href='#faq'
+                color='gray.600'
+                _hover={{ color: 'blue.600' }}
+                transition='color 0.2s'
+                display='flex'
+                alignItems='center'
+                h='full'
+                aria-current={
+                  window.location.hash === '#faq' ? 'page' : undefined
+                }
+              >
+                Vanliga frågor
               </Link>
             </Box>
             <Box as='li'>
