@@ -1,11 +1,4 @@
-import {
-  Accordion as ChakraAccordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
-  AccordionIcon,
-  Box
-} from '@chakra-ui/react'
+import { Accordion as ChakraAccordion, Box } from '@chakra-ui/react'
 
 const faqs = [
   {
@@ -26,23 +19,21 @@ const faqs = [
 
 const Accordion = () => {
   return (
-    <ChakraAccordion allowToggle>
+    <ChakraAccordion.Root collapsible>
       {faqs.map((faq, index) => (
-        <AccordionItem key={index}>
-          <h3>
-            <AccordionButton>
-              <Box as='span' flex='1' textAlign='left' fontWeight='semibold'>
-                {faq.question}
-              </Box>
-              <AccordionIcon />
-            </AccordionButton>
-          </h3>
-          <AccordionPanel pb={4} textAlign='left' color='gray.600'>
+        <ChakraAccordion.Item key={index} value={`item-${index}`}>
+          <ChakraAccordion.ItemTrigger>
+            <Box flex='1' textAlign='left' fontWeight='semibold'>
+              {faq.question}
+            </Box>
+            <ChakraAccordion.ItemIndicator />
+          </ChakraAccordion.ItemTrigger>
+          <ChakraAccordion.ItemContent pb={4} textAlign='left' color='gray.600'>
             {faq.answer}
-          </AccordionPanel>
-        </AccordionItem>
+          </ChakraAccordion.ItemContent>
+        </ChakraAccordion.Item>
       ))}
-    </ChakraAccordion>
+    </ChakraAccordion.Root>
   )
 }
 
