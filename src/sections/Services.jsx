@@ -3,8 +3,8 @@ import {
   Box,
   Container,
   Heading,
-  HStack,
   SimpleGrid,
+  Stack,
   Text
 } from '@chakra-ui/react'
 
@@ -59,17 +59,23 @@ const Services = () => (
             _hover={{ boxShadow: 'lg' }}
             transition='box-shadow 0.2s'
             bg='gray.50'
+            display='flex'
+            flexDirection='column'
           >
             <Heading as='h3' size='md' mb={4}>
               {service.title}
             </Heading>
-            <Text color='gray.600' mb={4}>
+            <Text color='gray.600' mb={4} flex='1'>
               {service.desc}
             </Text>
-            <HStack spacing={4}>
+            <Stack
+              direction={{ base: 'row', md: 'column', lg: 'row' }}
+              spacing={4}
+              mt='auto'
+            >
               <Badge colorScheme='blue'>Bas: {service.price.bas}</Badge>
               <Badge colorScheme='green'>Plus: {service.price.plus}</Badge>
-            </HStack>
+            </Stack>
           </Box>
         ))}
       </SimpleGrid>

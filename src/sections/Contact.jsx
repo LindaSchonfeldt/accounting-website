@@ -1,5 +1,7 @@
 import { Box, Container, Heading, Text } from '@chakra-ui/react'
 
+import ContactForm from '../components/ContactForm'
+
 const Contact = () => {
   return (
     <Box as='section' id='contact' py={16} bg='white'>
@@ -11,6 +13,7 @@ const Contact = () => {
           Har du frågor eller vill du veta mer om våra tjänster? Tveka inte att
           höra av dig!
         </Text>
+        <ContactForm />
       </Container>
     </Box>
   )
