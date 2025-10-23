@@ -135,7 +135,6 @@ const Nav = () => {
       boxShadow='sm'
       py={{ base: 1, md: 1, lg: 1 }}
       px={{ base: 4, md: 6, lg: 8 }}
-      mb={{ base: 4, md: 6, lg: 8 }}
     >
       <Container maxW='container.lg' py={1}>
         <Flex
