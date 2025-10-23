@@ -3,7 +3,16 @@ import { Link as RouterLink } from 'react-router-dom'
 
 const Hero = () => {
   return (
-    <Box as='section' id='hero' py={16} textAlign='center'>
+    <Box
+      as='section'
+      id='hero'
+      py={16}
+      textAlign='center'
+      h={{ base: 'calc(100vh - 60px)', md: 'calc(100vh - 80px)' }}
+      display='flex'
+      flexDirection='column'
+      justifyContent='center'
+    >
       <Container maxW='container.lg'>
         <Heading
           as='h1'
