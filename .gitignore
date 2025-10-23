@@ -23,7 +23,7 @@ dist-ssr
 *.sln
 *.sw?
 
-# Miscellaneous
+# Environment files
 .env
 .env.test
 .env.production
@@ -31,4 +31,6 @@ dist-ssr
 .env.test.local
 .env.production.local
 .env.ci
+
+# Miscellaneous
 todo.md
