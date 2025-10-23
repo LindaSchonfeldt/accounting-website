@@ -1,9 +1,9 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { Box, Center, Spinner, Text } from '@chakra-ui/react'
-import Home from './pages/Home.jsx'
-import Nav from './components/Nav.jsx'
-import Footer from './components/Footer.jsx'
+import Home from './pages/Home'
+import Nav from './components/Nav'
+import Footer from './components/Footer'
 
 // Lazy load pages for better performance
 const Styling = lazy(() => import('./pages/Styling.jsx'))
