@@ -1,6 +1,6 @@
 import { Box, Container, Heading, Link, Text } from '@chakra-ui/react'
 
-import Accordion from '../components/Accordion'
+import CustomAccordion from '../components/CustomAccordion'
 
 const FAQ = () => {
   return (
@@ -14,7 +14,7 @@ const FAQ = () => {
           funderingar är ni alltid välkomna att{' '}
           <Link href='#contact'>kontakta oss</Link>.
         </Text>
-        <Accordion />
+        <CustomAccordion />
       </Container>
     </Box>
   )

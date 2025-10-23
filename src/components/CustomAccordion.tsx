@@ -1,6 +1,23 @@
-import { Box, Accordion as ChakraAccordion } from '@chakra-ui/react'
+import {
+  Accordion,
+  AccordionButton,
+  AccordionIcon,
+  AccordionItem,
+  AccordionPanel
+} from '@chakra-ui/accordion'
+import { Box } from '@chakra-ui/react'
+import React from 'react'
 
-const faqs = [
+export type FAQ = {
+  question: string
+  answer: string
+}
+
+interface AccordionProps {
+  faqs?: FAQ[]
+}
+
+const defaultFaqs: FAQ[] = [
   {
     question: 'Vad ingår i löpande bokföring?',
     answer:
@@ -48,39 +65,41 @@ const faqs = [
   }
 ]
 
-const Accordion = () => {
+const CustomAccordion: React.FC<AccordionProps> = ({ faqs = defaultFaqs }) => {
   return (
-    <ChakraAccordion.Root collapsible>
+    <Accordion allowMultiple>
       {faqs.map((faq, index) => (
-        <ChakraAccordion.Item
-          key={index}
-          value={`item-${index}`}
-          mb={0} // Margin bottom between accordion items
+        <AccordionItem
+          key={`faq-${index}`}
           borderWidth='1px'
           borderRadius='md'
-          p={2} // Padding inside each item
+          mb={2}
         >
-          <ChakraAccordion.ItemTrigger
-            py={{ base: 3, md: 4 }} // Responsive vertical padding
-            px={{ base: 4, md: 6 }} // Responsive horizontal padding
-          >
-            <Box flex='1' textAlign='left' fontWeight='semibold'>
-              {faq.question}
-            </Box>
-            <ChakraAccordion.ItemIndicator />
-          </ChakraAccordion.ItemTrigger>
-          <ChakraAccordion.ItemContent
+          <h2>
+            <AccordionButton
+              py={{ base: 3, md: 4 }}
+              px={{ base: 4, md: 6 }}
+              aria-controls={`faq-panel-${index}`}
+            >
+              <Box flex='1' textAlign='left' fontWeight='semibold'>
+                {faq.question}
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+          </h2>
+          <AccordionPanel
+            id={`faq-panel-${index}`}
             pb={4}
-            px={{ base: 4, md: 6 }} // Match trigger padding
+            px={{ base: 4, md: 6 }}
             textAlign='left'
             color='gray.600'
           >
             {faq.answer}
-          </ChakraAccordion.ItemContent>
-        </ChakraAccordion.Item>
+          </AccordionPanel>
+        </AccordionItem>
       ))}
-    </ChakraAccordion.Root>
+    </Accordion>
   )
 }
 
-export default Accordion
+export default CustomAccordion
