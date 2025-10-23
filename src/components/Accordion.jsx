@@ -1,4 +1,4 @@
-import { Accordion as ChakraAccordion, Box } from '@chakra-ui/react'
+import { Box, Accordion as ChakraAccordion } from '@chakra-ui/react'
 
 const faqs = [
   {
@@ -52,14 +52,29 @@ const Accordion = () => {
   return (
     <ChakraAccordion.Root collapsible>
       {faqs.map((faq, index) => (
-        <ChakraAccordion.Item key={index} value={`item-${index}`}>
-          <ChakraAccordion.ItemTrigger>
+        <ChakraAccordion.Item
+          key={index}
+          value={`item-${index}`}
+          mb={0} // Margin bottom between accordion items
+          borderWidth='1px'
+          borderRadius='md'
+          p={2} // Padding inside each item
+        >
+          <ChakraAccordion.ItemTrigger
+            py={{ base: 3, md: 4 }} // Responsive vertical padding
+            px={{ base: 4, md: 6 }} // Responsive horizontal padding
+          >
             <Box flex='1' textAlign='left' fontWeight='semibold'>
               {faq.question}
             </Box>
             <ChakraAccordion.ItemIndicator />
           </ChakraAccordion.ItemTrigger>
-          <ChakraAccordion.ItemContent pb={4} textAlign='left' color='gray.600'>
+          <ChakraAccordion.ItemContent
+            pb={4}
+            px={{ base: 4, md: 6 }} // Match trigger padding
+            textAlign='left'
+            color='gray.600'
+          >
             {faq.answer}
           </ChakraAccordion.ItemContent>
         </ChakraAccordion.Item>
