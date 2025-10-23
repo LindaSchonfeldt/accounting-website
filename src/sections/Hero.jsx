@@ -19,6 +19,19 @@ const Hero = () => {
           px={8}
           py={6}
           fontSize='lg'
+          mr={4}
+          variant='outline'
+        >
+          Boka ett möte
+        </Button>
+        <Button
+          as={RouterLink}
+          to='/styling'
+          colorScheme='blue'
+          size='lg'
+          px={8}
+          py={6}
+          fontSize='lg'
         >
           Få kostnadsfri offert
         </Button>
