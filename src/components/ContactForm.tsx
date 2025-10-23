@@ -34,3 +34,5 @@ const ContactForm: React.FC<ContactFormProps> = () => {
     </form>
   )
 }
+
+export default ContactForm
