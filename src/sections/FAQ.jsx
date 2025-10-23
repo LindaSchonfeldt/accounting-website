@@ -1,4 +1,5 @@
-import { Box, Container, Heading, Text } from '@chakra-ui/react'
+import { Box, Container, Heading, Link, Text } from '@chakra-ui/react'
+
 import Accordion from '../components/Accordion'
 
 const FAQ = () => {
@@ -8,8 +9,10 @@ const FAQ = () => {
         <Heading as='h2' size='xl' mb={6} color='blue.600'>
           Vanliga Frågor
         </Heading>
-        <Text fontSize='xl' color='gray.600' mb={8} maxW='2xl' mx='auto'>
-          Här besvarar vi några av de vanligaste frågorna våra kunder har.
+        <Text fontSize='lg' color='gray.600' mb={8} maxW='2xl' mx='auto'>
+          Här finner ni svar på våra vanligaste frågor. Har ni ytterligare
+          funderingar är ni alltid välkomna att{' '}
+          <Link href='#contact'>kontakta oss</Link>.
         </Text>
         <Accordion />
       </Container>
