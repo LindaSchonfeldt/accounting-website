@@ -1,22 +1,26 @@
 import {
   Box,
   Container,
-  Drawer,
-  DrawerBody,
-  DrawerCloseButton,
-  DrawerContent,
-  DrawerHeader,
-  DrawerOverlay,
   Flex,
   Heading,
   IconButton,
   Link,
-  useDisclosure,
   VStack
 } from '@chakra-ui/react'
+import {
+  DrawerBackdrop,
+  DrawerBody,
+  DrawerCloseTrigger,
+  DrawerContent,
+  DrawerHeader,
+  DrawerRoot
+} from '@chakra-ui/react'
+import { useState } from 'react'
 
 const Nav = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const [isOpen, setIsOpen] = useState(false)
+  const onOpen = () => setIsOpen(true)
+  const onClose = () => setIsOpen(false)
 
   const NavLinks = () => (
     <>
@@ -25,7 +29,6 @@ const Nav = () => {
         color='gray.600'
         _hover={{ color: 'blue.600' }}
         transition='color 0.2s'
-        aria-current={window.location.hash === '#services' ? 'page' : undefined}
         onClick={onClose}
       >
         Tjänster
@@ -35,7 +38,6 @@ const Nav = () => {
         color='gray.600'
         _hover={{ color: 'blue.600' }}
         transition='color 0.2s'
-        aria-current={window.location.hash === '#faq' ? 'page' : undefined}
         onClick={onClose}
       >
         Vanliga frågor
@@ -45,7 +47,6 @@ const Nav = () => {
         color='gray.600'
         _hover={{ color: 'blue.600' }}
         transition='color 0.2s'
-        aria-current={window.location.hash === '#contact' ? 'page' : undefined}
         onClick={onClose}
       >
         Kontakt
@@ -113,9 +114,6 @@ const Nav = () => {
                 display='flex'
                 alignItems='center'
                 h='full'
-                aria-current={
-                  window.location.hash === '#services' ? 'page' : undefined
-                }
               >
                 Tjänster
               </Link>
@@ -129,9 +127,6 @@ const Nav = () => {
                 display='flex'
                 alignItems='center'
                 h='full'
-                aria-current={
-                  window.location.hash === '#faq' ? 'page' : undefined
-                }
               >
                 Vanliga frågor
               </Link>
@@ -145,43 +140,45 @@ const Nav = () => {
                 display='flex'
                 alignItems='center'
                 h='full'
-                aria-current={
-                  window.location.hash === '#contact' ? 'page' : undefined
-                }
               >
                 Kontakt
               </Link>
             </Box>
           </Flex>
 
-          {/* Mobile Hamburger Button with custom icon */}
+          {/* Mobile Hamburger Button */}
           <IconButton
             aria-label='Open menu'
             onClick={onOpen}
             display={{ base: 'flex', md: 'none' }}
             variant='ghost'
-            icon={
-              <Box>
-                <Box w='24px' h='2px' bg='currentColor' mb='6px' />
-                <Box w='24px' h='2px' bg='currentColor' mb='6px' />
-                <Box w='24px' h='2px' bg='currentColor' />
-              </Box>
-            }
-          />
+          >
+            <Box>
+              <Box w='24px' h='2px' bg='currentColor' mb='6px' />
+              <Box w='24px' h='2px' bg='currentColor' mb='6px' />
+              <Box w='24px' h='2px' bg='currentColor' />
+            </Box>
+          </IconButton>
 
           {/* Mobile Drawer Menu */}
-          <Drawer isOpen={isOpen} placement='right' onClose={onClose}>
-            <DrawerOverlay />
+          <DrawerRoot
+            open={isOpen}
+            onOpenChange={(e) => setIsOpen(e.open)}
+            placement='end'
+          >
+            <DrawerBackdrop />
             <DrawerContent>
-              <DrawerCloseButton />
-              <DrawerHeader>Meny</DrawerHeader>
+              <DrawerHeader>
+                <Box>Meny</Box>
+                <DrawerCloseTrigger />
+              </DrawerHeader>
               <DrawerBody>
                 <VStack spacing={4} align='stretch'>
                   <NavLinks />
                 </VStack>
               </DrawerBody>
             </DrawerContent>
-          </Drawer>
+          </DrawerRoot>
         </Flex>
       </Container>
     </Box>
