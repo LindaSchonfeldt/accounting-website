@@ -1,9 +1,10 @@
 import { Box } from '@chakra-ui/react'
 
-import Contact from '../sections/Contact.jsx'
-import FAQ from '../sections/FAQ.jsx'
-import Hero from '../sections/Hero.jsx'
-import Services from '../sections/Services.jsx'
+import About from '../sections/About'
+import Contact from '../sections/Contact'
+import FAQ from '../sections/FAQ'
+import Hero from '../sections/Hero'
+import Services from '../sections/Services'
 
 const Home = () => (
   <Box
@@ -15,6 +16,7 @@ const Home = () => (
     <Hero />
     <Services />
     <FAQ />
+    <About />
     <Contact />
   </Box>
 )
