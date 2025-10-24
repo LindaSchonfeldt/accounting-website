@@ -1,14 +1,14 @@
-import { SubmitHandler, useForm } from 'react-hook-form'
 import {
-  Select,
-  Input,
-  Textarea,
   Button,
   FormControl,
-  FormLabel,
   FormErrorMessage,
+  FormLabel,
+  Input,
+  Select,
+  Textarea,
   VStack
 } from '@chakra-ui/react'
+import { SubmitHandler, useForm } from 'react-hook-form'
 
 interface ContactFormProps {}
 
@@ -19,8 +19,7 @@ enum ContactReason {
 }
 interface FormInputs {
   contactReason?: ContactReason
-  firstName: string
-  lastName: string
+  name: string
   email: string
   phone?: string
   message: string
@@ -39,7 +38,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <VStack spacing={4} align='stretch'>
         <FormControl isInvalid={!!errors.contactReason} mb={4}>
-          <FormLabel>Kontaktorsak</FormLabel>
+          <FormLabel>Kontaktorsak (valfritt)</FormLabel>
           <Select
             placeholder='Välj kontaktorsak'
             {...register('contactReason')}
@@ -55,32 +54,19 @@ const ContactForm: React.FC<ContactFormProps> = () => {
           </FormErrorMessage>
         </FormControl>
 
-        <FormControl isInvalid={!!errors.firstName} mb={4}>
-          <FormLabel>Förnamn</FormLabel>
+        <FormControl isInvalid={!!errors.name} mb={4}>
+          <FormLabel>Namn*</FormLabel>
           <Input
-            placeholder='Förnamn'
-            {...register('firstName', { required: 'Förnamn är obligatoriskt' })}
+            placeholder='Namn'
+            {...register('name', { required: 'Namn är obligatoriskt' })}
           />
           <FormErrorMessage>
-            {errors.firstName && errors.firstName.message}
-          </FormErrorMessage>
-        </FormControl>
-
-        <FormControl isInvalid={!!errors.lastName} mb={4}>
-          <FormLabel>Efternamn</FormLabel>
-          <Input
-            placeholder='Efternamn'
-            {...register('lastName', {
-              required: 'Efternamn är obligatoriskt'
-            })}
-          />
-          <FormErrorMessage>
-            {errors.lastName && errors.lastName.message}
+            {errors.name && errors.name.message}
           </FormErrorMessage>
         </FormControl>
 
         <FormControl isInvalid={!!errors.email} mb={4}>
-          <FormLabel>E-post</FormLabel>
+          <FormLabel>E-post*</FormLabel>
           <Input
             placeholder='E-post'
             {...register('email', { required: 'E-post är obligatoriskt' })}
@@ -96,7 +82,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
         </FormControl>
 
         <FormControl isInvalid={!!errors.message} mb={4}>
-          <FormLabel>Meddelande</FormLabel>
+          <FormLabel>Meddelande*</FormLabel>
           <Textarea
             placeholder='Meddelande'
             {...register('message', {
