@@ -7,7 +7,8 @@ import {
   Stack,
   Text
 } from '@chakra-ui/react'
-import { fadeIn } from '../animations'
+import { fadeIn } from '../components/animations'
+import { MotionBox } from '../components/ui/MotionBox'
 
 const services = [
   {
@@ -58,15 +59,17 @@ const Services = () => (
         overflow='visible'
       >
         {services.map((service) => (
-          <Box
+          <MotionBox
             key={service.title}
-            {...fadeIn} // spread your animation props here
+            initial={fadeIn.initial}
+            animate={fadeIn.animate}
+            exit={fadeIn.exit}
+            transition={{ duration: 0.3 }}
             p={4}
             borderWidth='1px'
             borderRadius='lg'
             boxShadow='md'
             _hover={{ boxShadow: 'lg' }}
-            transition='box-shadow 0.2s'
             bg='gray.50'
             display='flex'
             flexDirection='column'
@@ -96,7 +99,7 @@ const Services = () => (
                 {service.price}
               </Text>
             )}
-          </Box>
+          </MotionBox>
         ))}
       </SimpleGrid>
     </Container>
