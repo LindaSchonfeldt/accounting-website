@@ -13,9 +13,10 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 interface ContactFormProps {}
 
 enum ContactReason {
+  QUESTION = 'Fråga',
   CONTACT = 'Kontakt',
-  SALES = 'Sales',
-  FEEDBACK = 'Feedback'
+  ORDER = 'Beställning',
+  OTHER = 'Annat'
 }
 interface FormInputs {
   contactReason?: ContactReason
