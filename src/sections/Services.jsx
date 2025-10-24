@@ -12,7 +12,7 @@ const services = [
   {
     title: 'Löpande bokföring',
     desc: 'Vi ser till att din bokföring alltid är uppdaterad och korrekt, så att du får full kontroll över företagets ekonomi.',
-    price: { bas: '495 kr/mån', plus: '995 kr/mån' }
+    price: { bas: 'fr. 495 kr/mån', plus: 'fr. 995 kr/mån' }
   },
   {
     title: 'Momsrapport',
@@ -36,6 +36,11 @@ const services = [
       bas: '199 kr/mån (upp till 15 fakturor)',
       plus: '399 kr/mån (16-50 fakturor)'
     }
+  },
+  {
+    title: 'Personlig rådgivning',
+    desc: 'Få skräddarsydda råd och strategier för att optimera din företags ekonomi och planera för framtiden.',
+    price: 'Enligt offert'
   }
 ]
 
@@ -43,7 +48,7 @@ const Services = () => (
   <Box as='section' id='services' py={16} bg='white'>
     <Container maxW='container.lg'>
       <Heading as='h2' size='xl' textAlign='center' mb={8} color='blue.600'>
-        Våra Tjänster
+        Våra tjänster
       </Heading>
       <SimpleGrid
         columns={{ base: 1, md: 3 }}
@@ -70,18 +75,25 @@ const Services = () => (
             <Text color='gray.600' mb={4} flex='1'>
               {service.desc}
             </Text>
-            <Stack
-              direction={{ base: 'row', md: 'column', lg: 'row' }}
-              spacing={2}
-              mt='auto'
-            >
-              <Badge colorScheme='blue' whiteSpace='normal'>
-                Bas: {service.price.bas}
-              </Badge>
-              <Badge colorScheme='green' whiteSpace='normal'>
-                Plus: {service.price.plus}
-              </Badge>
-            </Stack>
+
+            {typeof service.price === 'object' ? (
+              <Stack
+                direction={{ base: 'row', md: 'column', lg: 'row' }}
+                spacing={2}
+                mt='auto'
+              >
+                <Badge colorScheme='blue' whiteSpace='normal'>
+                  Bas: {service.price.bas}
+                </Badge>
+                <Badge colorScheme='green' whiteSpace='normal'>
+                  Plus: {service.price.plus}
+                </Badge>
+              </Stack>
+            ) : (
+              <Text fontWeight='semibold' mt='auto'>
+                {service.price}
+              </Text>
+            )}
           </Box>
         ))}
       </SimpleGrid>
