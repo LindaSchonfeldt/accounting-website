@@ -1,6 +1,6 @@
 import { Box, Container, Heading, Link, Text } from '@chakra-ui/react'
 
-import CustomAccordion from '../components/CustomAccordion'
+import CustomAccordion from '../components/ui/CustomAccordion'
 
 const FAQ = () => {
   return (

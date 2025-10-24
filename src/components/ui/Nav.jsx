@@ -11,7 +11,7 @@ import {
 } from '@chakra-ui/react'
 import { useCallback, useEffect, useState } from 'react'
 
-import HamburgerIcon from './ui/HamburgerIcon'
+import HamburgerIcon from './HamburgerIcon'
 
 // Mobile menu component
 const MobileMenu = ({ isOpen, onClose }) => {

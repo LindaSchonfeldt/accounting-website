@@ -7,6 +7,7 @@ import {
   Stack,
   Text
 } from '@chakra-ui/react'
+import { fadeIn } from '../animations'
 
 const services = [
   {
@@ -59,6 +60,7 @@ const Services = () => (
         {services.map((service) => (
           <Box
             key={service.title}
+            {...fadeIn} // spread your animation props here
             p={4}
             borderWidth='1px'
             borderRadius='lg'
