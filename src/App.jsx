@@ -1,10 +1,10 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
-import LoadingFallback from './components/LoadingFallback'
+import LoadingFallback from './components/ui/LoadingFallback'
 import Home from './pages/Home'
-import Nav from './components/Nav'
-import Footer from './components/Footer'
+import Nav from './components/ui/Nav'
+import Footer from './components/ui/Footer'
 
 // Lazy load pages for better performance
 const Styling = lazy(() => import('./pages/Styling.jsx'))
