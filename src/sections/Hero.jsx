@@ -5,7 +5,8 @@ import {
   Heading,
   Stack,
   Text,
-  Image
+  Image,
+  Center
 } from '@chakra-ui/react'
 import { Link as RouterLink } from 'react-router-dom'
 import Banner from '../components/ui/Banner'
@@ -18,7 +19,7 @@ const Hero = () => {
       minH={{ base: 'calc(100vh - 60px)', md: 'calc(100vh - 80px)' }}
       display='flex'
       flexDirection='column'
-      justifyContent='space-between'  // Changed from 'center'
+      justifyContent='space-between' // Changed from 'center'
       alignItems='center'
       bgGradient='linear(to-r, blue.50, blue.200)'
       bgSize='cover'
@@ -38,18 +39,26 @@ const Hero = () => {
         filter='blur(2px)'
         opacity={0.3}
       />
-      
+
       {/* Main content */}
-      <Container position='relative' zIndex={1} flex='1' display='flex' flexDirection='column' justifyContent='center'>
+      <Container
+        position='relative'
+        zIndex={1}
+        flex='1'
+        display='flex'
+        flexDirection='column'
+        justifyContent='center'
+      >
         <Heading
           as='h1'
           fontSize={{ base: '3xl', md: '5xl' }}
+          textAlign={'center'}
           lineHeight={{ base: '1.1', md: '1.1' }}
           mb={6}
         >
           Din personliga och kostnadseffektiva redovisningskonsult
         </Heading>
-        <Text fontSize='xl' mb={8} maxW='2xl' mx='auto'>
+        <Text fontSize='xl' textAlign={'center'} mb={8} maxW='2xl' mx='auto'>
           Här kommer ditt största argument för att anlita dig stå.
         </Text>
         <Stack
