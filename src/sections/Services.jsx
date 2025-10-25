@@ -7,8 +7,8 @@ import {
   Stack,
   Text
 } from '@chakra-ui/react'
-import { fadeIn } from '../components/animations'
 import { MotionBox } from '../components/ui/MotionBox'
+import { fadeIn, transitions } from '../components/animations'
 
 const services = [
   {
@@ -58,13 +58,14 @@ const Services = () => (
         bg='white'
         overflow='visible'
       >
-        {services.map((service) => (
+        {services.map((service, index) => (
           <MotionBox
             key={service.title}
             initial={fadeIn.initial}
-            animate={fadeIn.animate}
+            whileInView={fadeIn.animate}
             exit={fadeIn.exit}
-            transition={{ duration: 0.3 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ ...transitions.smooth, delay: index * 0.1 }}
             p={4}
             borderWidth='1px'
             borderRadius='lg'
