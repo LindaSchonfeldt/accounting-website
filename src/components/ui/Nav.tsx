@@ -11,10 +11,16 @@ import {
 } from '@chakra-ui/react'
 import { useCallback, useEffect, useState } from 'react'
 
-import HamburgerIcon from './ui/HamburgerIcon'
+import HamburgerIcon from './HamburgerIcon'
+import PropTypes from 'prop-types'
 
 // Mobile menu component
-const MobileMenu = ({ isOpen, onClose }) => {
+interface MobileMenuProps {
+  isOpen: boolean
+  onClose: () => void
+}
+
+const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
   if (!isOpen) return null
 
   return (
@@ -89,6 +95,11 @@ const MobileMenu = ({ isOpen, onClose }) => {
   )
 }
 
+MobileMenu.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired
+}
+
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
@@ -98,7 +109,7 @@ const Nav = () => {
 
   // Handle ESC key
   useEffect(() => {
-    const handleKeyDown = (e) => {
+    const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         closeMenu()
       }
@@ -221,8 +232,10 @@ const Nav = () => {
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
             onClick={toggleMenu}
             display={{ base: 'flex', md: 'none' }}
-            variant='ghost'
+            variant='unstyled'
             zIndex={101}
+            _hover={{ bg: 'transparent' }}
+            _active={{ bg: 'transparent' }}
           >
             <HamburgerIcon isOpen={isMenuOpen} />
           </IconButton>
