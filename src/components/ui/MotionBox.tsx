@@ -1,4 +1,4 @@
 import { Box } from '@chakra-ui/react'
-import { m } from 'framer-motion'
+import { motion } from 'framer-motion'
 
-export const MotionBox = m.create(Box)
+export const MotionBox = motion.create(Box)
