@@ -5,8 +5,7 @@ import {
   Heading,
   Stack,
   Text,
-  Image,
-  Center
+  Image
 } from '@chakra-ui/react'
 import { Link as RouterLink } from 'react-router-dom'
 import Banner from '../components/ui/Banner'
@@ -19,7 +18,7 @@ const Hero = () => {
       minH={{ base: 'calc(100vh - 60px)', md: 'calc(100vh - 80px)' }}
       display='flex'
       flexDirection='column'
-      justifyContent='space-between' // Changed from 'center'
+      justifyContent='space-between'
       alignItems='center'
       bgGradient='linear(to-r, blue.50, blue.200)'
       bgSize='cover'
