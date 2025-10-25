@@ -2,6 +2,7 @@ import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Nav from './components/ui/Nav'
 import { Box, Spinner, VStack, Text } from '@chakra-ui/react'
+import Footer from './components/ui/Footer'
 
 // Lazy load pages
 const Home = lazy(() => import('./pages/Home'))
@@ -38,6 +39,7 @@ export const App = () => {
           <Route path='*' element={<NotFound />} />
         </Routes>
       </Suspense>
+      <Footer />
     </BrowserRouter>
   )
 }
