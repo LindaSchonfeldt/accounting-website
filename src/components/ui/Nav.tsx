@@ -10,17 +10,66 @@ import {
   VStack
 } from '@chakra-ui/react'
 import { useCallback, useEffect, useState } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 
 import HamburgerIcon from './HamburgerIcon'
 import PropTypes from 'prop-types'
+
+// Smooth scroll handler with cross-page navigation
+const handleSmoothScroll = (
+  e: React.MouseEvent<HTMLAnchorElement>,
+  targetId: string,
+  navigate: ReturnType<typeof useNavigate>,
+  location: ReturnType<typeof useLocation>
+) => {
+  e.preventDefault()
+
+  // If not on home page, navigate to home first
+  if (location.pathname !== '/') {
+    navigate('/')
+    setTimeout(() => {
+      const element = document.querySelector(targetId)
+      if (element) {
+        const navHeight = 60
+        const elementPosition = element.getBoundingClientRect().top
+        const offsetPosition = elementPosition + window.pageYOffset - navHeight
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        })
+      }
+    }, 100)
+  } else {
+    // Already on home page, just scroll
+    const element = document.querySelector(targetId)
+    if (element) {
+      const navHeight = 60
+      const elementPosition = element.getBoundingClientRect().top
+      const offsetPosition = elementPosition + window.pageYOffset - navHeight
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      })
+    }
+  }
+}
 
 // Mobile menu component
 interface MobileMenuProps {
   isOpen: boolean
   onClose: () => void
+  navigate: ReturnType<typeof useNavigate>
+  location: ReturnType<typeof useLocation>
 }
 
-const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
+const MobileMenu = ({
+  isOpen,
+  onClose,
+  navigate,
+  location
+}: MobileMenuProps) => {
   if (!isOpen) return null
 
   return (
@@ -63,7 +112,10 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
               color='gray.600'
               _hover={{ color: 'blue.600' }}
               transition='color 0.2s'
-              onClick={onClose}
+              onClick={(e) => {
+                handleSmoothScroll(e, '#tjanster', navigate, location)
+                onClose()
+              }}
               fontSize='lg'
             >
               Tjänster
@@ -73,7 +125,10 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
               color='gray.600'
               _hover={{ color: 'blue.600' }}
               transition='color 0.2s'
-              onClick={onClose}
+              onClick={(e) => {
+                handleSmoothScroll(e, '#vanligafragor', navigate, location)
+                onClose()
+              }}
               fontSize='lg'
             >
               Vanliga frågor
@@ -83,7 +138,10 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
               color='gray.600'
               _hover={{ color: 'blue.600' }}
               transition='color 0.2s'
-              onClick={onClose}
+              onClick={(e) => {
+                handleSmoothScroll(e, '#kontakt', navigate, location)
+                onClose()
+              }}
               fontSize='lg'
             >
               Kontakt
@@ -97,11 +155,15 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
 
 MobileMenu.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
+  navigate: PropTypes.func.isRequired,
+  location: PropTypes.object.isRequired
 }
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const navigate = useNavigate()
+  const location = useLocation()
 
   // Use useCallback to memoize functions
   const toggleMenu = useCallback(() => setIsMenuOpen((prev) => !prev), [])
@@ -163,7 +225,7 @@ const Nav = () => {
             h='full'
           >
             <Link
-              href='#hero'
+              href='/'
               color='blue.600'
               fontSize='2xl'
               fontWeight='bold'
@@ -172,6 +234,11 @@ const Nav = () => {
               h='full'
               _hover={{ textDecoration: 'none' }}
               aria-label='Go to top'
+              onClick={(e) => {
+                e.preventDefault()
+                navigate('/')
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+              }}
             >
               Billig Bokföring
             </Link>
@@ -188,39 +255,48 @@ const Nav = () => {
           >
             <Box as='li'>
               <Link
-                href='#services'
+                href='#tjanster'
                 color='gray.600'
                 _hover={{ color: 'blue.600' }}
                 transition='color 0.2s'
                 display='flex'
                 alignItems='center'
                 h='full'
+                onClick={(e) =>
+                  handleSmoothScroll(e, '#tjanster', navigate, location)
+                }
               >
                 Tjänster
               </Link>
             </Box>
             <Box as='li'>
               <Link
-                href='#faq'
+                href='#vanligafragor'
                 color='gray.600'
                 _hover={{ color: 'blue.600' }}
                 transition='color 0.2s'
                 display='flex'
                 alignItems='center'
                 h='full'
+                onClick={(e) =>
+                  handleSmoothScroll(e, '#vanligafragor', navigate, location)
+                }
               >
                 Vanliga frågor
               </Link>
             </Box>
             <Box as='li'>
               <Link
-                href='#contact'
+                href='#kontakt'
                 color='gray.600'
                 _hover={{ color: 'blue.600' }}
                 transition='color 0.2s'
                 display='flex'
                 alignItems='center'
                 h='full'
+                onClick={(e) =>
+                  handleSmoothScroll(e, '#kontakt', navigate, location)
+                }
               >
                 Kontakt
               </Link>
@@ -243,7 +319,12 @@ const Nav = () => {
       </Container>
 
       {/* Mobile Menu */}
-      <MobileMenu isOpen={isMenuOpen} onClose={closeMenu} />
+      <MobileMenu
+        isOpen={isMenuOpen}
+        onClose={closeMenu}
+        navigate={navigate}
+        location={location}
+      />
     </Box>
   )
 }
