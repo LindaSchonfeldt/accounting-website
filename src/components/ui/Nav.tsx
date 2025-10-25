@@ -76,7 +76,7 @@ const MobileMenu = ({
     <Portal>
       <Box
         position='fixed'
-        top='0'
+        top='30px'
         left='0'
         right='0'
         bottom='0'
@@ -96,17 +96,16 @@ const MobileMenu = ({
           top='0'
           right='0'
           width='100%'
-          maxWidth='300px'
-          height='100vh'
+          maxWidth='500px'
+          height='auto'
+          maxHeight='100vh'
           bg='white'
           pt='70px'
           px={6}
+          overflowY='auto'
           onClick={(e) => e.stopPropagation()}
         >
-          <Text fontSize='lg' fontWeight='bold' mb={6}>
-            Meny
-          </Text>
-          <VStack spacing={6} align='stretch'>
+          <VStack spacing={6} align='stretch' pb={8}>
             <Link
               href='#tjanster'
               color='gray.600'
@@ -132,6 +131,19 @@ const MobileMenu = ({
               fontSize='lg'
             >
               Vanliga frågor
+            </Link>
+            <Link
+              href='#omoss'
+              color='gray.600'
+              _hover={{ color: 'blue.600' }}
+              transition='color 0.2s'
+              onClick={(e) => {
+                handleSmoothScroll(e, '#omoss', navigate, location)
+                onClose()
+              }}
+              fontSize='lg'
+            >
+              Om oss
             </Link>
             <Link
               href='#kontakt'
@@ -281,11 +293,33 @@ const Nav = () => {
                 display='flex'
                 alignItems='center'
                 h='full'
+                fontSize='sm' // ← Make text smaller
+                px={2} // ← Optional: reduce horizontal padding
+                py={1} // ← Optional: reduce vertical padding
                 onClick={(e) =>
                   handleSmoothScroll(e, '#vanligafragor', navigate, location)
                 }
               >
                 Vanliga frågor
+              </Link>
+            </Box>
+            <Box as='li'>
+              <Link
+                href='#omoss'
+                color='gray.600'
+                _hover={{ color: 'blue.600' }}
+                transition='color 0.2s'
+                display='flex'
+                alignItems='center'
+                h='full'
+                fontSize='sm' // ← Make text smaller
+                px={2} // ← Optional: reduce horizontal padding
+                py={1} // ← Optional: reduce vertical padding
+                onClick={(e) =>
+                  handleSmoothScroll(e, '#omoss', navigate, location)
+                }
+              >
+                Om oss
               </Link>
             </Box>
             <Box as='li'>
@@ -297,6 +331,9 @@ const Nav = () => {
                 display='flex'
                 alignItems='center'
                 h='full'
+                fontSize='sm' // ← Make text smaller
+                px={2} // ← Optional: reduce horizontal padding
+                py={1} // ← Optional: reduce vertical padding
                 onClick={(e) =>
                   handleSmoothScroll(e, '#kontakt', navigate, location)
                 }
