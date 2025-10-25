@@ -22,6 +22,9 @@ const theme = extendTheme({
         a: {
           color: 'text.link'
         }
+      },
+      html: {
+        scrollBehavior: 'smooth'
       }
     }
   },

@@ -9,37 +9,35 @@ const NotFound = lazy(() => import('./pages/NotFound'))
 
 export const App = () => {
   return (
-    <>
+    <BrowserRouter
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true
+      }}
+    >
       <Nav />
-      <BrowserRouter
-        future={{
-          v7_startTransition: true,
-          v7_relativeSplatPath: true
-        }}
+      <Suspense
+        fallback={
+          <Box
+            display='flex'
+            alignItems='center'
+            justifyContent='center'
+            minH='100vh'
+          >
+            <VStack spacing={4}>
+              <Spinner size='xl' color='blue.500' thickness='4px' />
+              <Text fontSize='lg' color='gray.600'>
+                Laddar...
+              </Text>
+            </VStack>
+          </Box>
+        }
       >
-        <Suspense
-          fallback={
-            <Box
-              display='flex'
-              alignItems='center'
-              justifyContent='center'
-              minH='100vh'
-            >
-              <VStack spacing={4}>
-                <Spinner size='xl' color='blue.500' thickness='4px' />
-                <Text fontSize='lg' color='gray.600'>
-                  Laddar...
-                </Text>
-              </VStack>
-            </Box>
-          }
-        >
-          <Routes>
-            <Route path='/' element={<Home />} />
-            <Route path='*' element={<NotFound />} />
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
-    </>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+      </Suspense>
+    </BrowserRouter>
   )
 }

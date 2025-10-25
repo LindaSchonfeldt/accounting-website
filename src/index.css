@@ -7,11 +7,11 @@
 }
 
 html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 4rem; /* Add offset for sticky header */
+  scroll-behavior: smooth !important; /* ← Add !important */
 }
 
 body {
+  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
