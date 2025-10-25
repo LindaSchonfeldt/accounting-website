@@ -226,7 +226,7 @@ const Nav = () => {
           >
             <Link
               href='/'
-              color='blue.600'
+              color='blue.800'
               fontSize='2xl'
               fontWeight='bold'
               display='flex'
@@ -262,6 +262,9 @@ const Nav = () => {
                 display='flex'
                 alignItems='center'
                 h='full'
+                fontSize='sm' // ← Make text smaller
+                px={2} // ← Optional: reduce horizontal padding
+                py={1} // ← Optional: reduce vertical padding
                 onClick={(e) =>
                   handleSmoothScroll(e, '#tjanster', navigate, location)
                 }

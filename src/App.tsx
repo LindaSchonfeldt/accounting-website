@@ -4,11 +4,10 @@ import Nav from './components/ui/Nav'
 import { Box, Spinner, VStack, Text } from '@chakra-ui/react'
 import Footer from './components/ui/Footer'
 
-// Lazy load pages
 const Home = lazy(() => import('./pages/Home'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 
-export const App = () => {
+export const App: React.FC = () => {
   return (
     <BrowserRouter
       future={{
