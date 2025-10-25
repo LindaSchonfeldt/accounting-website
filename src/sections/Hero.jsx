@@ -26,6 +26,7 @@ const Hero = () => {
     >
       <Image
         src='/images/pexels-pixabay-209224.jpg'
+        typeof='image/webp'
         position='absolute'
         top={0}
         left={0}

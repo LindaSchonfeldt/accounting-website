@@ -1,35 +1,30 @@
 import { lazy, Suspense } from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { ChakraProvider } from '@chakra-ui/react'
+import theme from './theme'
 
-import LoadingFallback from './components/ui/LoadingFallback'
-import Home from './pages/Home'
-import Nav from './components/ui/Nav'
-import Footer from './components/ui/Footer'
-
-// Lazy load pages for better performance
-const Styling = lazy(() => import('./pages/Styling.jsx'))
+// Lazy load pages
+const Home = lazy(() => import('./pages/Home'))
+const Styling = lazy(() => import('./pages/Styling'))
+const NotFound = lazy(() => import('./pages/NotFound'))
 
 export const App = () => {
   return (
-    <BrowserRouter
-      future={{
-        v7_startTransition: true,
-        v7_relativeSplatPath: true
-      }}
-    >
-      <Nav />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route
-          path='/styling'
-          element={
-            <Suspense fallback={<LoadingFallback />}>
-              <Styling />
-            </Suspense>
-          }
-        />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <ChakraProvider theme={theme}>
+      <BrowserRouter
+        future={{
+          v7_startTransition: true,
+          v7_relativeSplatPath: true
+        }}
+      >
+        <Suspense fallback={<div>Laddar...</div>}>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/styling' element={<Styling />} />
+            <Route path='*' element={<NotFound />} />
+          </Routes>
+        </Suspense>
+      </BrowserRouter>
+    </ChakraProvider>
   )
 }

@@ -1,6 +1,8 @@
-import { Box, Container, Heading, Text } from '@chakra-ui/react'
+import { Box, Container, Heading, Text, Spinner } from '@chakra-ui/react'
+import { lazy, Suspense } from 'react'
 
-import ContactForm from '../components/ui/ContactForm'
+// Lazy load the ContactForm component
+const ContactForm = lazy(() => import('../components/ui/ContactForm'))
 
 const Contact = () => {
   return (
@@ -10,10 +12,18 @@ const Contact = () => {
           Kontakta oss
         </Heading>
         <Text fontSize='lg' color='gray.600' mb={8} maxW='2xl' mx='auto'>
-          Har du frågor eller vill du veta mer om våra tjänster? Tveka inte att
-          höra av dig!
+          För beställning eller frågor om våra tjänster. Tveka inte att höra av
+          dig!
         </Text>
-        <ContactForm />
+        <Suspense
+          fallback={
+            <Box textAlign='center' py={8}>
+              <Spinner size='xl' color='blue.500' />
+            </Box>
+          }
+        >
+          <ContactForm />
+        </Suspense>
       </Container>
     </Box>
   )
