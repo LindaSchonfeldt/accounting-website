@@ -17,10 +17,10 @@ const theme = extendTheme({
           color: 'blue.800'
         },
         p: {
-          color: 'text.secondary'
+          color: 'gray.600'
         },
         a: {
-          color: 'text.link'
+          color: 'blue.500'
         }
       },
       html: {
@@ -64,19 +64,18 @@ const theme = extendTheme({
       700: '#374151',
       800: '#1f2937',
       900: '#11121b'
-    },
-    text: {
-      primary: '#1f2937',
-      secondary: '#4b5563',
-      link: '#0078ff'
-    },
-    background: {
-      primary: '#ffffff',
-      secondary: '#f3f4f6'
-    },
-    border: {
-      primary: '#e5e7eb',
-      secondary: '#d1d5db'
+    }
+  },
+  semanticTokens: {
+    colors: {
+      'text-primary': '#1f2937',
+      'text-secondary': '#4b5563',
+      'text-tertiary': '#fffff9',
+      'text-link': '#0078ff',
+      'bg-primary': '#ffffff',
+      'bg-secondary': '#f3f4f6',
+      'border-primary': '#e5e7eb',
+      'border-secondary': '#d1d5db'
     }
   },
   components: {

@@ -1,17 +1,26 @@
-import { Box, Container, Heading, Text } from '@chakra-ui/react'
+import Meta from '../components/ui/Meta'
+import { Box, Heading, Text, Button } from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
 
 const NotFound = () => {
   return (
-    <Box style={{ textAlign: 'center', marginTop: '50px' }}>
-      <Container>
-        <Heading as='h1' size='2xl' mb={4}>
-          404 - Sidan hittades inte
+    <>
+      <Meta
+        title='404 - Sidan hittades inte | Billig Bokföring'
+        description='Sidan du letar efter finns inte.'
+      />
+      <Box textAlign='center' py={20}>
+        <Heading size='2xl' mb={4}>
+          404
         </Heading>
-        <Text color='gray.600' mb={8}>
-          Tyvärr kunde vi inte hitta sidan du letade efter.
+        <Text fontSize='xl' mb={8}>
+          Sidan hittades inte
         </Text>
-      </Container>
-    </Box>
+        <Button as={Link} to='/' colorScheme='blue'>
+          Tillbaka till startsidan
+        </Button>
+      </Box>
+    </>
   )
 }
 
