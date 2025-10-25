@@ -13,11 +13,21 @@ const Home = () => (
     bgGradient='linear(to-br, blue.50, gray.50)'
     role='main'
   >
-    <Hero />
-    <Services />
-    <FAQ />
-    <About />
-    <Contact />
+    <Box id='hero'>
+      <Hero />
+    </Box>
+    <Box id='tjanster'>
+      <Services />
+    </Box>
+    <Box id='vanligafragor'>
+      <FAQ />
+    </Box>
+    <Box id='omoss'>
+      <About />
+    </Box>
+    <Box id='kontakt'>
+      <Contact />
+    </Box>
   </Box>
 )
 
