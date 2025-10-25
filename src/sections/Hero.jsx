@@ -8,6 +8,7 @@ import {
   Image
 } from '@chakra-ui/react'
 import { Link as RouterLink } from 'react-router-dom'
+import Banner from '../components/ui/Banner'
 
 const Hero = () => {
   return (
@@ -17,7 +18,7 @@ const Hero = () => {
       minH={{ base: 'calc(100vh - 60px)', md: 'calc(100vh - 80px)' }}
       display='flex'
       flexDirection='column'
-      justifyContent='center'
+      justifyContent='space-between'  // Changed from 'center'
       alignItems='center'
       bgGradient='linear(to-r, blue.50, blue.200)'
       bgSize='cover'
@@ -37,11 +38,13 @@ const Hero = () => {
         filter='blur(2px)'
         opacity={0.3}
       />
-      <Container position='relative' zIndex={1}>
+      
+      {/* Main content */}
+      <Container position='relative' zIndex={1} flex='1' display='flex' flexDirection='column' justifyContent='center'>
         <Heading
           as='h1'
           fontSize={{ base: '3xl', md: '5xl' }}
-          lineHeight={{ base: '1.1', md: '1.1' }} // or use "short"
+          lineHeight={{ base: '1.1', md: '1.1' }}
           mb={6}
         >
           Din personliga och kostnadseffektiva redovisningskonsult
@@ -62,7 +65,7 @@ const Hero = () => {
             colorScheme='blue'
             size='lg'
             px={8}
-            py={{ base: 4, md: 6 }} // Responsive vertical padding
+            py={{ base: 4, md: 6 }}
             fontSize='lg'
             variant='outline'
           >
@@ -74,13 +77,18 @@ const Hero = () => {
             colorScheme='blue'
             size='lg'
             px={8}
-            py={{ base: 4, md: 6 }} // Responsive vertical padding
+            py={{ base: 4, md: 6 }}
             fontSize='lg'
           >
             Få kostnadsfri offert
           </Button>
         </Stack>
       </Container>
+
+      {/* Banner at bottom - full width, outside Container */}
+      <Box position='relative' zIndex={1} w='100%'>
+        <Banner />
+      </Box>
     </Box>
   )
 }
