@@ -59,7 +59,7 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
           </Text>
           <VStack spacing={6} align='stretch'>
             <Link
-              href='#services'
+              href='#tjanster'
               color='gray.600'
               _hover={{ color: 'blue.600' }}
               transition='color 0.2s'
@@ -69,7 +69,7 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
               Tjänster
             </Link>
             <Link
-              href='#faq'
+              href='#vanligafragor'
               color='gray.600'
               _hover={{ color: 'blue.600' }}
               transition='color 0.2s'
@@ -79,7 +79,7 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
               Vanliga frågor
             </Link>
             <Link
-              href='#contact'
+              href='#kontakt'
               color='gray.600'
               _hover={{ color: 'blue.600' }}
               transition='color 0.2s'
@@ -145,7 +145,7 @@ const Nav = () => {
       bg='white'
       boxShadow='sm'
       py={{ base: 1, md: 1, lg: 1 }}
-      px={{ base: 4, md: 6, lg: 8 }}
+      px={{ base: 0, md: 6, lg: 8 }}
     >
       <Container maxW='container.lg' py={1}>
         <Flex
