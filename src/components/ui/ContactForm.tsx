@@ -1,4 +1,5 @@
 import {
+  Box,
   Button,
   FormControl,
   FormErrorMessage,
@@ -6,7 +7,9 @@ import {
   Input,
   Select,
   Textarea,
-  VStack
+  VStack,
+  Text,
+  space
 } from '@chakra-ui/react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
@@ -39,7 +42,16 @@ const ContactForm: React.FC<ContactFormProps> = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <VStack spacing={4} align='stretch'>
         <FormControl isInvalid={!!errors.contactReason} mb={4}>
-          <FormLabel>Kontaktorsak (valfritt)</FormLabel>
+          <Box
+            display='flex'
+            alignItems='center'
+            justifyContent={'space-between'}
+          >
+            <FormLabel>Kontaktorsak</FormLabel>
+            <Text as='span' fontSize='xs' color='gray.500' ml={1}>
+              (frivillig)
+            </Text>
+          </Box>
           <Select
             placeholder='Välj kontaktorsak'
             {...register('contactReason')}
@@ -56,7 +68,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
         </FormControl>
 
         <FormControl isInvalid={!!errors.name} mb={4}>
-          <FormLabel>Namn*</FormLabel>
+          <FormLabel>Namn</FormLabel>
           <Input
             placeholder='Namn'
             {...register('name', { required: 'Namn är obligatoriskt' })}
@@ -67,7 +79,7 @@ const ContactForm: React.FC<ContactFormProps> = () => {
         </FormControl>
 
         <FormControl isInvalid={!!errors.email} mb={4}>
-          <FormLabel>E-post*</FormLabel>
+          <FormLabel>E-post</FormLabel>
           <Input
             placeholder='E-post'
             {...register('email', { required: 'E-post är obligatoriskt' })}
@@ -78,12 +90,21 @@ const ContactForm: React.FC<ContactFormProps> = () => {
         </FormControl>
 
         <FormControl mb={4}>
-          <FormLabel>Telefonnummer</FormLabel>
+          <Box
+            display='flex'
+            alignItems='center'
+            justifyContent={'space-between'}
+          >
+            <FormLabel>Telefonnummer</FormLabel>
+            <Text as='span' fontSize='xs' color='gray.500' ml={1}>
+              (frivillig)
+            </Text>
+          </Box>
           <Input placeholder='Telefonnummer' {...register('phone')} />
         </FormControl>
 
         <FormControl isInvalid={!!errors.message} mb={4}>
-          <FormLabel>Meddelande*</FormLabel>
+          <FormLabel>Meddelande</FormLabel>
           <Textarea
             placeholder='Meddelande'
             {...register('message', {

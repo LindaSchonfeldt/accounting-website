@@ -7,11 +7,12 @@ const HamburgerIcon = ({ isOpen }) => {
       <Box
         position='absolute'
         w='24px'
-        h='2px'
+        h={isOpen ? '1.5px' : '2px'}
         bg='currentColor'
-        top='0'
+        top='8px'
+        left='0'
         transition='all 0.3s ease'
-        transform={isOpen ? 'rotate(45deg) translateY(11px)' : 'rotate(0)'}
+        transform={isOpen ? 'rotate(45deg)' : 'rotate(0) translateY(-8px)'}
       />
       <Box
         position='absolute'
@@ -19,17 +20,19 @@ const HamburgerIcon = ({ isOpen }) => {
         h='2px'
         bg='currentColor'
         top='8px'
+        left='0'
         transition='all 0.3s ease'
         opacity={isOpen ? 0 : 1}
       />
       <Box
         position='absolute'
         w='24px'
-        h='2px'
+        h={isOpen ? '1.5px' : '2px'}
         bg='currentColor'
-        top='16px'
+        top='8px'
+        left='0'
         transition='all 0.3s ease'
-        transform={isOpen ? 'rotate(-45deg) translateY(-11px)' : 'rotate(0)'}
+        transform={isOpen ? 'rotate(-45deg)' : 'rotate(0) translateY(8px)'}
       />
     </Box>
   )
