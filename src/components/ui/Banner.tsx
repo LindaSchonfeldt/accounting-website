@@ -18,7 +18,13 @@ const Banner = () => {
       <Text color={'white'} fontSize='md' fontWeight='bold'>
         Byråpartner hos{' '}
       </Text>
-      <Image src='/images/fortnox_logo.svg'></Image>
+      <Image
+        src='/images/fortnox_logo.svg'
+        alt='Fortnox logo'
+        height={{ base: '20px', md: '24px', lg: '28px' }}
+        width='auto'
+        objectFit='contain'
+      />
     </Box>
   )
 }
