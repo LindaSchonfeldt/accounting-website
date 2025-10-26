@@ -52,6 +52,12 @@ const Services = () => (
       <Heading as='h2' size='xl' textAlign='center' mb={8} color='blue.600'>
         Våra tjänster
       </Heading>
+      <Text fontSize='lg' color='gray.600' mb={8} maxW='2xl' mx='auto'>
+        Vi erbjuder flexibla paket för att passa just ditt företags behov och
+        budget. Med &quot;Bas&quot; menas företag som har en omsättning på upp
+        till 500.000 kronor/år, medan &quot;Plus&quot; är för företag med en
+        omsättning över detta belopp.
+      </Text>
       <SimpleGrid
         columns={{ base: 1, md: 3 }}
         spacing={6}
