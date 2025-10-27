@@ -3,11 +3,12 @@ import {
   Button,
   Container,
   Heading,
+  Image,
   Stack,
-  Text,
-  Image
+  Text
 } from '@chakra-ui/react'
 import { Link as RouterLink } from 'react-router-dom'
+
 import Banner from '../components/ui/Banner'
 
 const Hero = () => {
@@ -69,7 +70,7 @@ const Hero = () => {
         >
           <Button
             as={RouterLink}
-            to='/styling'
+            to='/'
             colorScheme='blue'
             size='lg'
             px={8}
@@ -81,7 +82,7 @@ const Hero = () => {
           </Button>
           <Button
             as={RouterLink}
-            to='/styling'
+            to='/'
             colorScheme='blue'
             size='lg'
             px={8}
