@@ -7,31 +7,45 @@ import {
   Stack,
   Text
 } from '@chakra-ui/react'
-import { MotionBox } from '../components/ui/MotionBox'
+import {
+  LibraryBig,
+  DollarSign,
+  BarChart3,
+  FileText,
+  Receipt,
+  Handshake
+} from 'lucide-react'
+
 import { fadeInUp, transitions } from '../components/animations'
+import { MotionBox } from '../components/ui/MotionBox'
 
 const services = [
   {
+    icon: <LibraryBig size={48} />,
     title: 'Löpande bokföring',
     desc: 'Vi ser till att din bokföring alltid är uppdaterad och korrekt, så att du får full kontroll över företagets ekonomi.',
     price: { bas: 'fr. 495 kr/mån', plus: 'fr. 995 kr/mån' }
   },
   {
+    icon: <DollarSign size={48} />,
     title: 'Momsrapport',
     desc: 'Vi beräknar och rapporterar din moms i tid – tryggt, smidigt och helt enligt Skatteverkets regler.',
     price: { bas: '399 kr/rapport', plus: '699 kr/rapport' }
   },
   {
+    icon: <BarChart3 size={48} />,
     title: 'Årsbokslut/Årsredovisning',
     desc: 'Vi sammanställer och analyserar årets siffror för att ge dig en tydlig överblick inför nästa steg i verksamheten.',
     price: { bas: '1200 kr', plus: '1900 kr' }
   },
   {
+    icon: <FileText size={48} />,
     title: 'Inkomstdeklaration (INK1/INK2)',
     desc: 'Vi upprättar och lämnar in din deklaration korrekt och i tid, oavsett om du driver enskild firma eller aktiebolag.',
     price: { bas: '800 kr', plus: '1300 kr' }
   },
   {
+    icon: <Receipt size={48} />,
     title: 'Faktureringstjänst',
     desc: 'Vi hjälper dig skapa, skicka och följa upp fakturor – du slipper administrationen och får betalt snabbare.',
     price: {
@@ -40,6 +54,7 @@ const services = [
     }
   },
   {
+    icon: <Handshake size={48} />,
     title: 'Personlig rådgivning',
     desc: 'Få skräddarsydda råd och strategier för att optimera din företags ekonomi och planera för framtiden.',
     price: 'Enligt offert'
@@ -80,11 +95,15 @@ const Services = () => (
             bg='gray.50'
             display='flex'
             flexDirection='column'
+            alignItems='center'
           >
-            <Heading as='h3' size='md' mb={4}>
+            <Box color='blue.600' mb={4}>
+              {service.icon}
+            </Box>
+            <Heading as='h3' size='md' mb={4} textAlign='center'>
               {service.title}
             </Heading>
-            <Text color='gray.600' mb={4} flex='1'>
+            <Text color='gray.600' mb={4} flex='1' textAlign='center'>
               {service.desc}
             </Text>
 
