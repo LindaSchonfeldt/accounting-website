@@ -13,7 +13,7 @@ import {
   FileText,
   Handshake,
   LibraryBig,
-  Receipt
+  ReceiptText
 } from 'lucide-react'
 
 import { fadeInUp, transitions } from '../components/animations'
@@ -45,7 +45,7 @@ const services = [
     price: { bas: '800 kr', plus: '1300 kr' }
   },
   {
-    icon: <Receipt size={48} />,
+    icon: <ReceiptText size={48} />,
     title: 'Faktureringstjänst',
     desc: 'Vi hjälper dig skapa, skicka och följa upp fakturor – du slipper administrationen och får betalt snabbare.',
     price: {
