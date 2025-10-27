@@ -6,10 +6,10 @@ import {
   FormLabel,
   Input,
   Select,
-  Textarea,
-  VStack,
+  space,
   Text,
-  space
+  Textarea,
+  VStack
 } from '@chakra-ui/react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
@@ -42,16 +42,12 @@ const ContactForm: React.FC<ContactFormProps> = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <VStack spacing={4} align='stretch'>
         <FormControl isInvalid={!!errors.contactReason} mb={4}>
-          <Box
-            display='flex'
-            alignItems='center'
-            justifyContent={'space-between'}
-          >
-            <FormLabel>Kontaktorsak</FormLabel>
+          <FormLabel>
+            Kontaktorsak
             <Text as='span' fontSize='xs' color='gray.500' ml={1}>
               (frivillig)
             </Text>
-          </Box>
+          </FormLabel>
           <Select
             placeholder='Välj kontaktorsak'
             {...register('contactReason')}
@@ -90,16 +86,12 @@ const ContactForm: React.FC<ContactFormProps> = () => {
         </FormControl>
 
         <FormControl mb={4}>
-          <Box
-            display='flex'
-            alignItems='center'
-            justifyContent={'space-between'}
-          >
-            <FormLabel>Telefonnummer</FormLabel>
+          <FormLabel>
+            Telefonnummer{' '}
             <Text as='span' fontSize='xs' color='gray.500' ml={1}>
               (frivillig)
             </Text>
-          </Box>
+          </FormLabel>
           <Input placeholder='Telefonnummer' {...register('phone')} />
         </FormControl>
 
