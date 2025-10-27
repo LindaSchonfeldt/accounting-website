@@ -8,12 +8,12 @@ import {
   Text
 } from '@chakra-ui/react'
 import {
-  LibraryBig,
-  DollarSign,
   BarChart3,
+  Coins,
   FileText,
-  Receipt,
-  Handshake
+  Handshake,
+  LibraryBig,
+  Receipt
 } from 'lucide-react'
 
 import { fadeInUp, transitions } from '../components/animations'
@@ -27,7 +27,7 @@ const services = [
     price: { bas: 'fr. 495 kr/mån', plus: 'fr. 995 kr/mån' }
   },
   {
-    icon: <DollarSign size={48} />,
+    icon: <Coins size={48} />,
     title: 'Momsrapport',
     desc: 'Vi beräknar och rapporterar din moms i tid – tryggt, smidigt och helt enligt Skatteverkets regler.',
     price: { bas: '399 kr/rapport', plus: '699 kr/rapport' }
