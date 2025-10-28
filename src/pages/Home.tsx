@@ -1,10 +1,10 @@
 import { Box } from '@chakra-ui/react'
 
 import Meta from '../components/Meta'
-import Contact from '../sections/Contact'
-import FAQ from '../sections/FAQ'
-import Hero from '../sections/Hero'
-import Services from '../sections/Services'
+import ContactSection from '../sections/ContactSection'
+import FAQSection from '../sections/FAQSection'
+import HeroSection from '../sections/HeroSection'
+import ServicesSection from '../sections/ServicesSection'
 
 const Home = () => {
   return (
@@ -20,16 +20,16 @@ const Home = () => {
         role='main'
       >
         <Box id='hero'>
-          <Hero />
+          <HeroSection />
         </Box>
         <Box id='tjanster'>
-          <Services />
+          <ServicesSection />
         </Box>
         <Box id='vanligafragor'>
-          <FAQ />
+          <FAQSection />
         </Box>
         <Box id='kontakt'>
-          <Contact />
+          <ContactSection />
         </Box>
       </Box>
     </>
