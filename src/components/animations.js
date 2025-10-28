@@ -55,7 +55,3 @@ export const transitions = {
   slow: { duration: 0.6, ease: 'easeInOut' },
   spring: { type: 'spring', stiffness: 300, damping: 30 }
 }
-
-export const scrollToTop = () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' })
-}
