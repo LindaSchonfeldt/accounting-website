@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react'
 import PropTypes from 'prop-types'
 import { useCallback, useEffect, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, Link as RouterLink } from 'react-router-dom'
 
 import { handleSmoothScroll } from '../../utils/navigation'
 import HamburgerIcon from './HamburgerIcon'
@@ -66,7 +66,8 @@ const MobileMenu = ({
         >
           <VStack spacing={6} align='stretch' pb={8}>
             <Link
-              href='#tjanster'
+              as={RouterLink}
+              to='/tjanster'
               color='gray.600'
               _hover={{ color: 'blue.600' }}
               transition='color 0.2s'
@@ -79,20 +80,8 @@ const MobileMenu = ({
               Tjänster
             </Link>
             <Link
-              href='#vanligafragor'
-              color='gray.600'
-              _hover={{ color: 'blue.600' }}
-              transition='color 0.2s'
-              onClick={(e) => {
-                handleSmoothScroll(e, '#vanligafragor', navigate, location)
-                onClose()
-              }}
-              fontSize='lg'
-            >
-              Vanliga frågor
-            </Link>
-            <Link
-              href='#omoss'
+              as={RouterLink}
+              to='/om-oss'
               color='gray.600'
               _hover={{ color: 'blue.600' }}
               transition='color 0.2s'
@@ -105,7 +94,8 @@ const MobileMenu = ({
               Om oss
             </Link>
             <Link
-              href='#kontakt'
+              as={RouterLink}
+              to='/kontakt'
               color='gray.600'
               _hover={{ color: 'blue.600' }}
               transition='color 0.2s'
@@ -223,7 +213,8 @@ const Nav = () => {
           >
             <Box as='li'>
               <Link
-                href='#tjanster'
+                as={RouterLink}
+                to='/tjanster'
                 color='gray.600'
                 _hover={{ color: 'blue.600' }}
                 transition='color 0.2s'
@@ -233,16 +224,14 @@ const Nav = () => {
                 fontSize='sm' // ← Make text smaller
                 px={2} // ← Optional: reduce horizontal padding
                 py={1} // ← Optional: reduce vertical padding
-                onClick={(e) =>
-                  handleSmoothScroll(e, '#tjanster', navigate, location)
-                }
               >
                 Tjänster
               </Link>
             </Box>
             <Box as='li'>
               <Link
-                href='#vanligafragor'
+                as={RouterLink}
+                to='/om-oss'
                 color='gray.600'
                 _hover={{ color: 'blue.600' }}
                 transition='color 0.2s'
@@ -252,35 +241,14 @@ const Nav = () => {
                 fontSize='sm' // ← Make text smaller
                 px={2} // ← Optional: reduce horizontal padding
                 py={1} // ← Optional: reduce vertical padding
-                onClick={(e) =>
-                  handleSmoothScroll(e, '#vanligafragor', navigate, location)
-                }
-              >
-                Vanliga frågor
-              </Link>
-            </Box>
-            <Box as='li'>
-              <Link
-                href='#omoss'
-                color='gray.600'
-                _hover={{ color: 'blue.600' }}
-                transition='color 0.2s'
-                display='flex'
-                alignItems='center'
-                h='full'
-                fontSize='sm' // ← Make text smaller
-                px={2} // ← Optional: reduce horizontal padding
-                py={1} // ← Optional: reduce vertical padding
-                onClick={(e) =>
-                  handleSmoothScroll(e, '#omoss', navigate, location)
-                }
               >
                 Om oss
               </Link>
             </Box>
             <Box as='li'>
               <Link
-                href='#kontakt'
+                as={RouterLink}
+                to='/kontakt'
                 color='gray.600'
                 _hover={{ color: 'blue.600' }}
                 transition='color 0.2s'
@@ -290,9 +258,6 @@ const Nav = () => {
                 fontSize='sm' // ← Make text smaller
                 px={2} // ← Optional: reduce horizontal padding
                 py={1} // ← Optional: reduce vertical padding
-                onClick={(e) =>
-                  handleSmoothScroll(e, '#kontakt', navigate, location)
-                }
               >
                 Kontakt
               </Link>

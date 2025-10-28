@@ -6,14 +6,15 @@ import {
   FormLabel,
   Input,
   Select,
-  space,
   Text,
   Textarea,
   VStack
 } from '@chakra-ui/react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
-interface ContactFormProps {}
+interface ContactFormProps {
+  showContactReason?: boolean // Add optional prop
+}
 
 enum ContactReason {
   QUESTION = 'Fråga',
@@ -21,6 +22,7 @@ enum ContactReason {
   ORDER = 'Beställning',
   OTHER = 'Annat'
 }
+
 interface FormInputs {
   contactReason?: ContactReason
   name: string
@@ -29,39 +31,44 @@ interface FormInputs {
   message: string
 }
 
-const ContactForm: React.FC<ContactFormProps> = () => {
+const ContactForm: React.FC<ContactFormProps> = ({
+  showContactReason = true
+}) => {
   const {
     register,
     handleSubmit,
     formState: { errors }
   } = useForm<FormInputs>()
+
   const onSubmit: SubmitHandler<FormInputs> = (data: FormInputs) =>
     console.log(data)
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <VStack spacing={4} align='stretch'>
-        <FormControl isInvalid={!!errors.contactReason} mb={4}>
-          <FormLabel>
-            Kontaktorsak
-            <Text as='span' fontSize='xs' color='gray.500' ml={1}>
-              (frivillig)
-            </Text>
-          </FormLabel>
-          <Select
-            placeholder='Välj kontaktorsak'
-            {...register('contactReason')}
-          >
-            {Object.values(ContactReason).map((reason: string) => (
-              <option key={reason} value={reason}>
-                {reason}
-              </option>
-            ))}
-          </Select>
-          <FormErrorMessage>
-            {errors.contactReason && errors.contactReason.message}
-          </FormErrorMessage>
-        </FormControl>
+        {showContactReason && (
+          <FormControl isInvalid={!!errors.contactReason} mb={4}>
+            <FormLabel>
+              Kontaktorsak
+              <Text as='span' fontSize='xs' color='gray.500' ml={1}>
+                (frivilligt)
+              </Text>
+            </FormLabel>
+            <Select
+              placeholder='Välj kontaktorsak'
+              {...register('contactReason')}
+            >
+              {Object.values(ContactReason).map((reason: string) => (
+                <option key={reason} value={reason}>
+                  {reason}
+                </option>
+              ))}
+            </Select>
+            <FormErrorMessage>
+              {errors.contactReason && errors.contactReason.message}
+            </FormErrorMessage>
+          </FormControl>
+        )}
 
         <FormControl isInvalid={!!errors.name} mb={4}>
           <FormLabel>Namn</FormLabel>
@@ -87,9 +94,9 @@ const ContactForm: React.FC<ContactFormProps> = () => {
 
         <FormControl mb={4}>
           <FormLabel>
-            Telefonnummer{' '}
+            Telefonnummer
             <Text as='span' fontSize='xs' color='gray.500' ml={1}>
-              (frivillig)
+              (frivilligt)
             </Text>
           </FormLabel>
           <Input placeholder='Telefonnummer' {...register('phone')} />
@@ -108,7 +115,9 @@ const ContactForm: React.FC<ContactFormProps> = () => {
           </FormErrorMessage>
         </FormControl>
 
-        <Button type='submit'>Skicka</Button>
+        <Button type='submit' colorScheme='blue' size='lg' w='full'>
+          Skicka
+        </Button>
       </VStack>
     </form>
   )
