@@ -1,4 +1,5 @@
 import { ComponentStyleConfig } from '@chakra-ui/react'
+import { link } from 'framer-motion/client'
 
 export const Button: ComponentStyleConfig = {
   baseStyle: {
@@ -15,6 +16,22 @@ export const Button: ComponentStyleConfig = {
       bg: 'gray.100',
       color: 'blue.600',
       _hover: { bg: 'gray.200' }
+    },
+    outline: {
+      border: '2px solid',
+      borderColor: 'blue.600',
+      color: 'blue.600',
+      bg: 'transparent',
+      _hover: { bg: 'blue.50' }
+    },
+    ghost: {
+      bg: 'transparent',
+      color: 'blue.600',
+      _hover: { bg: 'blue.50' }
+    },
+    link: {
+      color: 'blue.600',
+      _hover: { textDecoration: 'underline' }
     }
   },
   defaultProps: {
