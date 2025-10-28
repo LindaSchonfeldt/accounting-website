@@ -1,6 +1,6 @@
 import { Box, Container, Heading, Stack, Text } from '@chakra-ui/react'
 
-import Meta from '../components/ui/Meta'
+import Meta from '../components/Meta'
 
 const Cookies = () => {
   return (
