@@ -5,7 +5,7 @@ import Contact from '../sections/Contact'
 import FAQ from '../sections/FAQ'
 import Hero from '../sections/Hero'
 import Services from '../sections/Services'
-import Meta from '../components/ui/Meta'
+import Meta from '../components/Meta'
 
 const Home = () => {
   return (

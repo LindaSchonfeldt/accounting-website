@@ -7,6 +7,7 @@ import {
   Text
 } from '@chakra-ui/react'
 import { Link as RouterLink } from 'react-router-dom'
+
 import { scrollToTop } from '../../components/animations'
 
 const Footer: React.FC = () => {

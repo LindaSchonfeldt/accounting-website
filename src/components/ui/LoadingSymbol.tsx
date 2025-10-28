@@ -1,6 +1,6 @@
 import { Box, Center, Spinner, Text } from '@chakra-ui/react'
 
-const LoadingFallback = () => (
+const LoadingSymbol = () => (
   <Box
     minH='100vh'
     display='flex'
@@ -15,4 +15,4 @@ const LoadingFallback = () => (
   </Box>
 )
 
-export default LoadingFallback
+export default LoadingSymbol

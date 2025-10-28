@@ -1,4 +1,4 @@
-import Meta from '../components/ui/Meta'
+import Meta from '../components/Meta'
 import { Box, Heading, Text, Button } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 
