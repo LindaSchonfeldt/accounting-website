@@ -12,8 +12,8 @@ const ContactSection = () => {
           Kontakta oss
         </Heading>
         <Text fontSize='lg' color='gray.600' mb={8} maxW='2xl' mx='auto'>
-          För beställning eller frågor om våra tjänster. Tveka inte att höra av
-          dig!
+          Om du har frågor eller vill beställa våra tjänster, tveka inte att
+          höra av dig!
         </Text>
         <Suspense
           fallback={
@@ -22,7 +22,7 @@ const ContactSection = () => {
             </Box>
           }
         >
-          <ContactForm />
+          <ContactForm showContactReason={false} />
         </Suspense>
       </Container>
     </Box>
