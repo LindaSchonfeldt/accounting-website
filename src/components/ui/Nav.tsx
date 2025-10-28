@@ -6,55 +6,14 @@ import {
   IconButton,
   Link,
   Portal,
-  Text,
   VStack
 } from '@chakra-ui/react'
+import PropTypes from 'prop-types'
 import { useCallback, useEffect, useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
+import { handleSmoothScroll } from '../../utils/navigation'
 import HamburgerIcon from './HamburgerIcon'
-import PropTypes from 'prop-types'
-
-// Smooth scroll handler with cross-page navigation
-const handleSmoothScroll = (
-  e: React.MouseEvent<HTMLAnchorElement>,
-  targetId: string,
-  navigate: ReturnType<typeof useNavigate>,
-  location: ReturnType<typeof useLocation>
-) => {
-  e.preventDefault()
-
-  // If not on home page, navigate to home first
-  if (location.pathname !== '/') {
-    navigate('/')
-    setTimeout(() => {
-      const element = document.querySelector(targetId)
-      if (element) {
-        const navHeight = 60
-        const elementPosition = element.getBoundingClientRect().top
-        const offsetPosition = elementPosition + window.pageYOffset - navHeight
-
-        window.scrollTo({
-          top: offsetPosition,
-          behavior: 'smooth'
-        })
-      }
-    }, 100)
-  } else {
-    // Already on home page, just scroll
-    const element = document.querySelector(targetId)
-    if (element) {
-      const navHeight = 60
-      const elementPosition = element.getBoundingClientRect().top
-      const offsetPosition = elementPosition + window.pageYOffset - navHeight
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      })
-    }
-  }
-}
 
 // Mobile menu component
 interface MobileMenuProps {
@@ -177,7 +136,6 @@ const Nav = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  // Use useCallback to memoize functions
   const toggleMenu = useCallback(() => setIsMenuOpen((prev) => !prev), [])
   const closeMenu = useCallback(() => setIsMenuOpen(false), [])
 
@@ -218,8 +176,6 @@ const Nav = () => {
       zIndex={100}
       bg='white'
       boxShadow='sm'
-      py={{ base: 1, md: 1, lg: 1 }}
-      px={{ base: 0, md: 6, lg: 8 }}
     >
       <Container maxW='container.lg' py={1}>
         <Flex
