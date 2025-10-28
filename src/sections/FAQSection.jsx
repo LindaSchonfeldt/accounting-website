@@ -2,7 +2,7 @@ import { Box, Container, Heading, Link, Text } from '@chakra-ui/react'
 
 import CustomAccordion from '../components/ui/CustomAccordion'
 
-const FAQ = () => {
+const FAQSection = () => {
   return (
     <Box as='section' id='faq' py={16} bg='white'>
       <Container maxW='container.md' textAlign='center'>
@@ -20,4 +20,4 @@ const FAQ = () => {
   )
 }
 
-export default FAQ
+export default FAQSection

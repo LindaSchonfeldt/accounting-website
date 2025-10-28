@@ -10,11 +10,13 @@ const Services = () => {
         description='Upptäck våra kostnadseffektiva bokföringstjänster för småföretag. Personlig service och fast pris.'
       />
       <Box as='main' minH='100vh' role='main' py={16}>
-        <Heading as='h1' size='xl' py={16} mb={8} textAlign='center'>
+        <Heading as='h1' size='xl' py={16} mb={4} textAlign='center'>
           Våra Tjänster
         </Heading>
         <Box as='section' maxW='container.md' mx='auto' px={4} pb={16}>
-          {/* Service details would go here */}
+          <Heading as='h2' size='lg' mb={4} textAlign='center'>
+            Löpande bokföring
+          </Heading>
         </Box>
       </Box>
     </>

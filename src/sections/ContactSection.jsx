@@ -4,7 +4,7 @@ import { lazy, Suspense } from 'react'
 // Lazy load the ContactForm component
 const ContactForm = lazy(() => import('../components/ui/ContactForm'))
 
-const Contact = () => {
+const ContactSection = () => {
   return (
     <Box as='section' id='contact' py={16} bg='white'>
       <Container maxW='container.md' textAlign='center'>
@@ -29,4 +29,4 @@ const Contact = () => {
   )
 }
 
-export default Contact
+export default ContactSection

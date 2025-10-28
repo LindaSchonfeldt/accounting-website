@@ -11,7 +11,7 @@ import { Link as RouterLink } from 'react-router-dom'
 
 import Banner from '../components/ui/Banner'
 
-const Hero = () => {
+const HeroSection = () => {
   return (
     <Box
       as='section'
@@ -103,4 +103,4 @@ const Hero = () => {
   )
 }
 
-export default Hero
+export default HeroSection

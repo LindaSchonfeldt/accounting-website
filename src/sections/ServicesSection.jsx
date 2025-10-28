@@ -31,7 +31,7 @@ const iconMap = {
   Handshake
 }
 
-const Services = () => (
+const ServicesSection = () => (
   <Box as='section' id='services' py={16} bg='white'>
     <Container maxW='container.lg'>
       <Heading as='h2' size='xl' textAlign='center' mb={8} color='blue.600'>
@@ -99,4 +99,4 @@ const Services = () => (
   </Box>
 )
 
-export default Services
+export default ServicesSection
