@@ -56,10 +56,11 @@ const Hero = () => {
           lineHeight={{ base: '1.1', md: '1.1' }}
           mb={6}
         >
-          Skräddarsydda priser baserat på din omsättning och behov
+          Rätt pris, från start till tillväxt
         </Heading>
         <Text fontSize='xl' textAlign={'center'} mb={8} maxW='2xl' mx='auto'>
-          Betala bara för det du behöver.
+          Du betalar bara för det du behöver, baserat på ditt företags
+          omsättning. Enkelt och pålitligt.
         </Text>
         <Stack
           direction={{ base: 'column', md: 'row' }}
