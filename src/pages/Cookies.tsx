@@ -1,5 +1,6 @@
-import Meta from '../components/Meta'
 import { Box, Container, Heading, Stack, Text } from '@chakra-ui/react'
+
+import Meta from '../components/Meta'
 
 const Cookies = () => {
   return (
@@ -8,7 +9,7 @@ const Cookies = () => {
         title='Cookie-policy | Billig Bokföring'
         description='Information om hur vi använder cookies på vår webbplats.'
       />
-      <Box py={16} minH='100vh'>
+      <Box as='main' minH='100vh' role='main' py={16}>
         <Container maxW='container.md'>
           <Heading as='h1' size='2xl' mb={8}>
             Cookie-policy

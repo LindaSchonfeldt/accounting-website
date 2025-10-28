@@ -1,11 +1,10 @@
 import { Box } from '@chakra-ui/react'
 
-import About from '../sections/About'
+import Meta from '../components/Meta'
 import Contact from '../sections/Contact'
 import FAQ from '../sections/FAQ'
 import Hero from '../sections/Hero'
 import Services from '../sections/Services'
-import Meta from '../components/Meta'
 
 const Home = () => {
   return (
@@ -28,9 +27,6 @@ const Home = () => {
         </Box>
         <Box id='vanligafragor'>
           <FAQ />
-        </Box>
-        <Box id='omoss'>
-          <About />
         </Box>
         <Box id='kontakt'>
           <Contact />

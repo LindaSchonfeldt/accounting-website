@@ -56,10 +56,10 @@ const Hero = () => {
           lineHeight={{ base: '1.1', md: '1.1' }}
           mb={6}
         >
-          Din personliga och kostnadseffektiva redovisningskonsult
+          Skräddarsydda priser baserat på din omsättning och behov
         </Heading>
         <Text fontSize='xl' textAlign={'center'} mb={8} maxW='2xl' mx='auto'>
-          Här kommer ditt största argument för att anlita dig stå.
+          Betala bara för det du behöver.
         </Text>
         <Stack
           direction={{ base: 'column', md: 'row' }}

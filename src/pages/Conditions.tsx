@@ -10,7 +10,7 @@ const Conditions = () => {
         title='Användarvillkor | Billig Bokföring'
         description='Läs våra användarvillkor för tjänsten.'
       />
-      <Box py={16} minH='100vh'>
+      <Box as='main' minH='100vh' role='main' py={16}>
         <Container maxW='container.md'>
           <Heading as='h1' size='2xl' mb={8}>
             Användarvillkor
