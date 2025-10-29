@@ -13,7 +13,7 @@ const Services = () => {
         description='Upptäck våra kostnadseffektiva bokföringstjänster för småföretag.'
       />
       <Box as='main' minH='100vh' role='main'>
-        <Heading as='h1' size='xl' py={16} mb={4} textAlign='center'>
+        <Heading as='h1' size='xl' py={8} mb={4} textAlign='center'>
           Våra Tjänster
         </Heading>
         <Box maxW='container.xl' mx='auto' px={4} pb={16}>
@@ -28,7 +28,7 @@ const Services = () => {
                 </Text>
 
                 {service.plans && (
-                  <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={6}>
+                  <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={4}>
                     {service.plans.map((plan, planIndex) => (
                       <Box
                         key={planIndex}
@@ -58,7 +58,7 @@ const Services = () => {
                           {plan.description}
                         </Text>
                         {plan.features && (
-                          <Box as='ul' pl={5} spacing={2}>
+                          <Box as='ul' pl={5}>
                             {plan.features.map((feature, featureIndex) => (
                               <Text
                                 as='li'
