@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom'
 
 import Meta from '../components/Meta'
 import TabMenu from '../components/ui/TabMenu'
+import Dropdown from '../components/ui/Dropdown'
 import { services_full } from '../data/services_full'
 
 const Services = () => {
@@ -28,71 +29,153 @@ const Services = () => {
         description='Upptäck våra kostnadseffektiva bokföringstjänster för småföretag.'
       />
       <Box as='main' minH='100vh' role='main' p={{ base: 0, md: 4 }}>
-        <Heading as='h1' size='xl' py={16} mb={4} textAlign='center'>
+        <Heading as='h1' size='xl' py={8} mb={4} textAlign='center'>
           Våra Tjänster
         </Heading>
         <Box maxW='container.xl' mx='auto' px={4} pb={16}>
-          <TabMenu tabs={tabs} defaultIndex={defaultIndex}>
-            {services_full.map((service, index) => (
-              <Box key={index}>
+          {/* Dropdown for mobile/tablet view */}
+          <Box display={{ base: 'block', lg: 'none' }} mb={6}>
+            <Dropdown
+              label='Välj Tjänst'
+              items={tabs.map((tab, index) => ({
+                label: tab,
+                onClick: () => {
+                  window.location.hash = `#${index}`
+                  setDefaultIndex(index)
+                }
+              }))}
+            />
+          </Box>
+
+          {/* Tabs for desktop view */}
+          <Box display={{ base: 'none', lg: 'block' }}>
+            <TabMenu tabs={tabs} defaultIndex={defaultIndex}>
+              {services_full.map((service, index) => (
+                <Box key={index}>
+                  <Heading as='h2' size='lg' mb={4}>
+                    {service.title}
+                  </Heading>
+                  <Text mb={6} color='gray.600'>
+                    {service.description}
+                  </Text>
+
+                  {service.plans && (
+                    <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={4}>
+                      {service.plans.map((plan, planIndex) => (
+                        <Box
+                          key={planIndex}
+                          p={6}
+                          borderWidth='1px'
+                          borderRadius='lg'
+                          boxShadow='md'
+                          bg='white'
+                        >
+                          <Heading as='h3' size='md' mb={2}>
+                            {plan.name}
+                          </Heading>
+                          <Text
+                            fontSize='2xl'
+                            fontWeight='bold'
+                            color='blue.600'
+                            mb={2}
+                          >
+                            {plan.price} kr/mån
+                          </Text>
+                          {plan.revenue && (
+                            <Text fontSize='sm' color='gray.500' mb={3}>
+                              Omsättning: {plan.revenue}
+                            </Text>
+                          )}
+                          <Text mb={4} fontSize='sm'>
+                            {plan.description}
+                          </Text>
+                          {plan.features && (
+                            <Box as='ul' pl={5}>
+                              {plan.features.map((feature, featureIndex) => (
+                                <Text
+                                  as='li'
+                                  key={featureIndex}
+                                  fontSize='sm'
+                                  mb={2}
+                                >
+                                  {feature}
+                                </Text>
+                              ))}
+                            </Box>
+                          )}
+                        </Box>
+                      ))}
+                    </SimpleGrid>
+                  )}
+                </Box>
+              ))}
+            </TabMenu>
+          </Box>
+
+          {/* Content for mobile dropdown */}
+          <Box display={{ base: 'block', lg: 'none' }}>
+            {services_full[defaultIndex] && (
+              <Box>
                 <Heading as='h2' size='lg' mb={4}>
-                  {service.title}
+                  {services_full[defaultIndex].title}
                 </Heading>
                 <Text mb={6} color='gray.600'>
-                  {service.description}
+                  {services_full[defaultIndex].description}
                 </Text>
 
-                {service.plans && (
-                  <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={4}>
-                    {service.plans.map((plan, planIndex) => (
-                      <Box
-                        key={planIndex}
-                        p={6}
-                        borderWidth='1px'
-                        borderRadius='lg'
-                        boxShadow='md'
-                        bg='white'
-                      >
-                        <Heading as='h3' size='md' mb={2}>
-                          {plan.name}
-                        </Heading>
-                        <Text
-                          fontSize='2xl'
-                          fontWeight='bold'
-                          color='blue.600'
-                          mb={2}
+                {services_full[defaultIndex].plans && (
+                  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+                    {services_full[defaultIndex].plans.map(
+                      (plan, planIndex) => (
+                        <Box
+                          key={planIndex}
+                          p={6}
+                          borderWidth='1px'
+                          borderRadius='lg'
+                          boxShadow='md'
+                          bg='white'
                         >
-                          {plan.price} kr/mån
-                        </Text>
-                        {plan.revenue && (
-                          <Text fontSize='sm' color='gray.500' mb={3}>
-                            Omsättning: {plan.revenue}
+                          <Heading as='h3' size='md' mb={2}>
+                            {plan.name}
+                          </Heading>
+                          <Text
+                            fontSize='2xl'
+                            fontWeight='bold'
+                            color='blue.600'
+                            mb={2}
+                          >
+                            {plan.price} kr/mån
                           </Text>
-                        )}
-                        <Text mb={4} fontSize='sm'>
-                          {plan.description}
-                        </Text>
-                        {plan.features && (
-                          <Box as='ul' pl={5}>
-                            {plan.features.map((feature, featureIndex) => (
-                              <Text
-                                as='li'
-                                key={featureIndex}
-                                fontSize='sm'
-                                mb={2}
-                              >
-                                {feature}
-                              </Text>
-                            ))}
-                          </Box>
-                        )}
-                      </Box>
-                    ))}
+                          {plan.revenue && (
+                            <Text fontSize='sm' color='gray.500' mb={3}>
+                              Omsättning: {plan.revenue}
+                            </Text>
+                          )}
+                          <Text mb={4} fontSize='sm'>
+                            {plan.description}
+                          </Text>
+                          {plan.features && (
+                            <Box as='ul' pl={5}>
+                              {plan.features.map((feature, featureIndex) => (
+                                <Text
+                                  as='li'
+                                  key={featureIndex}
+                                  fontSize='sm'
+                                  mb={2}
+                                >
+                                  {feature}
+                                </Text>
+                              ))}
+                            </Box>
+                          )}
+                        </Box>
+                      )
+                    )}
                   </SimpleGrid>
                 )}
               </Box>
-            ))}
-          </TabMenu>
+            )}
+          </Box>
         </Box>
       </Box>
     </>
