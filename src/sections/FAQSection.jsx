@@ -1,10 +1,11 @@
 import { Box, Container, Heading, Link, Text } from '@chakra-ui/react'
 
 import CustomAccordion from '../components/ui/CustomAccordion'
+import { selectedFaqs } from '../data/faqs'
 
 const FAQSection = () => {
   return (
-    <Box as='section' id='faq' py={16} bg='white'>
+    <Box as='section' id='faq' py={16} bg='blue.50'>
       <Container maxW='container.md' textAlign='center'>
         <Heading as='h2' size='xl' mb={6} color='blue.600'>
           Vanliga frågor
@@ -14,7 +15,7 @@ const FAQSection = () => {
           funderingar är ni alltid välkomna att{' '}
           <Link href='#contact'>kontakta oss</Link>.
         </Text>
-        <CustomAccordion />
+        <CustomAccordion faqs={selectedFaqs} />
       </Container>
     </Box>
   )
