@@ -82,12 +82,11 @@ const ServicesSection = () => (
 
               <Button
                 as={RouterLink}
-                to={service.link}
+                to={`/tjanster#${index}`}
                 colorScheme='blue'
                 size='sm'
                 rightIcon={<ArrowRight size={16} />}
                 w='full'
-                onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
               >
                 Läs mer
               </Button>

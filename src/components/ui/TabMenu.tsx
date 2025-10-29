@@ -4,11 +4,16 @@ import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react'
 interface TabMenuProps {
   tabs: string[]
   children?: React.ReactNode[]
+  defaultIndex?: number
 }
 
-const TabMenu: React.FC<TabMenuProps> = ({ tabs, children }) => {
+const TabMenu: React.FC<TabMenuProps> = ({
+  tabs,
+  children,
+  defaultIndex = 0
+}) => {
   return (
-    <Tabs variant='enclosed' colorScheme='blue'>
+    <Tabs variant='enclosed' colorScheme='blue' defaultIndex={defaultIndex}>
       <TabList>
         {tabs.map((tab, index) => (
           <Tab key={index}>{tab}</Tab>
@@ -18,7 +23,7 @@ const TabMenu: React.FC<TabMenuProps> = ({ tabs, children }) => {
       {children && (
         <TabPanels>
           {children.map((child, index) => (
-            <TabPanel key={index} p={{ base: 0, md: 4 }}>
+            <TabPanel key={index} p={0}>
               <Box py={4}>{child}</Box>
             </TabPanel>
           ))}
