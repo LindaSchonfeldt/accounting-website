@@ -13,7 +13,13 @@ const TabMenu: React.FC<TabMenuProps> = ({
   defaultIndex = 0
 }) => {
   return (
-    <Tabs variant='enclosed' colorScheme='blue' defaultIndex={defaultIndex}>
+    <Tabs
+      variant='plain'
+      colorScheme='blue'
+      defaultIndex={defaultIndex}
+      isLazy
+      lazyBehavior='unmount'
+    >
       <TabList>
         {tabs.map((tab, index) => (
           <Tab key={index}>{tab}</Tab>
