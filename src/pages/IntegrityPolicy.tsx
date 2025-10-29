@@ -9,7 +9,7 @@ const Integritetspolicy = () => {
         title='Integritetspolicy | Billig Bokföring'
         description='Läs om hur vi hanterar dina personuppgifter enligt GDPR.'
       />
-      <Box as='main' minH='100vh' role='main' py={16}>
+      <Box as='main' minH='100vh' role='main' py={8}>
         <Container maxW='container.md'>
           <Heading as='h1' size='2xl' mb={8}>
             Integritetspolicy

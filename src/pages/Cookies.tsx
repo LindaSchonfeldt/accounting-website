@@ -9,7 +9,7 @@ const Cookies = () => {
         title='Cookie-policy | Billig Bokföring'
         description='Information om hur vi använder cookies på vår webbplats.'
       />
-      <Box as='main' minH='100vh' role='main' py={16}>
+      <Box as='main' minH='100vh' role='main' py={8}>
         <Container maxW='container.md'>
           <Heading as='h1' size='2xl' mb={8}>
             Cookie-policy
