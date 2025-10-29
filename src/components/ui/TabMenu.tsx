@@ -18,7 +18,7 @@ const TabMenu: React.FC<TabMenuProps> = ({ tabs, children }) => {
       {children && (
         <TabPanels>
           {children.map((child, index) => (
-            <TabPanel key={index}>
+            <TabPanel key={index} p={{ base: 0, md: 4 }}>
               <Box py={4}>{child}</Box>
             </TabPanel>
           ))}
