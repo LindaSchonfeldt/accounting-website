@@ -15,7 +15,12 @@ const Cookies = lazy(() => import('./pages/Cookies'))
 
 export const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true
+      }}
+    >
       <Box display='flex' flexDirection='column' minHeight='100vh'>
         <Nav />
         <Box flex='1'>
