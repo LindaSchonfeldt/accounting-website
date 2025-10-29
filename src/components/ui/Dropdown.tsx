@@ -8,7 +8,7 @@ interface DropdownProps {
 
 const Dropdown: React.FC<DropdownProps> = ({ label, items }) => {
   return (
-    <Menu>
+    <Menu isLazy placement='bottom-end'>
       <MenuButton as={Button} rightIcon={<ChevronDown size={16} />}>
         {label}
       </MenuButton>
