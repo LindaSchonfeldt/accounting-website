@@ -27,7 +27,7 @@ const Services = () => {
         title='Tjänster - Billig Bokföring'
         description='Upptäck våra kostnadseffektiva bokföringstjänster för småföretag.'
       />
-      <Box as='main' minH='100vh' role='main' p={8}>
+      <Box as='main' minH='100vh' role='main' p={{ base: 0, md: 4 }}>
         <Heading as='h1' size='xl' py={16} mb={4} textAlign='center'>
           Våra Tjänster
         </Heading>
