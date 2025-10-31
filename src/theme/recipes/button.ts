@@ -1,5 +1,4 @@
 import { ComponentStyleConfig } from '@chakra-ui/react'
-import { link } from 'framer-motion/client'
 
 export const Button: ComponentStyleConfig = {
   baseStyle: {
