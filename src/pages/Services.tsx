@@ -1,4 +1,11 @@
-import { Box, Flex, Heading, SimpleGrid, Text } from '@chakra-ui/react'
+import {
+  Box,
+  Flex,
+  Heading,
+  SimpleGrid,
+  Text,
+  useBreakpointValue
+} from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
@@ -22,6 +29,11 @@ const Services = () => {
     }
   }, [location.hash, tabs.length])
 
+  const introText = useBreakpointValue({
+    base: 'Upptäck vårat utbud genom att läsa mer om våra tjänster i menyn nedan.',
+    lg: 'Upptäck våra tjänster genom att klicka runt i flikarna nedan.'
+  })
+
   return (
     <>
       <Meta
@@ -29,21 +41,44 @@ const Services = () => {
         description='Upptäck våra kostnadseffektiva bokföringstjänster för småföretag.'
       />
       <Box as='main' minH='100vh' role='main' p={{ base: 0, md: 4 }}>
-        <Heading as='h1' size='xl' py={8} mb={4} textAlign='center'>
+        <Heading
+          as='h1'
+          size='xl'
+          pt={8}
+          ml={2}
+          mb={4}
+          textAlign={{ base: 'left', md: 'center' }}
+        >
           Våra Tjänster
         </Heading>
-        <Box maxW='container.xl' mx='auto' px={4} pb={16}>
+        <Text
+          textAlign={{ base: 'left', md: 'center' }}
+          color='gray.600'
+          size='lg'
+          mt={4}
+          mb={8}
+          ml={2}
+          mr={2}
+        >
+          {introText}
+        </Text>
+        <Box
+          maxW={{ base: '100%', md: 'container.md', lg: 'container.xl' }}
+          mx='auto'
+          px={{ base: 2, md: 4 }}
+          pb={16}
+        >
           {/* Dropdown for mobile/tablet view */}
           <Flex
             display={{ base: 'flex', lg: 'none' }}
             mb={6}
-            justifyContent='flex-start'
+            justifyContent={{ base: 'flex-start', md: 'center' }}
           >
             <Dropdown
               label='Välj Tjänst'
               placement='bottom-start'
               size='md'
-              width={{ base: '100%', md: '300px' }}
+              width={{ base: '100%', md: '400px' }}
               items={tabs.map((tab, index) => ({
                 label: tab,
                 isActive: index === defaultIndex,
@@ -68,7 +103,10 @@ const Services = () => {
                   </Text>
 
                   {service.plans && (
-                    <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={4}>
+                    <SimpleGrid
+                      columns={{ base: 1, sm: 1, md: 2, lg: 3, xl: 4 }}
+                      spacing={{ base: 2, md: 4 }}
+                    >
                       {service.plans.map((plan, planIndex) => (
                         <Box
                           key={planIndex}
