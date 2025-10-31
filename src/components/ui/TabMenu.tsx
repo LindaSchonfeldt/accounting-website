@@ -14,7 +14,8 @@ const TabMenu: React.FC<TabMenuProps> = ({
 }) => {
   return (
     <Tabs
-      variant='plain'
+      size='lg'
+      variant='enclosed'
       colorScheme='blue'
       defaultIndex={defaultIndex}
       isLazy
