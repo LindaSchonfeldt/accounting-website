@@ -1,4 +1,5 @@
-import { Menu, MenuButton, MenuList, MenuItem, Button } from '@chakra-ui/react'
+import { Button, Menu, MenuButton, MenuItem, MenuList } from '@chakra-ui/react'
+import { ResponsiveValue } from '@chakra-ui/react'
 import { ChevronDown } from 'lucide-react'
 
 interface DropdownProps {
@@ -16,22 +17,55 @@ interface DropdownProps {
     | 'right'
     | 'right-start'
     | 'right-end'
-  items: { label: string; onClick: () => void }[]
+  size?: 'sm' | 'md' | 'lg'
+  width?: ResponsiveValue<string | number>
+  items: { label: string; onClick: () => void; isActive?: boolean }[]
 }
 
-const Dropdown: React.FC<DropdownProps> = ({ label, items }) => {
+const Dropdown: React.FC<DropdownProps> = ({
+  label,
+  items,
+  placement = 'bottom-end',
+  size,
+  width = 'auto' // ← Default to auto
+}) => {
   return (
-    <Menu isLazy placement='bottom-end'>
-      <MenuButton as={Button} rightIcon={<ChevronDown size={16} />}>
-        {label}
-      </MenuButton>
-      <MenuList>
-        {items.map((item, index) => (
-          <MenuItem key={index} onClick={item.onClick}>
-            {item.label}
-          </MenuItem>
-        ))}
-      </MenuList>
+    <Menu isLazy placement={placement}>
+      {({ isOpen }) => (
+        <>
+          <MenuButton
+            as={Button}
+            rightIcon={<ChevronDown size={16} />}
+            size={size}
+            aria-label={`${label} menu`}
+            aria-expanded={isOpen}
+            aria-haspopup='true'
+            w={width}
+            textAlign={'left'}
+          >
+            {label}
+          </MenuButton>
+          <MenuList
+            role='menu'
+            aria-label={`${label} options`}
+            minWidth='unset'
+            width='100%'
+          >
+            {items.map((item, index) => (
+              <MenuItem
+                key={index}
+                onClick={item.onClick}
+                role='menuitem'
+                bg={item.isActive ? 'blue.50' : undefined}
+                fontWeight={item.isActive ? 'bold' : 'normal'}
+                aria-current={item.isActive ? 'true' : undefined}
+              >
+                {item.label}
+              </MenuItem>
+            ))}
+          </MenuList>
+        </>
+      )}
     </Menu>
   )
 }

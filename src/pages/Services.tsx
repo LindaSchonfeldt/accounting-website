@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
 import Meta from '../components/Meta'
-import TabMenu from '../components/ui/TabMenu'
 import Dropdown from '../components/ui/Dropdown'
+import TabMenu from '../components/ui/TabMenu'
 import { services_full } from '../data/services_full'
 
 const Services = () => {
@@ -37,13 +37,16 @@ const Services = () => {
           <Flex
             display={{ base: 'flex', lg: 'none' }}
             mb={6}
-            justifyContent='flex-end'
+            justifyContent='flex-start'
           >
             <Dropdown
               label='Välj Tjänst'
-              placement='bottom-end'
+              placement='bottom-start'
+              size='md'
+              width={{ base: '100%', md: '300px' }}
               items={tabs.map((tab, index) => ({
                 label: tab,
+                isActive: index === defaultIndex,
                 onClick: () => {
                   window.location.hash = `#${index}`
                   setDefaultIndex(index)
