@@ -1,6 +1,7 @@
 import { Box, Heading, Text } from '@chakra-ui/react'
-import ContactForm from '../components/ui/ContactForm'
+
 import Meta from '../components/Meta'
+import ContactForm from '../components/ui/ContactForm'
 
 const Contact = () => {
   return (
@@ -9,8 +10,14 @@ const Contact = () => {
         title='Kontakt | Billig Bokföring'
         description='Kontakta Billig Bokföring för prisvärda bokföringstjänster och support.'
       />
-      <Box as='main' minH='100vh' role='main' py={16}>
-        <Heading as='h1' mb={4}>
+      <Box
+        as='main'
+        minH='100vh'
+        role='main'
+        p={{ base: 2, md: 4 }}
+        textAlign={{ base: 'left', md: 'center' }}
+      >
+        <Heading as='h1' size='xl' pt={8} ml={2} mb={4}>
           Kontakta Oss
         </Heading>
         <Text mb={6} color='gray.600'>
