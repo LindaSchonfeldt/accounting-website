@@ -1,3 +1,5 @@
+import { m } from 'framer-motion'
+
 export const services_full = [
   {
     icon: 'LibraryBig',
