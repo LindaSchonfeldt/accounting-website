@@ -46,7 +46,7 @@ const Services = () => {
           as='h1'
           size='xl'
           pt={8}
-          ml={2}
+          ml={4}
           mb={4}
           textAlign={{ base: 'left', md: 'center' }}
         >
@@ -58,8 +58,8 @@ const Services = () => {
           size='lg'
           mt={4}
           mb={8}
-          ml={2}
-          mr={2}
+          ml={4}
+          mr={4}
         >
           {introText}
         </Text>

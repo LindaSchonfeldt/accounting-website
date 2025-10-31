@@ -10,7 +10,7 @@ import {
 } from '@chakra-ui/react'
 import PropTypes from 'prop-types'
 import { useCallback, useEffect, useState } from 'react'
-import { useLocation, useNavigate, Link as RouterLink } from 'react-router-dom'
+import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom'
 
 import { handleSmoothScroll } from '../../utils/navigation'
 import HamburgerIcon from './HamburgerIcon'
@@ -71,10 +71,6 @@ const MobileMenu = ({
               color='gray.600'
               _hover={{ color: 'blue.600' }}
               transition='color 0.2s'
-              onClick={(e) => {
-                handleSmoothScroll(e, '#tjanster', navigate, location)
-                onClose()
-              }}
               fontSize='lg'
             >
               Tjänster
@@ -85,10 +81,6 @@ const MobileMenu = ({
               color='gray.600'
               _hover={{ color: 'blue.600' }}
               transition='color 0.2s'
-              onClick={(e) => {
-                handleSmoothScroll(e, '#omoss', navigate, location)
-                onClose()
-              }}
               fontSize='lg'
             >
               Om oss
@@ -99,10 +91,6 @@ const MobileMenu = ({
               color='gray.600'
               _hover={{ color: 'blue.600' }}
               transition='color 0.2s'
-              onClick={(e) => {
-                handleSmoothScroll(e, '#kontakt', navigate, location)
-                onClose()
-              }}
               fontSize='lg'
             >
               Kontakt
@@ -255,7 +243,7 @@ const Nav = () => {
                 display='flex'
                 alignItems='center'
                 h='full'
-                fontSize='sm' // ← Make text smaller
+                fontSize='sm'
                 px={2} // ← Optional: reduce horizontal padding
                 py={1} // ← Optional: reduce vertical padding
               >
