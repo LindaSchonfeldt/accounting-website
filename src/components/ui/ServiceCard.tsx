@@ -3,6 +3,7 @@ import { Box, Heading, Text } from '@chakra-ui/react'
 interface PlanCardProps {
   name: string
   price?: number
+  priceUnit?: string
   revenue?: string
   description: string
   features?: string[]
@@ -11,6 +12,7 @@ interface PlanCardProps {
 const ServiceCard: React.FC<PlanCardProps> = ({
   name,
   price,
+  priceUnit = 'kr/månad',
   revenue,
   description,
   features
@@ -19,9 +21,11 @@ const ServiceCard: React.FC<PlanCardProps> = ({
     <Heading as='h3' size='md' mb={2}>
       {name}
     </Heading>
-    <Text fontSize='2xl' fontWeight='bold' color='blue.600' mb={2}>
-      {price} kr/mån
-    </Text>
+    {typeof price === 'number' && (
+      <Text fontSize='2xl' fontWeight='bold' color='blue.600' mb={2}>
+        {price} {priceUnit}
+      </Text>
+    )}
     {revenue && (
       <Text fontSize='sm' color='gray.500' mb={3}>
         Omsättning: {revenue}
