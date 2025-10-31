@@ -60,22 +60,46 @@ export const services_full = [
     icon: 'Coins',
     title: 'Momsrapport',
     description:
-      'Vi beräknar och rapporterar din moms i tid – tryggt, smidigt och helt enligt Skatteverkets regler.',
-    services: [
-      'Månadsrapportering: Momsrapportering varje månad för att hålla koll på kassaflödet.',
-      'Kvartalsrapportering: Momsrapportering var tredje månad för företag med lägre omsättning.',
-      'Årsrapportering: Sammanställning och rapportering av moms en gång per år.'
+      'Sammanställer och rapporterar din moms korrekt och i tid, oavsett om du behöver månads-, kvartals- eller årsrapportering.',
+    plans: [
+      {
+        name: 'Månadsrapportering',
+        description:
+          'Momsrapportering varje månad för att hålla koll på kassaflödet.'
+      },
+      {
+        name: 'Kvartalsrapportering',
+        description:
+          'Momsrapportering var tredje månad för företag med lägre omsättning.'
+      },
+      {
+        name: 'Årsrapportering',
+        description: 'Sammanställning och rapportering av moms en gång per år.'
+      }
     ]
   },
   {
     icon: 'BarChart3',
     title: 'Årsbokslut/Årsredovisning',
     description:
-      'Vi sammanställer och analyserar årets siffror för att ge dig en tydlig överblick inför nästa steg i verksamheten.',
-    services: [
-      'Årsbokslut för enskild firma: Komplett årsavslut inklusive resultat- och balansräkning.',
-      'Årsredovisning för aktiebolag: Fullständig årsredovisning enligt gällande lagar och regler.',
-      'Analys och rådgivning: Genomgång av resultatet med rekommendationer för framtiden.'
+      'Komplett bokslut och årsredovisning enligt gällande lagar och regler, inklusive analys och rådgivning.',
+    plans: [
+      {
+        name: 'Årsbokslut för enskild firma',
+        price: 2500,
+        description:
+          'Fullständigt årsavslut inklusive resultat- och balansräkning.'
+      },
+      {
+        name: 'Årsredovisning för aktiebolag',
+        price: 4500,
+        description: 'Fullständig årsredovisning enligt aktiebolagslagen.'
+      },
+      {
+        name: 'Analys och rådgivning',
+        price: 1500,
+        description: 'Genomgång av resultatet med rekommendationer.'
+      }
     ]
   },
   {
