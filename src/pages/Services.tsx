@@ -66,7 +66,7 @@ const Services = () => {
         <Box
           maxW={{ base: '100%', md: 'container.md', lg: 'container.xl' }}
           mx='auto'
-          px={{ base: 2, md: 4 }}
+          px={{ base: 4, md: 8 }}
           pb={16}
         >
           {/* Dropdown for mobile/tablet view */}
@@ -105,17 +105,21 @@ const Services = () => {
 
                   {service.plans && (
                     <SimpleGrid
-                      columns={{ base: 1, md: 2, lg: 3, xl: 4 }}
+                      columns={{ base: 1, md: 2 }}
                       spacing={{ base: 2, md: 4 }}
                     >
                       {service.plans.map((plan, planIndex) => (
                         <ServiceCard
                           key={planIndex}
                           name={plan.name}
-                          price={plan.price}
-                          revenue={plan.revenue}
+                          {...('price' in plan ? { price: plan.price } : {})}
                           description={plan.description}
-                          features={plan.features}
+                          {...('features' in plan
+                            ? { features: plan.features }
+                            : {})}
+                          {...('revenue' in plan
+                            ? { revenue: plan.revenue }
+                            : {})}
                         />
                       ))}
                     </SimpleGrid>
@@ -138,7 +142,7 @@ const Services = () => {
 
                 {services_full[defaultIndex].plans && (
                   <SimpleGrid
-                    columns={{ base: 1, md: 2, lg: 3, xl: 4 }}
+                    columns={{ base: 1, md: 2 }}
                     spacing={{ base: 2, md: 4 }}
                   >
                     {services_full[defaultIndex].plans.map(
@@ -146,10 +150,14 @@ const Services = () => {
                         <ServiceCard
                           key={planIndex}
                           name={plan.name}
-                          price={plan.price}
-                          revenue={plan.revenue}
+                          {...('price' in plan ? { price: plan.price } : {})}
                           description={plan.description}
-                          features={plan.features}
+                          {...('features' in plan
+                            ? { features: plan.features }
+                            : {})}
+                          {...('revenue' in plan
+                            ? { revenue: plan.revenue }
+                            : {})}
                         />
                       )
                     )}
