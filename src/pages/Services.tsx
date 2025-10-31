@@ -1,4 +1,4 @@
-import { Box, Heading, SimpleGrid, Text } from '@chakra-ui/react'
+import { Box, Flex, Heading, SimpleGrid, Text } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
@@ -34,9 +34,14 @@ const Services = () => {
         </Heading>
         <Box maxW='container.xl' mx='auto' px={4} pb={16}>
           {/* Dropdown for mobile/tablet view */}
-          <Box display={{ base: 'block', lg: 'none' }} mb={6}>
+          <Flex
+            display={{ base: 'flex', lg: 'none' }}
+            mb={6}
+            justifyContent='flex-end'
+          >
             <Dropdown
               label='Välj Tjänst'
+              placement='bottom-end'
               items={tabs.map((tab, index) => ({
                 label: tab,
                 onClick: () => {
@@ -45,7 +50,7 @@ const Services = () => {
                 }
               }))}
             />
-          </Box>
+          </Flex>
 
           {/* Tabs for desktop view */}
           <Box display={{ base: 'none', lg: 'block' }}>
