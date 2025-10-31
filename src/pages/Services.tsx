@@ -11,6 +11,7 @@ import { useLocation } from 'react-router-dom'
 
 import Meta from '../components/Meta'
 import Dropdown from '../components/ui/Dropdown'
+import ServiceCard from '../components/ui/ServiceCard'
 import TabMenu from '../components/ui/TabMenu'
 import { services_full } from '../data/services_full'
 
@@ -104,52 +105,18 @@ const Services = () => {
 
                   {service.plans && (
                     <SimpleGrid
-                      columns={{ base: 1, sm: 1, md: 2, lg: 3, xl: 4 }}
+                      columns={{ base: 1, md: 2, lg: 3, xl: 4 }}
                       spacing={{ base: 2, md: 4 }}
                     >
                       {service.plans.map((plan, planIndex) => (
-                        <Box
+                        <ServiceCard
                           key={planIndex}
-                          p={6}
-                          borderWidth='1px'
-                          borderRadius='lg'
-                          boxShadow='md'
-                          bg='white'
-                        >
-                          <Heading as='h3' size='md' mb={2}>
-                            {plan.name}
-                          </Heading>
-                          <Text
-                            fontSize='2xl'
-                            fontWeight='bold'
-                            color='blue.600'
-                            mb={2}
-                          >
-                            {plan.price} kr/mån
-                          </Text>
-                          {plan.revenue && (
-                            <Text fontSize='sm' color='gray.500' mb={3}>
-                              Omsättning: {plan.revenue}
-                            </Text>
-                          )}
-                          <Text mb={4} fontSize='sm'>
-                            {plan.description}
-                          </Text>
-                          {plan.features && (
-                            <Box as='ul' pl={5}>
-                              {plan.features.map((feature, featureIndex) => (
-                                <Text
-                                  as='li'
-                                  key={featureIndex}
-                                  fontSize='sm'
-                                  mb={2}
-                                >
-                                  {feature}
-                                </Text>
-                              ))}
-                            </Box>
-                          )}
-                        </Box>
+                          name={plan.name}
+                          price={plan.price}
+                          revenue={plan.revenue}
+                          description={plan.description}
+                          features={plan.features}
+                        />
                       ))}
                     </SimpleGrid>
                   )}
@@ -170,51 +137,20 @@ const Services = () => {
                 </Text>
 
                 {services_full[defaultIndex].plans && (
-                  <SimpleGrid columns={{ base: 1, md: 2 }} spacing={4}>
+                  <SimpleGrid
+                    columns={{ base: 1, md: 2, lg: 3, xl: 4 }}
+                    spacing={{ base: 2, md: 4 }}
+                  >
                     {services_full[defaultIndex].plans.map(
                       (plan, planIndex) => (
-                        <Box
+                        <ServiceCard
                           key={planIndex}
-                          p={6}
-                          borderWidth='1px'
-                          borderRadius='lg'
-                          boxShadow='md'
-                          bg='white'
-                        >
-                          <Heading as='h3' size='md' mb={2}>
-                            {plan.name}
-                          </Heading>
-                          <Text
-                            fontSize='2xl'
-                            fontWeight='bold'
-                            color='blue.600'
-                            mb={2}
-                          >
-                            {plan.price} kr/mån
-                          </Text>
-                          {plan.revenue && (
-                            <Text fontSize='sm' color='gray.500' mb={3}>
-                              Omsättning: {plan.revenue}
-                            </Text>
-                          )}
-                          <Text mb={4} fontSize='sm'>
-                            {plan.description}
-                          </Text>
-                          {plan.features && (
-                            <Box as='ul' pl={5}>
-                              {plan.features.map((feature, featureIndex) => (
-                                <Text
-                                  as='li'
-                                  key={featureIndex}
-                                  fontSize='sm'
-                                  mb={2}
-                                >
-                                  {feature}
-                                </Text>
-                              ))}
-                            </Box>
-                          )}
-                        </Box>
+                          name={plan.name}
+                          price={plan.price}
+                          revenue={plan.revenue}
+                          description={plan.description}
+                          features={plan.features}
+                        />
                       )
                     )}
                   </SimpleGrid>
