@@ -30,7 +30,7 @@ const Dropdown: React.FC<DropdownProps> = ({
   width = 'auto' // ← Default to auto
 }) => {
   return (
-    <Menu isLazy placement={placement}>
+    <Menu isLazy placement={placement} matchWidth>
       {({ isOpen }) => (
         <>
           <MenuButton
@@ -45,17 +45,13 @@ const Dropdown: React.FC<DropdownProps> = ({
           >
             {label}
           </MenuButton>
-          <MenuList
-            role='menu'
-            aria-label={`${label} options`}
-            minWidth='unset'
-            width='100%'
-          >
+          <MenuList role='menu' aria-label={`${label} options`}>
             {items.map((item, index) => (
               <MenuItem
                 key={index}
                 onClick={item.onClick}
                 role='menuitem'
+                mb={4}
                 bg={item.isActive ? 'blue.50' : undefined}
                 fontWeight={item.isActive ? 'bold' : 'normal'}
                 aria-current={item.isActive ? 'true' : undefined}
