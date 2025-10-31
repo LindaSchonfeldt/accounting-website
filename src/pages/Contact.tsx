@@ -1,4 +1,4 @@
-import { Box, Heading, Text } from '@chakra-ui/react'
+import { Box, Heading, Link, Text } from '@chakra-ui/react'
 
 import Meta from '../components/Meta'
 import ContactForm from '../components/ui/ContactForm'
@@ -14,17 +14,32 @@ const Contact = () => {
         as='main'
         minH='100vh'
         role='main'
-        p={{ base: 2, md: 4 }}
+        p={{ base: 0, md: 4 }}
         textAlign={{ base: 'left', md: 'center' }}
       >
-        <Heading as='h1' size='xl' pt={8} ml={2} mb={4}>
+        <Heading as='h1' size='xl' pt={8} ml={4} mb={4}>
           Kontakta Oss
         </Heading>
-        <Text mb={6} color='gray.600'>
+        <Text ml={4} mr={4} mb={6} color='gray.600'>
           Har du frågor eller vill komma i kontakt med oss? Fyll i formuläret
           nedan så återkommer vi så snart som möjligt.
+          <br />
+          <Link
+            href='mailto:info@billigbokforing.se'
+            color='blue.600'
+            fontWeight='bold'
+            userSelect='all'
+          >
+            info@billigbokforing.se
+          </Link>
         </Text>
-        <ContactForm />
+        <Box
+          maxW={{ base: '100%', md: 'container.md' }}
+          mx='auto'
+          px={{ base: 4, md: 0 }}
+        >
+          <ContactForm />
+        </Box>
       </Box>
     </>
   )
