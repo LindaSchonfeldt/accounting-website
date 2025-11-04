@@ -34,7 +34,7 @@ const iconMap = {
 const ServicesSection = () => (
   <Box as='section' id='services' py={16} bg='white'>
     <Container maxW='container.lg'>
-      <Heading as='h2' size='xl' textAlign='center' mb={8} color='blue.600'>
+      <Heading as='h2' size='xl' textAlign='center' mb={8}>
         Våra tjänster
       </Heading>
       <Text

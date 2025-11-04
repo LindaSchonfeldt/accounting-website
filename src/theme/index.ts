@@ -1,5 +1,4 @@
 import { extendTheme } from '@chakra-ui/react'
-
 import { Button } from './recipes/button'
 import { Tabs } from './recipes/tabs'
 
@@ -78,6 +77,10 @@ const theme = extendTheme({
       'border-primary': '#e5e7eb',
       'border-secondary': '#d1d5db'
     }
+  },
+  fonts: {
+    heading: `'Besley', serif`,
+    body: `'Inter', sans-serif`
   },
   components: {
     Button,
