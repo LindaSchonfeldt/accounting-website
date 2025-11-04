@@ -2,6 +2,8 @@ import { ComponentStyleConfig } from '@chakra-ui/react'
 
 export const Button: ComponentStyleConfig = {
   baseStyle: {
+    fontFamily: 'Inter, sans-serif',
+    fontSize: 'md',
     fontWeight: 'bold',
     borderRadius: 'md'
   },
