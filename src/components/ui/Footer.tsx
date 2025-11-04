@@ -7,6 +7,7 @@ import {
   Text
 } from '@chakra-ui/react'
 import { Link as RouterLink } from 'react-router-dom'
+
 import { scrollToTop } from '../../utils/navigation'
 
 const Footer: React.FC = () => {
@@ -35,7 +36,7 @@ const Footer: React.FC = () => {
               color='whiteAlpha.800'
               textAlign={{ base: 'center', md: 'left' }}
             >
-              Din personliga och kostnadseffektiva redovisningskonsult
+              Rätt pris, från start till tillväxt.
             </Text>
           </Stack>
 
