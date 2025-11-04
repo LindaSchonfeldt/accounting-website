@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
           align={{ base: 'center', md: 'flex-start' }}
           mb={8}
         >
-          {/* Företagsinformation */}
+          {/* Company information */}
           <Stack
             spacing={3}
             flex={1}
@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
             </Text>
           </Stack>
 
-          {/* Tjänster */}
+          {/* Services */}
           <Stack
             spacing={3}
             flex={1}
@@ -69,7 +69,7 @@ const Footer: React.FC = () => {
             </ChakraLink>
           </Stack>
 
-          {/* Om företaget */}
+          {/* About */}
           <Stack
             spacing={3}
             flex={1}
@@ -107,7 +107,7 @@ const Footer: React.FC = () => {
             </ChakraLink>
           </Stack>
 
-          {/* Kom igång */}
+          {/* Get started */}
           <Stack
             spacing={3}
             flex={1}
