@@ -12,7 +12,7 @@ import { scrollToTop } from '../../utils/navigation'
 
 const Footer: React.FC = () => {
   return (
-    <Box as='footer' bg='blue.800' color='white' py={10} mt={12}>
+    <Box as='footer' bg='bg-footer' color='text-footer' py={10} mt={12}>
       <Container maxW='container.xl'>
         <Stack
           direction={{ base: 'column', md: 'row' }}
@@ -46,7 +46,7 @@ const Footer: React.FC = () => {
             flex={1}
             align={{ base: 'center', md: 'flex-start' }}
           >
-            <Heading as='h4' size='sm' mb={2}>
+            <Heading as='h4' size='sm' mb={2} color='white'>
               Tjänster
             </Heading>
             <ChakraLink
@@ -75,7 +75,7 @@ const Footer: React.FC = () => {
             flex={1}
             align={{ base: 'center', md: 'flex-start' }}
           >
-            <Heading as='h4' size='sm' mb={2}>
+            <Heading as='h4' size='sm' mb={2} color='white'>
               Företaget
             </Heading>
             <ChakraLink
@@ -113,7 +113,7 @@ const Footer: React.FC = () => {
             flex={1}
             align={{ base: 'center', md: 'flex-start' }}
           >
-            <Heading as='h4' size='sm' mb={2}>
+            <Heading as='h4' size='sm' mb={2} color='white'>
               Kom igång
             </Heading>
             <ChakraLink

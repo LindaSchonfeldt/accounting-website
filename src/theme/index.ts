@@ -3,18 +3,40 @@ import { Button } from './recipes/button'
 import { Tabs } from './recipes/tabs'
 
 const theme = extendTheme({
+  semanticTokens: {
+    colors: {
+      'bg-footer': 'blue.800',
+      'text-footer': 'white',
+      'text-footer-muted': 'whiteAlpha.800'
+    }
+  },
   styles: {
     global: {
       body: {
         bg: 'gray.50',
         h1: {
-          color: 'blue.800'
+          color: 'blue.800',
+          fontWeight: 800 // or 'bold'
         },
         h2: {
-          color: 'blue.800'
+          color: 'blue.800',
+          fontWeight: 600 // or 'semibold'
         },
         h3: {
-          color: 'blue.800'
+          color: 'blue.800',
+          fontWeight: 500 // or 'medium'
+        },
+        h4: {
+          color: 'blue.800',
+          fontWeight: 400
+        },
+        h5: {
+          color: 'blue.800',
+          fontWeight: 400
+        },
+        h6: {
+          color: 'blue.800',
+          fontWeight: 400
         },
         p: {
           color: 'gray.600'
@@ -66,21 +88,20 @@ const theme = extendTheme({
       900: '#11121b'
     }
   },
-  semanticTokens: {
-    colors: {
-      'text-primary': '#1f2937',
-      'text-secondary': '#4b5563',
-      'text-tertiary': '#fffff9',
-      'text-link': '#0078ff',
-      'bg-primary': '#ffffff',
-      'bg-secondary': '#f3f4f6',
-      'border-primary': '#e5e7eb',
-      'border-secondary': '#d1d5db'
-    }
-  },
   fonts: {
     heading: `'Besley', serif`,
     body: `'Inter', sans-serif`
+  },
+  fontWeights: {
+    hairline: 100,
+    thin: 200,
+    light: 300,
+    normal: 400,
+    medium: 500,
+    semibold: 600,
+    bold: 700,
+    extrabold: 800,
+    black: 900
   },
   components: {
     Button,
