@@ -21,7 +21,7 @@ const TabMenu: React.FC<TabMenuProps> = ({
       isLazy
       lazyBehavior='unmount'
     >
-      <TabList>
+      <TabList mb={6}>
         {tabs.map((tab, index) => (
           <Tab key={index}>{tab}</Tab>
         ))}

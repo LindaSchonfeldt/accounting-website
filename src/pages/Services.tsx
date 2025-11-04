@@ -1,4 +1,11 @@
-import { Box, Flex, Heading, SimpleGrid, Text, useBreakpointValue } from '@chakra-ui/react'
+import {
+  Box,
+  Flex,
+  Heading,
+  SimpleGrid,
+  Text,
+  useBreakpointValue
+} from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
