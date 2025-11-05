@@ -23,7 +23,7 @@ const Order = () => {
         <Text textAlign='center' mb={4} color='gray.600'>
           Välj den/de tjänst(er) som passar ditt företag och kom igång idag.
         </Text>
-        <OrderForm name='' email='' message='' />
+        <OrderForm />
       </Box>
     </>
   )
