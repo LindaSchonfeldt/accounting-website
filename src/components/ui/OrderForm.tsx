@@ -6,32 +6,79 @@ import {
   Input,
   Box,
   VStack,
-  Text
+  Text,
+  Checkbox,
+  CheckboxGroup,
+  Stack,
+  Button
 } from '@chakra-ui/react'
+import { services_full } from '../../data/services_full'
 
 interface FormInputs {
   name: string
   email: string
   phone?: string
   message?: string
+  services: string[] // Array of selected service names
 }
 
-const OrderForm: React.FC<FormInputs> = () => {
+const OrderForm: React.FC = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors }
-  } = useForm<FormInputs>()
+    formState: { errors },
+    setValue,
+    watch
+  } = useForm<FormInputs>({
+    defaultValues: {
+      services: []
+    }
+  })
 
-  const onSubmit: SubmitHandler<FormInputs> = (data: FormInputs) =>
+  const selectedServices = watch('services')
+
+  const onSubmit: SubmitHandler<FormInputs> = (data: FormInputs) => {
     console.log(data)
+    // Handle form submission (e.g., send to API)
+  }
 
   return (
-    <Box maxW='600px' mx='auto' p={6} borderWidth='1px' bg='white'>
-      <VStack spacing={4} align='stretch'>
+    <Box
+      maxW='600px'
+      mx='auto'
+      p={6}
+      borderWidth='1px'
+      borderRadius='lg'
+      bg='white'
+      boxShadow='md'
+    >
+      <VStack spacing={6} align='stretch'>
         <form onSubmit={handleSubmit(onSubmit)}>
-          {/*Checkboxes for selecting services would go here*/}
+          {/* Service Selection */}
+          <FormControl isInvalid={!!errors.services}>
+            <FormLabel fontWeight='bold'>Välj tjänster</FormLabel>
+            <CheckboxGroup
+              value={selectedServices}
+              onChange={(values) => setValue('services', values as string[])}
+            >
+              <Stack spacing={3}>
+                {services_full.map((service) => (
+                  <Checkbox
+                    key={service.title}
+                    value={service.title}
+                    colorScheme='blue'
+                  >
+                    <Text fontSize='sm'>{service.title}</Text>
+                  </Checkbox>
+                ))}
+              </Stack>
+            </CheckboxGroup>
+            <FormErrorMessage>
+              {errors.services && errors.services.message}
+            </FormErrorMessage>
+          </FormControl>
 
+          {/* Name */}
           <FormControl isInvalid={!!errors.name}>
             <FormLabel>Namn</FormLabel>
             <Input
@@ -43,17 +90,27 @@ const OrderForm: React.FC<FormInputs> = () => {
               {errors.name && errors.name.message}
             </FormErrorMessage>
           </FormControl>
+
+          {/* Email */}
           <FormControl isInvalid={!!errors.email}>
             <FormLabel>E-post</FormLabel>
             <Input
               type='email'
               placeholder='Din e-post'
-              {...register('email', { required: 'E-post är obligatoriskt' })}
+              {...register('email', {
+                required: 'E-post är obligatoriskt',
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: 'Ogiltig e-postadress'
+                }
+              })}
             />
             <FormErrorMessage>
               {errors.email && errors.email.message}
             </FormErrorMessage>
           </FormControl>
+
+          {/* Phone */}
           <FormControl isInvalid={!!errors.phone}>
             <FormLabel>
               Telefonnummer{' '}
@@ -63,13 +120,15 @@ const OrderForm: React.FC<FormInputs> = () => {
             </FormLabel>
             <Input
               type='tel'
-              placeholder='Din telefonnummer'
+              placeholder='Ditt telefonnummer'
               {...register('phone')}
             />
             <FormErrorMessage>
               {errors.phone && errors.phone.message}
             </FormErrorMessage>
           </FormControl>
+
+          {/* Message */}
           <FormControl isInvalid={!!errors.message}>
             <FormLabel>
               Meddelande{' '}
@@ -78,16 +137,20 @@ const OrderForm: React.FC<FormInputs> = () => {
               </Text>
             </FormLabel>
             <Input
-              type='text'
-              placeholder='Din meddelande'
-              {...register('message', {
-                required: 'Meddelande är obligatoriskt'
-              })}
+              as='textarea'
+              placeholder='Ditt meddelande'
+              rows={4}
+              {...register('message')}
             />
             <FormErrorMessage>
               {errors.message && errors.message.message}
             </FormErrorMessage>
           </FormControl>
+
+          {/* Submit Button */}
+          <Button type='submit' colorScheme='blue' size='lg' w='full' mt={4}>
+            Skicka beställning
+          </Button>
         </form>
       </VStack>
     </Box>
