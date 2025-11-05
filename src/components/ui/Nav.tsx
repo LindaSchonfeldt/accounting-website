@@ -1,4 +1,13 @@
-import { Box, Container, Flex, Heading, IconButton, Link, Portal, VStack } from '@chakra-ui/react'
+import {
+  Box,
+  Container,
+  Flex,
+  Heading,
+  IconButton,
+  Link,
+  Portal,
+  VStack
+} from '@chakra-ui/react'
 import PropTypes from 'prop-types'
 import { useCallback, useEffect, useState } from 'react'
 import { Link as RouterLink, useLocation, useNavigate } from 'react-router-dom'
@@ -58,6 +67,16 @@ const MobileMenu = ({
           <VStack spacing={6} align='stretch' pb={8}>
             <Link
               as={RouterLink}
+              to='/'
+              color='gray.600'
+              _hover={{ color: 'blue.600' }}
+              transition='color 0.2s'
+              fontSize='lg'
+            >
+              Start
+            </Link>
+            <Link
+              as={RouterLink}
               to='/tjanster'
               color='gray.600'
               _hover={{ color: 'blue.600' }}
@@ -65,6 +84,16 @@ const MobileMenu = ({
               fontSize='lg'
             >
               Tjänster
+            </Link>
+            <Link
+              as={RouterLink}
+              to='/bestall'
+              color='gray.600'
+              _hover={{ color: 'blue.600' }}
+              transition='color 0.2s'
+              fontSize='lg'
+            >
+              Beställ
             </Link>
             <Link
               as={RouterLink}
@@ -205,6 +234,40 @@ const Nav = () => {
                 py={1} // ← Optional: reduce vertical padding
               >
                 Tjänster
+              </Link>
+            </Box>
+            <Box as='li'>
+              <Link
+                as={RouterLink}
+                to='/bestall'
+                color='gray.600'
+                _hover={{ color: 'blue.600' }}
+                transition='color 0.2s'
+                display='flex'
+                alignItems='center'
+                h='full'
+                fontSize='sm' // ← Make text smaller
+                px={2} // ← Optional: reduce horizontal padding
+                py={1} // ← Optional: reduce vertical padding
+              >
+                Beställ
+              </Link>
+            </Box>
+            <Box as='li'>
+              <Link
+                as={RouterLink}
+                to='/vanliga-fragor'
+                color='gray.600'
+                _hover={{ color: 'blue.600' }}
+                transition='color 0.2s'
+                display='flex'
+                alignItems='center'
+                h='full'
+                fontSize='sm' // ← Make text smaller
+                px={2} // ← Optional: reduce horizontal padding
+                py={1} // ← Optional: reduce vertical padding
+              >
+                Vanliga frågor
               </Link>
             </Box>
             <Box as='li'>
