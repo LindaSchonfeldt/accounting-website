@@ -6,7 +6,7 @@
  * @param {Object} location - React Router location object
  */
 
-export const handleSmoothScroll = (e, targetId, navigate, location) => {
+export const handleAnchorNavigation = (e, targetId, navigate, location) => {
   e.preventDefault()
 
   const scrollToElement = () => {

@@ -17,9 +17,9 @@ import {
 } from 'lucide-react'
 import { Link as RouterLink } from 'react-router-dom'
 
-import { fadeInUp, transitions } from '../components/animations'
-import { MotionBox } from '../components/ui/MotionBox'
-import { services } from '../data/services'
+import { fadeInUp, transitions } from '../animations'
+import { MotionBox } from '../ui/MotionBox'
+import { services } from '../../data/services'
 
 // Icon mapping
 const iconMap = {
