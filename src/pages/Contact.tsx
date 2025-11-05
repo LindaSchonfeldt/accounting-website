@@ -18,7 +18,7 @@ const Contact = () => {
         textAlign={{ base: 'left', md: 'center' }}
       >
         <Heading as='h1' size='xl' pt={8} ml={4} mb={4}>
-          Kontakta Oss
+          Kontakta
         </Heading>
         <Text ml={4} mr={4} mb={6} color='gray.600'>
           Har du frågor eller vill komma i kontakt med oss? Fyll i formuläret
