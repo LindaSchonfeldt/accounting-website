@@ -1,10 +1,8 @@
 import { ChakraProvider } from '@chakra-ui/react'
 import { Box, Spinner } from '@chakra-ui/react'
 import { lazy, Suspense } from 'react'
-import { useEffect } from 'react'
 import { HelmetProvider } from 'react-helmet-async'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { useLocation } from 'react-router-dom'
 
 import Footer from './components/layout/Footer'
 import Nav from './components/layout/Nav'
@@ -23,12 +21,6 @@ const Conditions = lazy(() => import('./pages/Conditions'))
 const Cookies = lazy(() => import('./pages/Cookies'))
 
 export const App = () => {
-  const { pathname } = useLocation()
-
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }, [pathname])
-
   return (
     <HelmetProvider>
       <ChakraProvider theme={theme}>
