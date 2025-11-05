@@ -1,8 +1,10 @@
 import { ChakraProvider } from '@chakra-ui/react'
+import { Box, Spinner } from '@chakra-ui/react'
+import { lazy, Suspense } from 'react'
+import { useEffect } from 'react'
 import { HelmetProvider } from 'react-helmet-async'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import { lazy, Suspense } from 'react'
-import { Box, Spinner } from '@chakra-ui/react'
+import { useLocation } from 'react-router-dom'
 
 import Footer from './components/ui/Footer'
 import Nav from './components/ui/Nav'
@@ -14,12 +16,19 @@ const About = lazy(() => import('./pages/About'))
 const Contact = lazy(() => import('./pages/Contact'))
 const FAQ = lazy(() => import('./pages/FAQ'))
 const Services = lazy(() => import('./pages/Services'))
+const Order = lazy(() => import('./pages/Order'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 const IntegrityPolicy = lazy(() => import('./pages/IntegrityPolicy'))
 const Conditions = lazy(() => import('./pages/Conditions'))
 const Cookies = lazy(() => import('./pages/Cookies'))
 
 export const App = () => {
+  const { pathname } = useLocation()
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' }) // or 'smooth'
+  }, [pathname])
+
   return (
     <HelmetProvider>
       <ChakraProvider theme={theme}>
@@ -48,9 +57,17 @@ export const App = () => {
                 <Routes>
                   <Route path='/' element={<Home />} />
                   <Route path='/tjanster' element={<Services />} />
+                  <Route path='/bestall' element={<Order />} />
+                  <Route path='/vanliga-fragor' element={<FAQ />} />
                   <Route path='/om-oss' element={<About />} />
                   <Route path='/kontakt' element={<Contact />} />
-                  <Route path='/vanliga-fragor' element={<FAQ />} />
+                  <Route
+                    path='/integritetspolicy'
+                    element={<IntegrityPolicy />}
+                  />
+                  <Route path='/villkor' element={<Conditions />} />
+                  <Route path='/cookies' element={<Cookies />} />
+                  <Route path='*' element={<NotFound />} />
                 </Routes>
               </Suspense>
             </Box>
