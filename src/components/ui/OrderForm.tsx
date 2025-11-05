@@ -1,4 +1,4 @@
-import { Box, Text } from '@chakra-ui/react'
+import { Box, VStack } from '@chakra-ui/react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 interface FormInputs {
@@ -9,9 +9,21 @@ interface FormInputs {
 }
 
 const OrderForm: React.FC<FormInputs> = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm<FormInputs>()
+
+  const onSubmit: SubmitHandler<FormInputs> = (data: FormInputs) =>
+    console.log(data)
+
   return (
     <Box maxW='600px' mx='auto' p={6} borderWidth='1px' bg='white'>
-      <Text>Order form will be implemented here.</Text>
+      <VStack spacing={4} align='stretch'>
+        {/* Form implementation goes here */}
+        <form onSubmit={handleSubmit(onSubmit)}>{/* Form fields */}</form>
+      </VStack>
     </Box>
   )
 }
