@@ -18,7 +18,7 @@ const Order = () => {
         textAlign={{ base: 'left', md: 'center' }}
       >
         <Heading as='h1' size='xl' pt={8} ml={4} mb={4}>
-          Beställ Bokföringstjänster
+          Beställ bokföringstjänster
         </Heading>
         <Text textAlign='center' mb={4} color='gray.600'>
           Välj den/de tjänst(er) som passar ditt företag och kom igång idag.
