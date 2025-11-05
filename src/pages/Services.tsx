@@ -56,7 +56,7 @@ const Services = () => {
           mb={4}
           textAlign={{ base: 'left', md: 'center' }}
         >
-          Våra Tjänster
+          Våra tjänster
         </Heading>
         <Text
           textAlign={{ base: 'left', md: 'center' }}
