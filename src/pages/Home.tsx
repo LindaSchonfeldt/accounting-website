@@ -1,10 +1,10 @@
 import { Box } from '@chakra-ui/react'
 
 import Meta from '../components/Meta'
-import ContactSection from '../sections/ContactSection'
-import FAQSection from '../sections/FAQSection'
-import HeroSection from '../sections/HeroSection'
-import ServicesSection from '../sections/ServicesSection'
+import ContactSection from '../components/sections/ContactSection'
+import FAQSection from '../components/sections/FAQSection'
+import HeroSection from '../components/sections/HeroSection'
+import ServicesSection from '../components/sections/ServicesSection'
 
 const Home = () => {
   return (

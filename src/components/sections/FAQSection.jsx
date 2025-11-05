@@ -1,9 +1,9 @@
 import { Box, Button, Container, Heading, Link, Text } from '@chakra-ui/react'
 import { Link as RouterLink } from 'react-router-dom'
 
-import CustomAccordion from '../components/ui/CustomAccordion'
-import { selectedFaqs } from '../data/faqs'
-import { scrollToTop } from '../utils/navigation'
+import CustomAccordion from '../ui/CustomAccordion'
+import { selectedFaqs } from '../../data/faqs'
+import { scrollToTop } from '../../utils/navigation'
 
 const FAQSection = () => {
   return (
