@@ -8,8 +8,6 @@ import {
 } from '@chakra-ui/react'
 import { Link as RouterLink } from 'react-router-dom'
 
-import { scrollToTop } from '../../utils/navigation'
-
 const Footer: React.FC = () => {
   return (
     <Box as='footer' bg='bg-footer' color='text-footer' py={10} mt={12}>
@@ -54,16 +52,14 @@ const Footer: React.FC = () => {
               to='/tjanster'
               fontSize='sm'
               _hover={{ color: 'blue.200' }}
-              onClick={scrollToTop}
             >
               Våra tjänster
             </ChakraLink>
             <ChakraLink
               as={RouterLink}
-              to='/priser'
+              to='/tjanster'
               fontSize='sm'
               _hover={{ color: 'blue.200' }}
-              onClick={scrollToTop}
             >
               Priser
             </ChakraLink>
@@ -83,27 +79,24 @@ const Footer: React.FC = () => {
               to='/om-oss'
               fontSize='sm'
               _hover={{ color: 'blue.200' }}
-              onClick={scrollToTop}
             >
               Om oss
-            </ChakraLink>
-            <ChakraLink
-              as={RouterLink}
-              to='/kontakt'
-              fontSize='sm'
-              _hover={{ color: 'blue.200' }}
-              onClick={scrollToTop}
-            >
-              Kontakt
             </ChakraLink>
             <ChakraLink
               as={RouterLink}
               to='/vanliga-fragor'
               fontSize='sm'
               _hover={{ color: 'blue.200' }}
-              onClick={scrollToTop}
             >
               Vanliga frågor
+            </ChakraLink>
+            <ChakraLink
+              as={RouterLink}
+              to='/kontakt'
+              fontSize='sm'
+              _hover={{ color: 'blue.200' }}
+            >
+              Kontakt
             </ChakraLink>
           </Stack>
 
@@ -121,18 +114,16 @@ const Footer: React.FC = () => {
               to='/boka-mote'
               fontSize='sm'
               _hover={{ color: 'blue.200' }}
-              onClick={scrollToTop}
             >
               Boka möte
             </ChakraLink>
             <ChakraLink
               as={RouterLink}
-              to='/offert'
+              to='/bestall'
               fontSize='sm'
               _hover={{ color: 'blue.200' }}
-              onClick={scrollToTop}
             >
-              Få kostnadsfri offert
+              Beställ
             </ChakraLink>
           </Stack>
         </Stack>
@@ -165,7 +156,6 @@ const Footer: React.FC = () => {
               to='/integritetspolicy'
               fontSize='sm'
               _hover={{ color: 'blue.200' }}
-              onClick={scrollToTop}
             >
               Integritetspolicy
             </ChakraLink>
@@ -174,7 +164,6 @@ const Footer: React.FC = () => {
               to='/cookies'
               fontSize='sm'
               _hover={{ color: 'blue.200' }}
-              onClick={scrollToTop}
             >
               Cookies
             </ChakraLink>
@@ -183,7 +172,6 @@ const Footer: React.FC = () => {
               to='/villkor'
               fontSize='sm'
               _hover={{ color: 'blue.200' }}
-              onClick={scrollToTop}
             >
               Användarvillkor
             </ChakraLink>
