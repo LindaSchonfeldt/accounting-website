@@ -16,6 +16,7 @@ import {
   Collapse,
   useToast
 } from '@chakra-ui/react'
+import { X } from 'lucide-react'
 import { services_full } from '../../data/services_full'
 import emailjs from '@emailjs/browser'
 import { useState } from 'react'
@@ -147,11 +148,17 @@ const OrderForm: React.FC = () => {
     })
   }
 
+  const handleClearPlan = (serviceName: string) => {
+    const newPlans = { ...selectedPlans }
+    delete newPlans[serviceName]
+    setValue('selectedPlans', newPlans)
+  }
+
   return (
     <Box
       maxW='800px'
       mx='auto'
-      p={6}
+      p={{ base: 4, md: 6, lg: 8 }}
       borderWidth='1px'
       borderRadius='lg'
       bg='white'
@@ -161,7 +168,7 @@ const OrderForm: React.FC = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* Service Selection */}
           <FormControl isInvalid={!!errors.services}>
-            <FormLabel fontWeight='bold'>
+            <FormLabel fontWeight='bold' textAlign='left'>
               Välj tjänster{' '}
               <Text as='span' color='red.500'>
                 *
@@ -171,7 +178,7 @@ const OrderForm: React.FC = () => {
               value={selectedServices}
               onChange={handleServiceChange}
             >
-              <Stack spacing={4} alignItems='flex-start'>
+              <Stack spacing={4} align='flex-start' width='100%'>
                 {services_full.map((service) => {
                   const isSelected = selectedServices.includes(service.title)
                   const hasPlans = service.plans && service.plans.length > 0
@@ -181,12 +188,16 @@ const OrderForm: React.FC = () => {
                     <Box
                       key={service.title}
                       width='100%'
-                      alignItems='flex-start'
                       display='flex'
                       flexDirection='column'
+                      alignItems='flex-start'
                     >
                       <Checkbox value={service.title} colorScheme='blue'>
-                        <Text fontSize='sm' fontWeight='medium'>
+                        <Text
+                          fontSize='sm'
+                          fontWeight='medium'
+                          textAlign='left'
+                        >
                           {service.title}
                         </Text>
                       </Checkbox>
@@ -195,7 +206,6 @@ const OrderForm: React.FC = () => {
                       {hasPlans && (
                         <Collapse in={isSelected} animateOpacity>
                           <Box
-                            ml={0}
                             mt={3}
                             p={3}
                             bg='gray.50'
@@ -206,12 +216,14 @@ const OrderForm: React.FC = () => {
                                 ? 'red.500'
                                 : 'blue.500'
                             }
+                            width='100%'
                           >
                             <Text
-                              fontSize='xs'
+                              fontSize='sm'
                               fontWeight='semibold'
                               mb={2}
                               color='gray.600'
+                              textAlign='left'
                             >
                               Välj paket:{' '}
                               <Text as='span' color='red.500'>
@@ -224,7 +236,7 @@ const OrderForm: React.FC = () => {
                                 handlePlanChange(service.title, value)
                               }
                             >
-                              <Stack spacing={2}>
+                              <Stack spacing={2} align='flex-start'>
                                 {service.plans.map((plan) => (
                                   <Radio
                                     key={plan.name}
@@ -232,7 +244,7 @@ const OrderForm: React.FC = () => {
                                     colorScheme='blue'
                                     size='sm'
                                   >
-                                    <Text fontSize='sm'>
+                                    <Text fontSize='sm' textAlign='left'>
                                       {plan.name}
                                       {'price' in plan && plan.price && (
                                         <Text
@@ -264,8 +276,28 @@ const OrderForm: React.FC = () => {
                                 ))}
                               </Stack>
                             </RadioGroup>
+
+                            {/* Clear button below plans */}
+                            {planSelected && (
+                              <Button
+                                size='sm'
+                                variant='ghost'
+                                colorScheme='red'
+                                onClick={() => handleClearPlan(service.title)}
+                                mt={3}
+                                leftIcon={<X size={14} />}
+                              >
+                                Rensa val
+                              </Button>
+                            )}
+
                             {isSelected && !planSelected && (
-                              <Text color='red.500' fontSize='xs' mt={2}>
+                              <Text
+                                color='red.500'
+                                fontSize='xs'
+                                mt={2}
+                                textAlign='left'
+                              >
                                 Vänligen välj ett paket
                               </Text>
                             )}
@@ -278,7 +310,7 @@ const OrderForm: React.FC = () => {
               </Stack>
             </CheckboxGroup>
             {selectedServices.length === 0 && (
-              <Text color='red.500' fontSize='sm' mt={2}>
+              <Text color='red.500' fontSize='sm' mt={2} textAlign='left'>
                 Vänligen välj minst en tjänst
               </Text>
             )}
@@ -286,20 +318,20 @@ const OrderForm: React.FC = () => {
 
           {/* Name */}
           <FormControl isInvalid={!!errors.name}>
-            <FormLabel>Namn</FormLabel>
+            <FormLabel textAlign='left'>Namn</FormLabel>
             <Input
               type='text'
               placeholder='Ditt namn'
               {...register('name', { required: 'Namn är obligatoriskt' })}
             />
-            <FormErrorMessage>
+            <FormErrorMessage textAlign='left'>
               {errors.name && errors.name.message}
             </FormErrorMessage>
           </FormControl>
 
           {/* Email */}
           <FormControl isInvalid={!!errors.email}>
-            <FormLabel>E-post</FormLabel>
+            <FormLabel textAlign='left'>E-post</FormLabel>
             <Input
               type='email'
               placeholder='Din e-post'
@@ -311,14 +343,14 @@ const OrderForm: React.FC = () => {
                 }
               })}
             />
-            <FormErrorMessage>
+            <FormErrorMessage textAlign='left'>
               {errors.email && errors.email.message}
             </FormErrorMessage>
           </FormControl>
 
           {/* Phone */}
           <FormControl isInvalid={!!errors.phone}>
-            <FormLabel>
+            <FormLabel textAlign='left'>
               Telefonnummer{' '}
               <Text as='span' fontSize='xs' color='gray.500' ml={1}>
                 (frivilligt)
@@ -329,14 +361,14 @@ const OrderForm: React.FC = () => {
               placeholder='Ditt telefonnummer'
               {...register('phone')}
             />
-            <FormErrorMessage>
+            <FormErrorMessage textAlign='left'>
               {errors.phone && errors.phone.message}
             </FormErrorMessage>
           </FormControl>
 
           {/* Message */}
           <FormControl isInvalid={!!errors.message}>
-            <FormLabel>
+            <FormLabel textAlign='left'>
               Meddelande{' '}
               <Text as='span' fontSize='xs' color='gray.500' ml={1}>
                 (frivilligt)
@@ -348,7 +380,7 @@ const OrderForm: React.FC = () => {
               rows={4}
               {...register('message')}
             />
-            <FormErrorMessage>
+            <FormErrorMessage textAlign='left'>
               {errors.message && errors.message.message}
             </FormErrorMessage>
           </FormControl>
@@ -358,10 +390,11 @@ const OrderForm: React.FC = () => {
             type='submit'
             colorScheme='blue'
             size='lg'
-            w='full'
             mt={4}
             isLoading={isSubmitting}
             loadingText='Skickar...'
+            alignSelf='flex-start'
+            px={8}
           >
             Skicka beställning
           </Button>
