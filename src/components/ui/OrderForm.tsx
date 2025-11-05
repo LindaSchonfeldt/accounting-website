@@ -37,8 +37,7 @@ const OrderForm: React.FC = () => {
     formState: { errors },
     setValue,
     watch,
-    setError,
-    clearErrors
+    trigger // Add trigger for manual validation
   } = useForm<FormInputs>({
     defaultValues: {
       services: [],
@@ -51,7 +50,10 @@ const OrderForm: React.FC = () => {
   const selectedPlans = watch('selectedPlans')
 
   const onSubmit: SubmitHandler<FormInputs> = async (data: FormInputs) => {
-    // Validate that all services with plans have a plan selected
+    // Check if validation passes
+    const isValid = await trigger() // Triggers all validations
+
+    // Custom validation for plans
     const servicesWithPlans = services_full.filter(
       (service) =>
         data.services.includes(service.title) &&
@@ -63,12 +65,13 @@ const OrderForm: React.FC = () => {
       (service) => !data.selectedPlans[service.title]
     )
 
-    if (missingPlans.length > 0) {
-      setError('selectedPlans', {
-        type: 'manual',
-        message: `Vänligen välj ett paket för: ${missingPlans
-          .map((s) => s.title)
-          .join(', ')}`
+    if (missingPlans.length > 0 || !isValid) {
+      toast({
+        title: 'Formuläret är inte komplett',
+        description: 'Vänligen fyll i alla obligatoriska fält.',
+        status: 'error',
+        duration: 3000,
+        isClosable: true
       })
       return
     }
@@ -135,11 +138,6 @@ const OrderForm: React.FC = () => {
       }
     })
     setValue('selectedPlans', newPlans)
-
-    // Clear plan selection error if services are unchecked
-    if (values.length === 0) {
-      clearErrors('selectedPlans')
-    }
   }
 
   const handlePlanChange = (serviceName: string, planName: string) => {
@@ -147,8 +145,6 @@ const OrderForm: React.FC = () => {
       ...selectedPlans,
       [serviceName]: planName
     })
-    // Clear error when a plan is selected
-    clearErrors('selectedPlans')
   }
 
   return (
@@ -164,7 +160,7 @@ const OrderForm: React.FC = () => {
       <VStack spacing={6} align='stretch'>
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* Service Selection */}
-          <FormControl isInvalid={!!errors.services || !!errors.selectedPlans}>
+          <FormControl isInvalid={!!errors.services}>
             <FormLabel fontWeight='bold'>
               Välj tjänster{' '}
               <Text as='span' color='red.500'>
@@ -286,9 +282,6 @@ const OrderForm: React.FC = () => {
                 Vänligen välj minst en tjänst
               </Text>
             )}
-            <FormErrorMessage>
-              {errors.selectedPlans && errors.selectedPlans.message}
-            </FormErrorMessage>
           </FormControl>
 
           {/* Name */}
