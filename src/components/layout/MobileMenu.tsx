@@ -1,7 +1,7 @@
 import { Box, Link, Portal, VStack } from '@chakra-ui/react'
 import { Link as RouterLink } from 'react-router-dom'
 
-import { navItems } from '../../data/navItems'
+import { mobileNavItems } from '../../data/navItems'
 
 interface MobileMenuProps {
   isOpen: boolean
@@ -45,7 +45,7 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
           onClick={(e) => e.stopPropagation()}
         >
           <VStack spacing={6} align='stretch' pb={8}>
-            {navItems.map((item) => (
+            {mobileNavItems.map((item) => (
               <Link
                 key={item.to}
                 as={RouterLink}
