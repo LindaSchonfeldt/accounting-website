@@ -1,7 +1,7 @@
 import { Box, Flex, Link } from '@chakra-ui/react'
 import { Link as RouterLink } from 'react-router-dom'
 
-import { navItems } from '../../data/navItems'
+import { desktopNavItems } from '../../data/navItems'
 
 const DesktopMenu = () => {
   return (
@@ -13,7 +13,7 @@ const DesktopMenu = () => {
       listStyleType='none'
       display={{ base: 'none', md: 'flex' }}
     >
-      {navItems.map((item) => (
+      {desktopNavItems.map((item) => (
         <Box as='li' key={item.to}>
           <Link
             as={RouterLink}
