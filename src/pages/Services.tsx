@@ -20,15 +20,25 @@ const Services = () => {
   const tabs = services_full.map((service) => service.title)
   const [defaultIndex, setDefaultIndex] = useState(0)
 
-  // Set active tab from URL hash on mount
+  // Update tab when hash changes
   useEffect(() => {
-    const hash = location.hash.replace('#', '')
-    const tabIndex = parseInt(hash, 10)
+    if (location.hash) {
+      const hash = location.hash.replace('#', '')
+      const tabIndex = parseInt(hash, 10)
 
-    if (!isNaN(tabIndex) && tabIndex >= 0 && tabIndex < tabs.length) {
-      setDefaultIndex(tabIndex)
+      if (!isNaN(tabIndex) && tabIndex >= 0 && tabIndex < tabs.length) {
+        setDefaultIndex(tabIndex)
+
+        // Scroll to the TabMenu after a short delay
+        setTimeout(() => {
+          const tabMenu = document.querySelector('[role="tablist"]')
+          if (tabMenu) {
+            tabMenu.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          }
+        }, 100)
+      }
     }
-  }, [location.hash, tabs.length])
+  }, [location.hash, tabs.length]) // ← This triggers when hash changes
 
   const introText = useBreakpointValue({
     base: 'Upptäck vårat utbud genom att läsa mer om våra tjänster i menyn nedan.',
@@ -93,12 +103,13 @@ const Services = () => {
 
           {/* Tabs for desktop view */}
           <Box display={{ base: 'none', lg: 'block' }}>
-            <TabMenu tabs={tabs} defaultIndex={defaultIndex}>
+            <TabMenu
+              tabs={tabs}
+              index={defaultIndex}
+              onChange={(index) => setDefaultIndex(index)}
+            >
               {services_full.map((service, index) => (
                 <Box key={index}>
-                  <Heading as='h2' size='lg' mb={4}>
-                    {service.title}
-                  </Heading>
                   <Text mb={6} color='gray.600'>
                     {service.description}
                   </Text>

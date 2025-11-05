@@ -4,33 +4,36 @@ import { Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react'
 interface TabMenuProps {
   tabs: string[]
   children?: React.ReactNode[]
-  defaultIndex?: number
+  index?: number
+  onChange?: (index: number) => void
 }
 
 const TabMenu: React.FC<TabMenuProps> = ({
   tabs,
   children,
-  defaultIndex = 0
+  index = 0,
+  onChange
 }) => {
   return (
     <Tabs
       size='md'
       variant='enclosed-colored'
       colorScheme='blue'
-      defaultIndex={defaultIndex}
+      index={index}
+      onChange={onChange}
       isLazy
       lazyBehavior='unmount'
     >
-      <TabList mb={6}>
-        {tabs.map((tab, index) => (
-          <Tab key={index}>{tab}</Tab>
+      <TabList mb={8}>
+        {tabs.map((tab, idx) => (
+          <Tab key={idx}>{tab}</Tab>
         ))}
       </TabList>
 
       {children && (
         <TabPanels>
-          {children.map((child, index) => (
-            <TabPanel key={index} p={0}>
+          {children.map((child, idx) => (
+            <TabPanel key={idx} p={0}>
               <Box py={4}>{child}</Box>
             </TabPanel>
           ))}
