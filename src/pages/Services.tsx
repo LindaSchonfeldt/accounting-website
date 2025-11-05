@@ -22,20 +22,16 @@ const Services = () => {
 
   // Update tab when hash changes
   useEffect(() => {
+    // Always scroll to top of page
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+
+    // Then handle hash for tab selection
     if (location.hash) {
       const hash = location.hash.replace('#', '')
       const tabIndex = parseInt(hash, 10)
 
       if (!isNaN(tabIndex) && tabIndex >= 0 && tabIndex < tabs.length) {
         setDefaultIndex(tabIndex)
-
-        // Scroll to the TabMenu after a short delay
-        setTimeout(() => {
-          const tabMenu = document.querySelector('[role="tablist"]')
-          if (tabMenu) {
-            tabMenu.scrollIntoView({ behavior: 'smooth', block: 'start' })
-          }
-        }, 100)
       }
     }
   }, [location.hash, tabs.length]) // ← This triggers when hash changes
