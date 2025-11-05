@@ -3,7 +3,6 @@ import { Link as RouterLink } from 'react-router-dom'
 
 import CustomAccordion from '../ui/CustomAccordion'
 import { selectedFaqs } from '../../data/faqs'
-import { scrollToTop } from '../../utils/navigation'
 
 const FAQSection = () => {
   return (
@@ -36,7 +35,6 @@ const FAQSection = () => {
             variant='link'
             colorScheme='blue'
             mt={4}
-            onClick={scrollToTop}
           >
             Se alla vanliga frågor och svar
           </Button>
