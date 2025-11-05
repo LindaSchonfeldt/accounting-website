@@ -8,6 +8,7 @@ export const services_full = [
       {
         name: 'Mini',
         price: 300,
+        period: 'månad',
         revenue: '0 – 10 000 kr',
         description:
           'För nystartade företag, hobbyverksamhet eller testprojekt utan löpande fakturering.',
@@ -20,6 +21,7 @@ export const services_full = [
       {
         name: 'Liten',
         price: 495,
+        period: 'månad',
         revenue: '10 001 – 100 000 kr',
         description: 'För små firmor med några få transaktioner i månaden.',
         features: [
@@ -32,6 +34,7 @@ export const services_full = [
       {
         name: 'Mellan',
         price: 795,
+        period: 'månad',
         revenue: '100 001 – 500 000 kr',
         description: 'För etablerade småföretag med regelbunden verksamhet.',
         features: [
@@ -44,6 +47,7 @@ export const services_full = [
       {
         name: 'Stor',
         price: 1195,
+        period: 'månad',
         revenue: 'Över 500 000 kr',
         description:
           'För växande bolag som behöver mer löpande kontroll & rapporter.',
@@ -64,16 +68,19 @@ export const services_full = [
     plans: [
       {
         name: 'Månadsrapportering',
+        period: 'ingår',
         description:
           'Momsrapportering varje månad för att hålla koll på kassaflödet.'
       },
       {
         name: 'Kvartalsrapportering',
+        period: 'ingår',
         description:
           'Momsrapportering var tredje månad för företag med lägre omsättning.'
       },
       {
         name: 'Årsrapportering',
+        period: 'ingår',
         description: 'Sammanställning och rapportering av moms en gång per år.'
       }
     ]
@@ -87,17 +94,20 @@ export const services_full = [
       {
         name: 'Årsbokslut för enskild firma',
         price: 2500,
+        period: 'engång',
         description:
           'Fullständigt årsavslut inklusive resultat- och balansräkning.'
       },
       {
         name: 'Årsredovisning för aktiebolag',
         price: 4500,
+        period: 'engång',
         description: 'Fullständig årsredovisning enligt aktiebolagslagen.'
       },
       {
         name: 'Analys och rådgivning',
         price: 1500,
+        period: 'engång',
         description: 'Genomgång av resultatet med rekommendationer.'
       }
     ]

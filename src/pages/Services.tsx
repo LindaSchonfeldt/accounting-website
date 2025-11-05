@@ -120,6 +120,14 @@ const Services = () => {
                           key={planIndex}
                           name={plan.name}
                           {...('price' in plan ? { price: plan.price } : {})}
+                          {...('period' in plan
+                            ? {
+                                period: plan.period as
+                                  | 'månad'
+                                  | 'engång'
+                                  | 'ingår'
+                              }
+                            : {})}
                           description={plan.description}
                           {...('features' in plan
                             ? { features: plan.features }
@@ -158,6 +166,14 @@ const Services = () => {
                           key={planIndex}
                           name={plan.name}
                           {...('price' in plan ? { price: plan.price } : {})}
+                          {...('period' in plan
+                            ? {
+                                period: plan.period as
+                                  | 'månad'
+                                  | 'engång'
+                                  | 'ingår'
+                              }
+                            : {})}
                           description={plan.description}
                           {...('features' in plan
                             ? { features: plan.features }
