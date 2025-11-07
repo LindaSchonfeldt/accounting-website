@@ -4,13 +4,15 @@ import {
   Flex,
   Heading,
   IconButton,
+  Image,
   Link
 } from '@chakra-ui/react'
 import { useCallback, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import DesktopMenu from './DesktopMenu'
+import logo from '../../assets/logo.svg'
 import HamburgerIcon from '../ui/HamburgerIcon'
+import DesktopMenu from './DesktopMenu'
 import MobileMenu from './MobileMenu'
 
 const Nav = () => {
@@ -75,20 +77,18 @@ const Nav = () => {
           >
             <Link
               href='/'
-              color='blue.800'
-              fontSize='2xl'
-              fontWeight='bold'
               display='flex'
               alignItems='center'
               h='full'
-              _hover={{ textDecoration: 'none' }}
+              _hover={{ opacity: 0.8 }}
+              transition='opacity 0.2s'
               aria-label='Go to home page'
               onClick={(e) => {
                 e.preventDefault()
                 navigate('/')
               }}
             >
-              Billig Bokföring
+              <Image src={logo} alt='Billig Bokföring' h='40px' w='auto' />
             </Link>
           </Heading>
 
