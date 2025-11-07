@@ -126,8 +126,11 @@ const Services = () => {
                                   | 'månad'
                                   | 'engång'
                                   | 'ingår'
+                                  | 'tillfälle'
+                                  | 'år'
                               }
                             : {})}
+                          {...('badge' in plan ? { badge: plan.badge } : {})}
                           description={plan.description}
                           {...('features' in plan
                             ? { features: plan.features }
@@ -172,8 +175,11 @@ const Services = () => {
                                   | 'månad'
                                   | 'engång'
                                   | 'ingår'
+                                  | 'tillfälle'
+                                  | 'år'
                               }
                             : {})}
+                          {...('badge' in plan ? { badge: plan.badge } : {})}
                           description={plan.description}
                           {...('features' in plan
                             ? { features: plan.features }

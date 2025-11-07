@@ -3,7 +3,7 @@ export const services_full = [
     icon: 'LibraryBig',
     title: 'Löpande bokföring',
     description:
-      'Jag ser till att din bokföring alltid är uppdaterad och korrekt, så att du får full kontroll över företagets ekonomi.',
+      'Bokföringen hålls alltid uppdaterad och korrekt, för full kontroll över företagets ekonomi.',
     plans: [
       {
         name: 'Mini',
@@ -48,26 +48,26 @@ export const services_full = [
     icon: 'Coins',
     title: 'Momsrapport',
     description:
-      'Sammanställer och redovisar er momsrapport till Skatteverket korrekt och i tid – oavsett om den gäller månatlig, kvartalsvis eller årlig rapportering.',
+      'Momsrapport sammanställs och skickas till Skatteverket korrekt och i tid – oavsett om den gäller månadsvis, kvartalsvis eller årlig rapportering.',
     plans: [
       {
         name: 'Månadsrapportering',
         price: 399,
-        period: 'per tillfälle',
+        period: 'tillfälle',
         description:
-          'För företag som har månadsvis momsrapportering och vill vara säker på att allt skickas in korrekt och i tid varje månad.'
+          'För företag med månadsvis momsrapportering som vill säkerställa korrekta och punktliga inlämningar.'
       },
       {
         name: 'Kvartalsrapportering',
         price: 399,
-        period: 'per tillfälle',
+        period: 'tillfälle',
         description:
-          'För företag som har kvartalsvis momsrapportering och vill vara trygg med att allt redovisas korrekt och i tid varje kvartal.'
+          'För företag med kvartalsvis momsrapportering som vill ha trygghet i att allt redovisas rätt varje kvartal.'
       },
       {
         name: 'Årsrapportering',
         price: 399,
-        period: 'per tillfälle',
+        period: 'tillfälle',
         description:
           'För företag som redovisar moms en gång per år och vill ha en smidig process inför bokslutet.'
       }
@@ -82,16 +82,16 @@ export const services_full = [
       {
         name: 'Årsredovisning med årsbokslut för aktiebolag',
         price: 1200,
-        period: 'per år',
+        period: 'år',
         description:
           'Fullständig årsredovisning med resultat- och balansräkning, inklusive inskick till Bolagsverket.'
       },
       {
         name: 'NE-bilaga för enskild firma',
         price: 900,
-        period: 'per år',
+        period: 'år',
         description:
-          'Utfyllnad av NE-bilagan inklusive inlämning till Skatteverket.'
+          'Utfyllnad av NE-bilaga inklusive inlämning till Skatteverket.'
       }
     ]
   },
@@ -99,7 +99,7 @@ export const services_full = [
     icon: 'FileText',
     title: 'Inkomstdeklaration',
     description:
-      'Vi upprättar och lämnar in din deklaration korrekt och i tid, för enskild firma eller aktiebolag.',
+      'Deklarationen upprättas och lämnas in korrekt och i tid – för både enskild firma och aktiebolag.',
     plans: [
       {
         name: 'INK1 (Enskild firma eller privatperson)',
@@ -120,7 +120,7 @@ export const services_full = [
         price: 2500,
         period: 'engång',
         description:
-          'Korrekt upprättad inkomstdeklaration för aktiebolag enligt aktiebolagslagen med alla erforderliga bilagor.',
+          'Korrekt upprättad inkomstdeklaration för aktiebolag enligt aktiebolagslagen, med alla erforderliga bilagor.',
         features: [
           'Upprättande av INK2-blanketter (INK2R och INK2S)',
           'Skatteberäkning för företaget',
@@ -134,23 +134,48 @@ export const services_full = [
     icon: 'ReceiptText',
     title: 'Faktureringstjänst',
     description:
-      'Vi hjälper dig skapa, skicka och följa upp fakturor – du slipper administrationen och får betalt snabbare.',
-    plans: [],
-    services: [
-      'Skapande av fakturor: Professionellt utformade fakturor enligt dina önskemål.',
-      'Utskick av fakturor: Vi skickar fakturorna åt dig via e-post eller post.',
-      'Påminnelser och uppföljning: Vi skickar påminnelser till kunder med obetalda fakturor.'
+      'Fakturor skapas, skickas och följs upp – administrationen minskar och betalningarna kommer in snabbare.',
+    plans: [
+      {
+        name: 'Bas',
+        price: 199,
+        period: 'månad',
+        description:
+          'För små företag som vill ha hjälp med grundläggande fakturering och uppföljning.',
+        features: ['Skapande och utskick av upp till 15 fakturor per månad']
+      },
+      {
+        name: 'Pro',
+        price: 399,
+        period: 'månad',
+        description:
+          'För företag med regelbunden fakturering och behov av mer omfattande tjänster.',
+        features: [
+          'Skapande och utskick av upp till 50 fakturor per månad',
+          'Automatiska påminnelser för obetalda fakturor'
+        ]
+      }
     ]
   },
   {
     icon: 'Handshake',
     title: 'Personlig rådgivning',
     description:
-      'Få skräddarsydda råd och strategier för att optimera din företags ekonomi och planera för framtiden.',
-    services: [
-      'Ekonomisk planering: Hjälp med budgetering och finansiell strategi.',
-      'Skatterådgivning: Optimering av skattesituation och avdrag.',
-      'Tillväxtstrategier: Råd för att expandera och utveckla din verksamhet.'
+      'Skräddarsydd rådgivning och strategier för att optimera företagets ekonomi och planera för framtiden.',
+    plans: [
+      {
+        name: 'Enskilt rådgivningstillfälle',
+        price: 595,
+        period: 'tillfälle',
+        badge: 'Första mötet gratis!',
+        description:
+          'Ett timmes långt möte för att diskutera specifika ekonomiska frågor eller utmaningar.',
+        features: [
+          'Personlig rådgivning',
+          'Analys av nuvarande ekonomiska situation',
+          'Rekommendationer för förbättringar'
+        ]
+      }
     ]
   }
 ]
