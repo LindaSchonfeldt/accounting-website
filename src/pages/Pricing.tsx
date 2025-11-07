@@ -31,8 +31,8 @@ const Pricing = () => {
                 Transparenta priser för professionell bokföring
               </Heading>
               <Text fontSize='xl' color='gray.600' maxW='3xl'>
-                Inga dolda avgifter. Inga bindningstider. Välj det paket som
-                passar ditt företag bäst.
+                Inga dolda avgifter. Välj det paket som passar ditt företag
+                bäst.
               </Text>
               <Text fontSize='lg' fontWeight='bold' color='blue.600'>
                 Löpande bokföring från 295 kr/månad
