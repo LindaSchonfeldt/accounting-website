@@ -2,48 +2,50 @@ export const faqs = [
   {
     question: 'Vad ingår i löpande bokföring?',
     answer:
-      'Vi registrerar dina verifikationer, stämmer av konton och ser till att allt är klart inför momsrapportering och bokslut.'
+      'Verifikationer registreras, konton stäms av och allt förbereds inför momsrapportering och bokslut.'
   },
   {
-    question: 'Hur ofta behöver jag skicka in mitt underlag?',
+    question: 'Hur ofta behöver underlaget skickas in?',
     answer:
-      'Det beror på hur ofta du har transaktioner. De flesta skickar in månadsvis, men vi anpassar oss efter ditt behov.'
+      'Frekvensen beror på hur många transaktioner som finns. De flesta skickar in månadsvis, men upplägget kan anpassas efter behov.'
   },
   {
-    question: 'Kan jag byta paket om mitt företag växer?',
+    question: 'Kan paketet bytas om företaget växer?',
     answer:
-      'Ja, du kan när som helst gå över från Standardpaketet till Premiumpaketet – vi justerar priset automatiskt.'
+      'Ja, det går när som helst att uppgradera till ett större paket. Prisjustering sker automatiskt.'
   },
   {
-    question: 'Hur skickar jag in kvitton och fakturor?',
+    question: 'Hur skickas kvitton och fakturor in?',
     answer:
-      'Du kan ladda upp allt digitalt via mejl, Dropbox eller vårt system – vi hjälper dig att hitta det smidigaste sättet.'
+      'Underlaget kan laddas upp digitalt via e-post, Dropbox eller direkt i systemet. Det går att välja det alternativ som passar bäst.'
   },
   {
-    question: 'Hjälper ni nystartade företag?',
+    question: 'Erbjuds stöd till nystartade företag?',
     answer:
-      'Absolut. Vi stöttar många som precis har startat och kan även hjälpa till med registrering och val av bolagsform.'
+      'Ja, tjänsterna lämpar sig även för nystartade verksamheter. Hjälp kan ges med registrering och val av bolagsform.'
   },
   {
-    question: 'Vad händer om jag är sen med underlaget?',
+    question: 'Vad händer om underlaget skickas in för sent?',
     answer:
-      'Ingen fara – vi påminner dig och hittar en lösning så rapporteringen ändå blir korrekt i tid.'
+      'Påminnelse skickas ut och rapporteringen anpassas för att säkerställa att allt lämnas in korrekt och i tid.'
   },
   {
-    question: 'Tar ni emot både enskild firma och aktiebolag?',
+    question: 'Gäller tjänsterna både enskild firma och aktiebolag?',
     answer:
-      'Ja, vi arbetar med båda, och anpassar tjänsterna efter bolagsform och omfattning.'
+      'Ja, tjänsterna är anpassade för både enskild firma och aktiebolag oavsett omfattning.'
   },
   {
-    question: 'Kan ni ta hand om hela bokslutet och deklarationen också?',
+    question: 'Ingår bokslut och deklaration i tjänsterna?',
     answer:
-      'Ja, vi erbjuder årsbokslut, årsredovisning och inkomstdeklaration som tilläggstjänster eller som del av ett helhetsupplägg.'
+      'Årsbokslut, årsredovisning och inkomstdeklaration erbjuds som tilläggstjänster eller som del av ett helhetsupplägg.'
   },
   {
-    question: 'Binder jag mig till något avtal?',
+    question: 'Finns någon bindningstid?',
     answer:
-      'Nej, våra tjänster löper månadsvis utan bindningstid – du kan säga upp eller pausa när du vill.'
+      'Tjänsterna löper månadsvis med 30 dagars uppsägningstid och kan pausas eller avslutas när som helst.'
   }
 ]
 
-export const selectedFaqs = faqs.slice(0, 5)
+export const selectedFaqs = faqs.filter(
+  (faq, index) => [1, 5, 7].includes(index) // Select questions at these positions
+)

@@ -6,6 +6,7 @@ import {
   Input,
   Box,
   VStack,
+  HStack,
   Text,
   Checkbox,
   CheckboxGroup,
@@ -385,19 +386,41 @@ const OrderForm: React.FC = () => {
             </FormErrorMessage>
           </FormControl>
 
-          {/* Submit Button */}
-          <Button
-            type='submit'
-            colorScheme='blue'
-            size='lg'
-            mt={4}
-            isLoading={isSubmitting}
-            loadingText='Skickar...'
-            alignSelf='flex-start'
-            px={8}
-          >
-            Skicka beställning
-          </Button>
+          <HStack spacing={4} mt={4}>
+            {/* Reset Button */}
+            <Button
+              type='button'
+              variant='outline'
+              colorScheme='blue'
+              size={{ base: 'md', md: 'lg' }}
+              mt={4}
+              onClick={() => {
+                setValue('services', [])
+                setValue('selectedPlans', {})
+                setValue('name', '')
+                setValue('email', '')
+                setValue('phone', '')
+                setValue('message', '')
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+              }}
+            >
+              Återställ
+            </Button>
+
+            {/* Submit Button */}
+            <Button
+              type='submit'
+              colorScheme='blue'
+              size={{ base: 'md', md: 'lg' }}
+              mt={4}
+              isLoading={isSubmitting}
+              loadingText='Skickar...'
+              alignSelf='flex-start'
+              px={8}
+            >
+              Skicka beställning
+            </Button>
+          </HStack>
         </form>
       </VStack>
     </Box>
