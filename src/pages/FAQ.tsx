@@ -11,7 +11,7 @@ const FAQ = () => {
       p={{ base: 0, md: 4 }}
       textAlign={{ base: 'left', md: 'center' }}
     >
-      <Heading as='h1' size='xl' pt={8} ml={4} mb={4}>
+      <Heading as='h1' size='xl' pt={8} ml={4} mb={8}>
         Vanliga frågor (FAQ)
       </Heading>
       <Box
