@@ -14,6 +14,7 @@ const About = lazy(() => import('./pages/About'))
 const Contact = lazy(() => import('./pages/Contact'))
 const FAQ = lazy(() => import('./pages/FAQ'))
 const Services = lazy(() => import('./pages/Services'))
+const Pricing = lazy(() => import('./pages/Pricing'))
 const Order = lazy(() => import('./pages/Order'))
 const NotFound = lazy(() => import('./pages/NotFound'))
 const IntegrityPolicy = lazy(() => import('./pages/IntegrityPolicy'))
@@ -49,6 +50,7 @@ export const App = () => {
                 <Routes>
                   <Route path='/' element={<Home />} />
                   <Route path='/tjanster' element={<Services />} />
+                  <Route path='/priser' element={<Pricing />} />
                   <Route path='/bestall' element={<Order />} />
                   <Route path='/vanliga-fragor' element={<FAQ />} />
                   <Route path='/om-oss' element={<About />} />
