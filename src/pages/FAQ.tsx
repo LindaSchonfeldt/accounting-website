@@ -25,7 +25,7 @@ const FAQ = () => {
         <Text mt={8} fontSize='md' color='gray.600'>
           Har du fler frågor? Tveka inte att{' '}
           <a
-            href='/contact'
+            href='/kontakt'
             style={{ color: '#3182CE', textDecoration: 'underline' }}
           >
             kontakta oss
