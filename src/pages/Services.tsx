@@ -1,5 +1,8 @@
 import {
   Box,
+  Button,
+  Container,
+  VStack,
   Flex,
   Heading,
   SimpleGrid,
@@ -7,7 +10,7 @@ import {
   useBreakpointValue
 } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { Link as RouterLink, useLocation } from 'react-router-dom'
 
 import Meta from '../components/Meta'
 import Dropdown from '../components/ui/Dropdown'
@@ -196,6 +199,32 @@ const Services = () => {
             )}
           </Box>
         </Box>
+      </Box>
+      {/* CTA Section */}
+      <Box bg='blue.700' py={16} color='white'>
+        <Container maxW='container.md' textAlign='center'>
+          <VStack spacing={6}>
+            <Heading as='h2' size='xl' color='white'>
+              Redo att komma igång?
+            </Heading>
+            <Text fontSize='lg' color='white'>
+              Beställ dina tjänster idag och få professionell bokföring till
+              fast pris.
+            </Text>
+            <Button
+              as={RouterLink}
+              to='/bestall'
+              size='lg'
+              colorScheme='whiteAlpha'
+              variant='solid'
+              bg='white'
+              color='blue.600'
+              _hover={{ bg: 'gray.100' }}
+            >
+              Beställ nu
+            </Button>
+          </VStack>
+        </Container>
       </Box>
     </>
   )

@@ -10,7 +10,7 @@ import { Link as RouterLink } from 'react-router-dom'
 
 const Footer: React.FC = () => {
   return (
-    <Box as='footer' bg='bg-footer' color='text-footer' py={10} mt={12}>
+    <Box as='footer' bg='bg-footer' color='text-footer' py={12}>
       <Container maxW='container.xl'>
         <Stack
           direction={{ base: 'column', md: 'row' }}
@@ -57,7 +57,7 @@ const Footer: React.FC = () => {
             </ChakraLink>
             <ChakraLink
               as={RouterLink}
-              to='/tjanster'
+              to='/priser'
               fontSize='sm'
               _hover={{ color: 'blue.200' }}
             >
