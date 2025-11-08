@@ -1,11 +1,12 @@
 import { Box, Heading, List, ListIcon, ListItem, Text } from '@chakra-ui/react'
 import { Check } from 'lucide-react'
+
 import Badge from './Badge'
 
 interface ServiceCardProps {
   name: string
   price?: number
-  period?: 'månad' | 'engång' | 'ingår' | 'tillfälle' | 'år'
+  period?: string
   badge?: string
   description: string
   features?: string[]
