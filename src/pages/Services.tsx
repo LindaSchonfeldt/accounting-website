@@ -2,12 +2,12 @@ import {
   Box,
   Button,
   Container,
-  VStack,
   Flex,
   Heading,
   SimpleGrid,
   Text,
-  useBreakpointValue
+  useBreakpointValue,
+  VStack
 } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import { Link as RouterLink, useLocation } from 'react-router-dom'
@@ -47,31 +47,35 @@ const Services = () => {
   return (
     <>
       <Meta
-        title='Tjänster - Billig Bokföring'
-        description='Upptäck våra kostnadseffektiva bokföringstjänster för småföretag.'
+        title='Våra tjänster - Bokföring, Momsrapport & Årsbokslut'
+        description='Professionella redovisningstjänster: Löpande bokföring, momsrapport, årsbokslut, deklaration och rådgivning.'
+        keywords='bokföring, momsrapport, årsbokslut, deklaration, redovisning'
+        ogUrl='https://billigbokforing.se/services'
       />
-      <Box as='main' minH='100vh' role='main' p={{ base: 0, md: 4 }}>
-        <Heading
-          as='h1'
-          size='xl'
-          pt={8}
-          ml={4}
-          mb={4}
-          textAlign={{ base: 'left', md: 'center' }}
+      <Box as='main' minH='100vh' role='main'>
+        {/* Hero Section - Full Width */}
+        <Box
+          bg='blue.50'
+          py={20}
+          width='100vw'
+          position='relative'
+          left='50%'
+          right='50%'
+          marginLeft='-50vw'
+          marginRight='-50vw'
         >
-          Våra tjänster
-        </Heading>
-        <Text
-          textAlign={{ base: 'left', md: 'center' }}
-          color='gray.600'
-          size='lg'
-          mt={4}
-          mb={8}
-          ml={4}
-          mr={4}
-        >
-          {introText}
-        </Text>
+          <Container maxW='container.xl'>
+            <VStack spacing={4} textAlign={{ base: 'left', md: 'center' }}>
+              <Heading as='h1' size='2xl'>
+                Tjänster
+              </Heading>
+              <Text color='gray.600' fontSize={{ base: 'lg', md: 'xl' }} mt={4}>
+                {introText}
+              </Text>
+            </VStack>
+          </Container>
+        </Box>
+        {/* Services Section */}
         <Box
           maxW={{ base: '100%', md: 'container.md', lg: 'container.xl' }}
           mx='auto'

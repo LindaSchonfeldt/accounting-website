@@ -10,8 +10,9 @@ const Home = () => {
   return (
     <>
       <Meta
-        title='Billig Bokföring - Kostnadseffektiv redovisning'
-        description='Professionell bokföring för småföretag. Fast pris, personlig service och byråpartner hos Fortnox.'
+        title='Billig Bokföring - Din personliga redovisningskonsult'
+        description='Kostnadseffektiv bokföring och redovisning för småföretag. Löpande bokföring från 295 kr/mån.'
+        keywords='bokföring, redovisning, småföretag, bokföringsbyrå, ekonomi'
       />
       <Box
         as='main'
