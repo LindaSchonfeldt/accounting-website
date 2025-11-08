@@ -1,26 +1,27 @@
-import { SubmitHandler, useForm } from 'react-hook-form'
 import {
+  Box,
+  Button,
+  Checkbox,
+  CheckboxGroup,
+  Collapse,
   FormControl,
   FormErrorMessage,
   FormLabel,
-  Input,
-  Box,
-  VStack,
   HStack,
-  Text,
-  Checkbox,
-  CheckboxGroup,
-  Stack,
-  Button,
+  Input,
   Radio,
   RadioGroup,
-  Collapse,
-  useToast
+  Stack,
+  Text,
+  useToast,
+  VStack
 } from '@chakra-ui/react'
-import { X } from 'lucide-react'
-import { services_full } from '../../data/services_full'
 import emailjs from '@emailjs/browser'
+import { X } from 'lucide-react'
 import { useState } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
+
+import { services_full } from '../../data/services_full'
 
 interface FormInputs {
   name: string
@@ -156,15 +157,7 @@ const OrderForm: React.FC = () => {
   }
 
   return (
-    <Box
-      maxW='800px'
-      mx='auto'
-      p={{ base: 4, md: 6, lg: 8 }}
-      borderWidth='1px'
-      borderRadius='lg'
-      bg='white'
-      boxShadow='md'
-    >
+    <Box maxW='800px' mx='auto' p={{ base: 4, md: 6, lg: 8 }}>
       <VStack spacing={6} align='stretch'>
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* Service Selection */}
