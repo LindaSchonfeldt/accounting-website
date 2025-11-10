@@ -24,7 +24,7 @@ const FAQSection = () => {
           </Link>
           .
         </Text>
-        <CustomAccordion faqs={selectedFaqs} />
+        <CustomAccordion variant='light' faqs={selectedFaqs} />
         <Text fontSize='md' color='gray.50' mt={8} mb={4} maxW='2xl' mx='auto'>
           Fler funderingar? Vi har samlat alla frågor och svar på en sida – ta
           en titt där om du vill fördjupa dig.

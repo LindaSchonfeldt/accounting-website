@@ -83,14 +83,14 @@ const HeroSection = () => {
           </Button>
           <Button
             as={RouterLink}
-            to='/'
+            to='/bestall'
             colorScheme='blue'
             size='lg'
             px={8}
             py={{ base: 4, md: 6 }}
             fontSize='lg'
           >
-            Få kostnadsfri offert
+            Beställ nu
           </Button>
         </Stack>
       </Container>
