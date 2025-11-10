@@ -7,7 +7,6 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
-  HStack,
   Input,
   Radio,
   RadioGroup,
@@ -16,407 +15,409 @@ import {
   useToast,
   VStack
 } from '@chakra-ui/react'
-import emailjs from '@emailjs/browser'
 import { X } from 'lucide-react'
 import { useState } from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 
 import { services_full } from '../../data/services_full'
 
 interface FormInputs {
+  services: string[]
+  selectedPlans: { [key: string]: string }
   name: string
   email: string
   phone?: string
   message?: string
-  services: string[]
-  selectedPlans: Record<string, string>
 }
 
 const OrderForm: React.FC = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false)
   const {
     register,
     handleSubmit,
-    formState: { errors },
     setValue,
-    watch,
-    trigger // Add trigger for manual validation
+    formState: { errors, isSubmitting }
   } = useForm<FormInputs>({
     defaultValues: {
       services: [],
       selectedPlans: {}
     }
   })
+
+  const [selectedServices, setSelectedServices] = useState<string[]>([])
+  const [selectedPlans, setSelectedPlans] = useState<{
+    [key: string]: string
+  }>({})
+
   const toast = useToast()
 
-  const selectedServices = watch('services')
-  const selectedPlans = watch('selectedPlans')
+  const handleServiceChange = (values: string[]) => {
+    setSelectedServices(values)
+    setValue('services', values)
 
-  const onSubmit: SubmitHandler<FormInputs> = async (data: FormInputs) => {
-    // Check if validation passes
-    const isValid = await trigger() // Triggers all validations
+    const newPlans = { ...selectedPlans }
+    Object.keys(newPlans).forEach((key) => {
+      if (!values.includes(key)) {
+        delete newPlans[key]
+      }
+    })
+    setSelectedPlans(newPlans)
+    setValue('selectedPlans', newPlans)
+  }
 
-    // Custom validation for plans
-    const servicesWithPlans = services_full.filter(
-      (service) =>
-        data.services.includes(service.title) &&
-        service.plans &&
-        service.plans.length > 0
-    )
+  const handlePlanChange = (serviceTitle: string, planName: string) => {
+    const newPlans = { ...selectedPlans, [serviceTitle]: planName }
+    setSelectedPlans(newPlans)
+    setValue('selectedPlans', newPlans)
+  }
 
-    const missingPlans = servicesWithPlans.filter(
-      (service) => !data.selectedPlans[service.title]
-    )
+  const handleClearPlan = (serviceTitle: string) => {
+    const newPlans = { ...selectedPlans }
+    delete newPlans[serviceTitle]
+    setSelectedPlans(newPlans)
+    setValue('selectedPlans', newPlans)
+  }
 
-    if (missingPlans.length > 0 || !isValid) {
-      toast({
-        title: 'Formuläret är inte komplett',
-        description: 'Vänligen fyll i alla obligatoriska fält.',
-        status: 'error',
-        duration: 3000,
-        isClosable: true
-      })
+  const onSubmit = async (data: FormInputs) => {
+    const servicesWithPlans = selectedServices.map((serviceTitle) => {
+      const service = services_full.find((s) => s.title === serviceTitle)
+      const hasPlans = service?.plans && service.plans.length > 0
+      const planSelected = selectedPlans[serviceTitle]
+
+      if (hasPlans && !planSelected) {
+        toast({
+          title: 'Välj paket',
+          description: `Vänligen välj ett paket för ${serviceTitle}`,
+          status: 'error',
+          duration: 5000,
+          isClosable: true
+        })
+        return null
+      }
+
+      return {
+        service: serviceTitle,
+        plan: planSelected || null
+      }
+    })
+
+    if (servicesWithPlans.includes(null)) {
       return
     }
 
-    setIsSubmitting(true)
-
-    // Format the email message
-    const emailData = {
-      to_email: 'your-email@example.com', // Your email
-      from_name: data.name,
-      from_email: data.email,
-      phone: data.phone || 'Ej angiven',
-      message: data.message || 'Inget meddelande',
-      services: data.services.join(', '),
-      selected_plans: Object.entries(data.selectedPlans)
-        .map(([service, plan]) => `${service}: ${plan}`)
-        .join('\n')
-    }
-
-    try {
-      await emailjs.send(
-        'YOUR_SERVICE_ID', // Get from EmailJS dashboard
-        'YOUR_TEMPLATE_ID', // Get from EmailJS dashboard
-        emailData,
-        'YOUR_PUBLIC_KEY' // Get from EmailJS dashboard
-      )
-
-      toast({
-        title: 'Beställning skickad!',
-        description: 'Vi återkommer till dig inom 24 timmar.',
-        status: 'success',
-        duration: 5000,
-        isClosable: true
-      })
-
-      // Reset form
-      setValue('services', [])
-      setValue('selectedPlans', {})
-      setValue('name', '')
-      setValue('email', '')
-      setValue('phone', '')
-      setValue('message', '')
-    } catch (error) {
-      toast({
-        title: 'Ett fel uppstod',
-        description: 'Vänligen försök igen eller kontakta oss direkt.',
-        status: 'error',
-        duration: 5000,
-        isClosable: true
-      })
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
-
-  const handleServiceChange = (values: string[]) => {
-    setValue('services', values as string[])
-
-    // Remove plans for unchecked services
-    const newPlans = { ...selectedPlans }
-    Object.keys(newPlans).forEach((service) => {
-      if (!values.includes(service)) {
-        delete newPlans[service]
-      }
+    console.log('Form data:', {
+      ...data,
+      servicesWithPlans
     })
-    setValue('selectedPlans', newPlans)
-  }
 
-  const handlePlanChange = (serviceName: string, planName: string) => {
-    setValue('selectedPlans', {
-      ...selectedPlans,
-      [serviceName]: planName
+    toast({
+      title: 'Beställning skickad!',
+      description: 'Vi återkommer inom 24 timmar.',
+      status: 'success',
+      duration: 5000,
+      isClosable: true
     })
-  }
-
-  const handleClearPlan = (serviceName: string) => {
-    const newPlans = { ...selectedPlans }
-    delete newPlans[serviceName]
-    setValue('selectedPlans', newPlans)
   }
 
   return (
-    <Box maxW='800px' mx='auto' p={{ base: 4, md: 6, lg: 8 }}>
-      <VStack spacing={6} align='stretch'>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          {/* Service Selection */}
-          <FormControl isInvalid={!!errors.services}>
-            <FormLabel fontWeight='bold' textAlign='left'>
-              Välj tjänster{' '}
-              <Text as='span' color='red.500'>
-                *
-              </Text>
-            </FormLabel>
-            <CheckboxGroup
-              value={selectedServices}
-              onChange={handleServiceChange}
-            >
-              <Stack spacing={4} align='flex-start' width='100%'>
-                {services_full.map((service) => {
-                  const isSelected = selectedServices.includes(service.title)
-                  const hasPlans = service.plans && service.plans.length > 0
-                  const planSelected = selectedPlans[service.title]
+    <VStack spacing={6} align='stretch'>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <FormControl isInvalid={!!errors.services}>
+          <FormLabel
+            fontFamily='heading'
+            fontSize='lg'
+            fontWeight='bold'
+            textAlign='left'
+            color='blue.800'
+            mb={3}
+          >
+            Välj tjänster{' '}
+            <Text as='span' color='red.500'>
+              *
+            </Text>
+          </FormLabel>
+          <CheckboxGroup
+            value={selectedServices}
+            onChange={handleServiceChange}
+          >
+            <Stack spacing={4} align='flex-start' width='100%'>
+              {services_full.map((service) => {
+                const isSelected = selectedServices.includes(service.title)
+                const hasPlans = service.plans && service.plans.length > 0
+                const planSelected = selectedPlans[service.title]
 
-                  return (
-                    <Box
-                      key={service.title}
-                      width='100%'
-                      display='flex'
-                      flexDirection='column'
-                      alignItems='flex-start'
-                    >
-                      <Checkbox value={service.title} colorScheme='blue'>
-                        <Text
-                          fontSize='sm'
-                          fontWeight='medium'
-                          textAlign='left'
+                return (
+                  <Box
+                    key={service.title}
+                    width='100%'
+                    display='flex'
+                    flexDirection='column'
+                    alignItems='flex-start'
+                  >
+                    <Checkbox value={service.title} colorScheme='blue'>
+                      <Text
+                        fontSize='md'
+                        fontWeight='medium'
+                        textAlign='left'
+                        fontFamily='body'
+                      >
+                        {service.title}
+                      </Text>
+                    </Checkbox>
+
+                    {hasPlans && (
+                      <Collapse in={isSelected} animateOpacity>
+                        <Box
+                          mt={3}
+                          p={3}
+                          bg='gray.50'
+                          borderRadius='sm'
+                          borderLeft='3px solid'
+                          borderColor={
+                            isSelected && !planSelected ? 'red.500' : 'blue.500'
+                          }
+                          width='100%'
                         >
-                          {service.title}
-                        </Text>
-                      </Checkbox>
-
-                      {/* Show radio buttons when service is selected and has plans */}
-                      {hasPlans && (
-                        <Collapse in={isSelected} animateOpacity>
-                          <Box
-                            mt={3}
-                            p={3}
-                            bg='gray.50'
-                            borderRadius='sm'
-                            borderLeft='3px solid'
-                            borderColor={
-                              isSelected && !planSelected
-                                ? 'red.500'
-                                : 'blue.500'
-                            }
-                            width='100%'
+                          <Text
+                            fontSize='sm'
+                            fontWeight='semibold'
+                            mb={2}
+                            color='gray.600'
+                            textAlign='left'
+                            fontFamily='body'
                           >
-                            <Text
-                              fontSize='sm'
-                              fontWeight='semibold'
-                              mb={2}
-                              color='gray.600'
-                              textAlign='left'
-                            >
-                              Välj paket:{' '}
-                              <Text as='span' color='red.500'>
-                                *
-                              </Text>
+                            Välj paket:{' '}
+                            <Text as='span' color='red.500'>
+                              *
                             </Text>
-                            <RadioGroup
-                              value={selectedPlans[service.title] || ''}
-                              onChange={(value) =>
-                                handlePlanChange(service.title, value)
-                              }
-                            >
-                              <Stack spacing={2} align='flex-start'>
-                                {service.plans.map((plan) => (
-                                  <Radio
-                                    key={plan.name}
-                                    value={plan.name}
-                                    colorScheme='blue'
-                                    size='sm'
+                          </Text>
+                          <RadioGroup
+                            value={selectedPlans[service.title] || ''}
+                            onChange={(value) =>
+                              handlePlanChange(service.title, value)
+                            }
+                          >
+                            <Stack spacing={2} align='flex-start'>
+                              {service.plans.map((plan) => (
+                                <Radio
+                                  key={plan.name}
+                                  value={plan.name}
+                                  colorScheme='blue'
+                                  size='sm'
+                                >
+                                  <Text
+                                    fontSize='sm'
+                                    textAlign='left'
+                                    fontFamily='body'
                                   >
-                                    <Text fontSize='sm' textAlign='left'>
-                                      {plan.name}
-                                      {'price' in plan && plan.price && (
-                                        <Text
-                                          as='span'
-                                          color='blue.600'
-                                          fontWeight='semibold'
-                                          ml={2}
-                                        >
-                                          ({plan.price.toLocaleString('sv-SE')}{' '}
-                                          kr
-                                          {plan.period === 'månad' && '/mån'}
-                                          {plan.period === 'engång' &&
-                                            ' engångsavgift'}
-                                          )
-                                        </Text>
-                                      )}
-                                      {'revenue' in plan && plan.revenue && (
-                                        <Text
-                                          as='span'
-                                          color='gray.500'
-                                          fontSize='xs'
-                                          ml={1}
-                                        >
-                                          Omsättning: {plan.revenue}
-                                        </Text>
-                                      )}
-                                    </Text>
-                                  </Radio>
-                                ))}
-                              </Stack>
-                            </RadioGroup>
+                                    {plan.name}
+                                    {'price' in plan && plan.price && (
+                                      <Text
+                                        as='span'
+                                        color='blue.600'
+                                        fontWeight='semibold'
+                                        ml={2}
+                                      >
+                                        ({plan.price.toLocaleString('sv-SE')} kr
+                                        {plan.period === 'månad' && '/mån'}
+                                        {plan.period === 'engång' &&
+                                          ' engångsavgift'}
+                                        )
+                                      </Text>
+                                    )}
+                                    {'revenue' in plan && plan.revenue && (
+                                      <Text
+                                        as='span'
+                                        color='gray.500'
+                                        fontSize='xs'
+                                        ml={1}
+                                      >
+                                        Omsättning: {plan.revenue}
+                                      </Text>
+                                    )}
+                                  </Text>
+                                </Radio>
+                              ))}
+                            </Stack>
+                          </RadioGroup>
 
-                            {/* Clear button below plans */}
-                            {planSelected && (
-                              <Button
-                                size='sm'
-                                variant='ghost'
-                                colorScheme='red'
-                                onClick={() => handleClearPlan(service.title)}
-                                mt={3}
-                                leftIcon={<X size={14} />}
-                              >
-                                Rensa val
-                              </Button>
-                            )}
+                          {planSelected && (
+                            <Button
+                              size='sm'
+                              variant='ghost'
+                              colorScheme='red'
+                              onClick={() => handleClearPlan(service.title)}
+                              mt={3}
+                              leftIcon={<X size={14} />}
+                              fontFamily='body'
+                            >
+                              Rensa val
+                            </Button>
+                          )}
 
-                            {isSelected && !planSelected && (
-                              <Text
-                                color='red.500'
-                                fontSize='xs'
-                                mt={2}
-                                textAlign='left'
-                              >
-                                Vänligen välj ett paket
-                              </Text>
-                            )}
-                          </Box>
-                        </Collapse>
-                      )}
-                    </Box>
-                  )
-                })}
-              </Stack>
-            </CheckboxGroup>
-            {selectedServices.length === 0 && (
-              <Text color='red.500' fontSize='sm' mt={2} textAlign='left'>
-                Vänligen välj minst en tjänst
-              </Text>
-            )}
-          </FormControl>
-
-          {/* Name */}
-          <FormControl isInvalid={!!errors.name}>
-            <FormLabel textAlign='left'>Namn</FormLabel>
-            <Input
-              type='text'
-              placeholder='Ditt namn'
-              {...register('name', { required: 'Namn är obligatoriskt' })}
-            />
-            <FormErrorMessage textAlign='left'>
-              {errors.name && errors.name.message}
-            </FormErrorMessage>
-          </FormControl>
-
-          {/* Email */}
-          <FormControl isInvalid={!!errors.email}>
-            <FormLabel textAlign='left'>E-post</FormLabel>
-            <Input
-              type='email'
-              placeholder='Din e-post'
-              {...register('email', {
-                required: 'E-post är obligatoriskt',
-                pattern: {
-                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                  message: 'Ogiltig e-postadress'
-                }
+                          {isSelected && !planSelected && (
+                            <Text
+                              color='red.500'
+                              fontSize='xs'
+                              mt={4}
+                              textAlign='left'
+                              fontFamily='body'
+                            >
+                              Vänligen välj ett paket
+                            </Text>
+                          )}
+                        </Box>
+                      </Collapse>
+                    )}
+                  </Box>
+                )
               })}
-            />
-            <FormErrorMessage textAlign='left'>
-              {errors.email && errors.email.message}
-            </FormErrorMessage>
-          </FormControl>
-
-          {/* Phone */}
-          <FormControl isInvalid={!!errors.phone}>
-            <FormLabel textAlign='left'>
-              Telefonnummer{' '}
-              <Text as='span' fontSize='xs' color='gray.500' ml={1}>
-                (frivilligt)
-              </Text>
-            </FormLabel>
-            <Input
-              type='tel'
-              placeholder='Ditt telefonnummer'
-              {...register('phone')}
-            />
-            <FormErrorMessage textAlign='left'>
-              {errors.phone && errors.phone.message}
-            </FormErrorMessage>
-          </FormControl>
-
-          {/* Message */}
-          <FormControl isInvalid={!!errors.message}>
-            <FormLabel textAlign='left'>
-              Meddelande{' '}
-              <Text as='span' fontSize='xs' color='gray.500' ml={1}>
-                (frivilligt)
-              </Text>
-            </FormLabel>
-            <Input
-              as='textarea'
-              placeholder='Ditt meddelande'
-              rows={4}
-              {...register('message')}
-            />
-            <FormErrorMessage textAlign='left'>
-              {errors.message && errors.message.message}
-            </FormErrorMessage>
-          </FormControl>
-
-          <HStack spacing={4} mt={4}>
-            {/* Reset Button */}
-            <Button
-              type='button'
-              variant='outline'
-              colorScheme='blue'
-              size={{ base: 'md', md: 'lg' }}
+            </Stack>
+          </CheckboxGroup>
+          {selectedServices.length === 0 && (
+            <Text
+              color='red.500'
+              fontSize='sm'
               mt={4}
-              onClick={() => {
-                setValue('services', [])
-                setValue('selectedPlans', {})
-                setValue('name', '')
-                setValue('email', '')
-                setValue('phone', '')
-                setValue('message', '')
-                window.scrollTo({ top: 0, behavior: 'smooth' })
-              }}
+              textAlign='left'
+              fontFamily='body'
             >
-              Återställ
-            </Button>
+              Vänligen välj minst en tjänst
+            </Text>
+          )}
+        </FormControl>
 
-            {/* Submit Button */}
-            <Button
-              type='submit'
-              colorScheme='blue'
-              size={{ base: 'md', md: 'lg' }}
-              mt={4}
-              isLoading={isSubmitting}
-              loadingText='Skickar...'
-              alignSelf='flex-start'
-              px={8}
-            >
-              Skicka beställning
-            </Button>
-          </HStack>
-        </form>
-      </VStack>
-    </Box>
+        <FormControl isInvalid={!!errors.name} mt={6}>
+          <FormLabel
+            textAlign='left'
+            fontFamily='heading'
+            fontWeight='semibold'
+          >
+            Namn
+          </FormLabel>
+          <Input
+            type='text'
+            placeholder='Ditt namn'
+            fontFamily='body'
+            {...register('name', { required: 'Namn är obligatoriskt' })}
+          />
+          <FormErrorMessage textAlign='left' fontFamily='body'>
+            {errors.name && errors.name.message}
+          </FormErrorMessage>
+        </FormControl>
+
+        <FormControl isInvalid={!!errors.email} mt={6}>
+          <FormLabel
+            textAlign='left'
+            fontFamily='heading'
+            fontWeight='semibold'
+          >
+            E-post
+          </FormLabel>
+          <Input
+            type='email'
+            placeholder='Din e-post'
+            fontFamily='body'
+            {...register('email', {
+              required: 'E-post är obligatoriskt',
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: 'Ogiltig e-postadress'
+              }
+            })}
+          />
+          <FormErrorMessage textAlign='left' fontFamily='body'>
+            {errors.email && errors.email.message}
+          </FormErrorMessage>
+        </FormControl>
+
+        <FormControl isInvalid={!!errors.phone} mt={6}>
+          <FormLabel
+            textAlign='left'
+            fontFamily='heading'
+            fontWeight='semibold'
+          >
+            Telefonnummer{' '}
+            <Text as='span' fontSize='xs' color='gray.500' ml={1}>
+              (frivilligt)
+            </Text>
+          </FormLabel>
+          <Input
+            type='tel'
+            placeholder='Ditt telefonnummer'
+            fontFamily='body'
+            {...register('phone')}
+          />
+          <FormErrorMessage textAlign='left' fontFamily='body'>
+            {errors.phone && errors.phone.message}
+          </FormErrorMessage>
+        </FormControl>
+
+        <FormControl isInvalid={!!errors.message} mt={6}>
+          <FormLabel
+            textAlign='left'
+            fontFamily='heading'
+            fontWeight='semibold'
+          >
+            Meddelande{' '}
+            <Text as='span' fontSize='xs' color='gray.500' ml={1}>
+              (frivilligt)
+            </Text>
+          </FormLabel>
+          <Input
+            as='textarea'
+            placeholder='Ditt meddelande'
+            rows={4}
+            fontFamily='body'
+            {...register('message')}
+          />
+          <FormErrorMessage textAlign='left' fontFamily='body'>
+            {errors.message && errors.message.message}
+          </FormErrorMessage>
+        </FormControl>
+
+        <Stack
+          direction={{ base: 'column', sm: 'row' }}
+          spacing={4}
+          mt={8}
+          width='100%'
+        >
+          <Button
+            type='button'
+            variant='outline'
+            colorScheme='blue'
+            size={{ base: 'md', md: 'lg' }}
+            width={{ base: '100%', sm: 'auto' }}
+            fontFamily='body'
+            onClick={() => {
+              setSelectedServices([])
+              setSelectedPlans({})
+              setValue('services', [])
+              setValue('selectedPlans', {})
+              setValue('name', '')
+              setValue('email', '')
+              setValue('phone', '')
+              setValue('message', '')
+              window.scrollTo({ top: 0, behavior: 'smooth' })
+            }}
+          >
+            Återställ
+          </Button>
+
+          <Button
+            type='submit'
+            colorScheme='blue'
+            size={{ base: 'md', md: 'lg' }}
+            width={{ base: '100%', sm: 'auto' }}
+            isLoading={isSubmitting}
+            loadingText='Skickar...'
+            px={8}
+            fontFamily='body'
+          >
+            Skicka beställning
+          </Button>
+        </Stack>
+      </form>
+    </VStack>
   )
 }
 
