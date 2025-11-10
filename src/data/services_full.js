@@ -9,7 +9,7 @@ export const services_full = [
         name: 'Mini',
         price: 295,
         period: 'månad',
-        revenue: '0 – 10 000 kr',
+        revenue: '0 – 10 000 kr/mån',
         description:
           'För nystartade företag, hobbyverksamhet eller testprojekt utan löpande fakturering.',
         features: [
@@ -22,7 +22,7 @@ export const services_full = [
         name: 'Mellan',
         price: 495,
         period: 'månad',
-        revenue: '10 001 – 100 000 kr',
+        revenue: '10 001 – 100 000 kr/mån',
         description: 'För små firmor med några få transaktioner i månaden.',
         features: [
           'Månadsavstämning av konton',
@@ -34,7 +34,7 @@ export const services_full = [
         name: 'Stor',
         price: 995,
         period: 'månad',
-        revenue: '100 001 – 500 000 kr',
+        revenue: '100 001 – 500 000 kr/mån',
         description: 'För etablerade småföretag med regelbunden verksamhet.',
         features: [
           'Månadsavstämning av konton',
