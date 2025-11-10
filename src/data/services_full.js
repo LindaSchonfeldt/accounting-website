@@ -165,15 +165,16 @@ export const services_full = [
     plans: [
       {
         name: 'Enskilt rådgivningstillfälle',
-        price: 595,
-        period: 'tillfälle',
+        price: 300,
+        period: 'timme',
         badge: 'Första mötet gratis!',
         description:
-          'Ett timmes långt möte för att diskutera specifika ekonomiska frågor eller utmaningar.',
+          'Rådgivande samtal, från en utbildad företagsekonom, för att diskutera specifika ekonomiska frågor eller utmaningar.',
         features: [
           'Personlig rådgivning',
           'Analys av nuvarande ekonomiska situation',
-          'Rekommendationer för förbättringar'
+          'Rekommendationer för förbättringar',
+          'Debiteras sker per påbörjad timme'
         ]
       }
     ]
