@@ -5,11 +5,6 @@ export const faqs = [
       'Verifikationer registreras, konton stäms av och allt förbereds inför momsrapportering och bokslut.'
   },
   {
-    question: 'Hur ofta behöver underlaget skickas in?',
-    answer:
-      'Frekvensen beror på hur många transaktioner som finns. De flesta skickar in månadsvis, men upplägget kan anpassas efter behov.'
-  },
-  {
     question: 'Kan paketet bytas om företaget växer?',
     answer:
       'Ja, det går när som helst att uppgradera till ett större paket. Prisjustering sker automatiskt.'
@@ -33,11 +28,6 @@ export const faqs = [
     question: 'Gäller tjänsterna både enskild firma och aktiebolag?',
     answer:
       'Ja, tjänsterna är anpassade för både enskild firma och aktiebolag oavsett omfattning.'
-  },
-  {
-    question: 'Ingår bokslut och deklaration i tjänsterna?',
-    answer:
-      'Årsbokslut, årsredovisning och inkomstdeklaration erbjuds som tilläggstjänster eller som del av ett helhetsupplägg.'
   },
   {
     question: 'Finns någon bindningstid?',
