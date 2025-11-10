@@ -1,12 +1,13 @@
-import { Box, Heading, Text } from '@chakra-ui/react'
+import { Box, Text } from '@chakra-ui/react'
 
+import PageWrapper from '../components/layout/PageWrapper'
 import IntroSection from '../components/sections/IntroSection'
 import CustomAccordion from '../components/ui/CustomAccordion'
 import { faqs } from '../data/faqs'
 
 const FAQ = () => {
   return (
-    <Box as='main' minH='100vh' role='main'>
+    <PageWrapper>
       <IntroSection
         heading='Vanliga frågor'
         introText='Här hittar du svar på de vanligaste frågorna om våra bokföringstjänster, priser och processer.'
@@ -30,7 +31,7 @@ const FAQ = () => {
           !
         </Text>
       </Box>
-    </Box>
+    </PageWrapper>
   )
 }
 
