@@ -3,15 +3,11 @@ import React from 'react'
 
 interface PageWrapperProps {
   children: React.ReactNode
-  maxW?: string
 }
 
-const PageWrapper: React.FC<PageWrapperProps> = ({
-  children,
-  maxW = 'container.xl'
-}) => {
+const PageWrapper: React.FC<PageWrapperProps> = ({ children }) => {
   return (
-    <Box as='main' minH='100vh' role='main' maxW={maxW}>
+    <Box as='main' minH='100vh'>
       {children}
     </Box>
   )

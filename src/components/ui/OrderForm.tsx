@@ -281,7 +281,7 @@ const OrderForm: React.FC = () => {
               textAlign='left'
               fontFamily='body'
             >
-              Vänligen välj minst en tjänst
+              * Vänligen välj minst en tjänst
             </Text>
           )}
         </FormControl>

@@ -1,5 +1,6 @@
 import { Box, Container, Heading, Text, VStack } from '@chakra-ui/react'
 
+import PageWrapper from '../components/layout/PageWrapper'
 import Meta from '../components/Meta'
 import IntroSection from '../components/sections/IntroSection'
 import OrderForm from '../components/ui/OrderForm'
@@ -14,7 +15,7 @@ const Order = () => {
         ogUrl='https://billigbokforing.se/order'
       />
 
-      <Box as='main' minH='100vh' role='main'>
+      <PageWrapper>
         <IntroSection
           heading='Beställ tjänster'
           introText='Välj de bokföringstjänster som passar ditt företag bäst och skicka en beställning. Vi återkommer med ett kostnadsförslag inom 24 timmar.'
@@ -28,7 +29,7 @@ const Order = () => {
         >
           <OrderForm />
         </Container>
-      </Box>
+      </PageWrapper>
     </>
   )
 }

@@ -1,4 +1,5 @@
 import { extendTheme } from '@chakra-ui/react'
+
 import { Button } from './recipes/button'
 import { Tabs } from './recipes/tabs'
 
