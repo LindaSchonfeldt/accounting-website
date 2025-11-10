@@ -12,14 +12,14 @@ const Order = () => {
         title='Beställ tjänster - Billig Bokföring'
         description='Beställ bokföring, momsrapport eller årsbokslut. Enkel beställningsprocess med transparenta priser.'
         keywords='beställa bokföring, bokföring online, redovisningstjänster, momsrapport, årsbokslut'
-        ogUrl='https://billigbokforing.se/order'
+        ogUrl='https://billigbokforing.se/bestall'
       />
 
       <PageWrapper>
         <IntroSection
           heading='Beställ tjänster'
-          introText='Välj de bokföringstjänster som passar ditt företag bäst och skicka en beställning. Vi återkommer med ett kostnadsförslag inom 24 timmar.'
-          highlightedText='Vid beställning av flera tjänster ges rabatt.'
+          introText='Välj de bokföringstjänster som passar ditt företag bäst och skicka en beställning. Vi bekräftar inom 24 timmar.'
+          highlightedText='Beställ löpande bokföring och få 10 % rabatt på tilläggstjänster.'
         />
 
         <Container

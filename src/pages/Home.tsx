@@ -13,6 +13,7 @@ const Home = () => {
         title='Billig Bokföring - Din personliga redovisningskonsult'
         description='Kostnadseffektiv bokföring och redovisning för småföretag. Löpande bokföring från 295 kr/mån.'
         keywords='bokföring, redovisning, småföretag, bokföringsbyrå, ekonomi'
+        ogUrl='https://billigbokforing.se/'
       />
       <Box
         as='main'

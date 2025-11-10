@@ -30,7 +30,7 @@ const Pricing = () => {
         title='Priser - Bokföring från 295 kr/mån | Billig Bokföring'
         description='Transparenta priser för bokföring, momsrapport, årsbokslut och deklaration. Löpande bokföring från 295 kr/mån. Inga dolda avgifter.'
         keywords='bokföring pris, bokföringskostnad, billig bokföring, redovisning pris, årsbokslut kostnad, momsrapport pris, deklaration kostnad'
-        ogUrl='https://billigbokforing.se/pricing'
+        ogUrl='https://billigbokforing.se/priser'
       />
 
       <Box as='main'>

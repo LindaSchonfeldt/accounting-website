@@ -21,7 +21,7 @@ const Contact = () => {
         title='Kontakta oss - Snabb support och rådgivning | Billig Bokföring'
         description='Har du frågor om bokföring, momsrapport eller årsbokslut? Kontakta Billig Bokföring för professionell rådgivning. Vi svarar inom 24 timmar.'
         keywords='kontakta bokföringsbyrå, bokföring support, redovisning frågor, bokföringshjälp'
-        ogUrl='https://billigbokforing.se/contact'
+        ogUrl='https://billigbokforing.se/kontakt'
       />
 
       <Box as='main' minH='100vh'>

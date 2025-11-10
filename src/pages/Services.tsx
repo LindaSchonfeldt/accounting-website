@@ -18,6 +18,7 @@ import Dropdown from '../components/ui/Dropdown'
 import ServiceCard from '../components/ui/ServiceCard'
 import TabMenu from '../components/ui/TabMenu'
 import { services_full } from '../data/services_full'
+import PageWrapper from '../components/layout/PageWrapper'
 
 const Services = () => {
   const location = useLocation()
@@ -51,9 +52,9 @@ const Services = () => {
         title='Våra tjänster - Bokföring, Momsrapport & Årsbokslut'
         description='Professionella redovisningstjänster: Löpande bokföring, momsrapport, årsbokslut, deklaration och rådgivning.'
         keywords='bokföring, momsrapport, årsbokslut, deklaration, redovisning'
-        ogUrl='https://billigbokforing.se/services'
+        ogUrl='https://billigbokforing.se/tjanster'
       />
-      <Box as='main' minH='100vh' role='main'>
+      <PageWrapper>
         <IntroSection heading='Tjänster' introText={introText || ''} />
 
         {/* Services Section */}
@@ -184,33 +185,33 @@ const Services = () => {
             )}
           </Box>
         </Box>
-      </Box>
-      {/* CTA Section */}
-      <Box bg='blue.700' py={16} color='white'>
-        <Container maxW='container.md' textAlign='center'>
-          <VStack spacing={6}>
-            <Heading as='h2' size='xl' color='white'>
-              Redo att komma igång?
-            </Heading>
-            <Text fontSize='lg' color='white'>
-              Beställ dina tjänster idag och få professionell bokföring till
-              fast pris.
-            </Text>
-            <Button
-              as={RouterLink}
-              to='/bestall'
-              size='lg'
-              colorScheme='whiteAlpha'
-              variant='solid'
-              bg='white'
-              color='blue.600'
-              _hover={{ bg: 'gray.100' }}
-            >
-              Beställ nu
-            </Button>
-          </VStack>
-        </Container>
-      </Box>
+        {/* CTA Section */}
+        <Box bg='blue.700' py={16} color='white'>
+          <Container maxW='container.md' textAlign='center'>
+            <VStack spacing={6}>
+              <Heading as='h2' size='xl' color='white'>
+                Redo att komma igång?
+              </Heading>
+              <Text fontSize='lg' color='white'>
+                Beställ dina tjänster idag och få professionell bokföring till
+                fast pris.
+              </Text>
+              <Button
+                as={RouterLink}
+                to='/bestall'
+                size='lg'
+                colorScheme='whiteAlpha'
+                variant='solid'
+                bg='white'
+                color='blue.600'
+                _hover={{ bg: 'gray.100' }}
+              >
+                Beställ nu
+              </Button>
+            </VStack>
+          </Container>
+        </Box>
+      </PageWrapper>
     </>
   )
 }

@@ -8,6 +8,8 @@ const NotFound = () => {
       <Meta
         title='404 - Sidan hittades inte | Billig Bokföring'
         description='Sidan du letar efter finns inte.'
+        keywords='404, sida hittades inte, fel sida'
+        ogUrl='https://billigbokforing.se/404'
       />
       <Box textAlign='center' py={20}>
         <Heading size='2xl' mb={4}>
