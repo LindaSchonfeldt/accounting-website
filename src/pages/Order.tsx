@@ -7,16 +7,16 @@ const Order = () => {
   return (
     <>
       <Meta
-        title='Beställ | Billig Bokföring'
-        description='Kom igång med våra bokföringstjänster idag.'
-        keywords='bokföring, redovisning, småföretag, bokföringsbyrå, ekonomi'
+        title='Beställ tjänster - Billig Bokföring'
+        description='Beställ bokföring, momsrapport eller årsbokslut. Enkel beställningsprocess med transparenta priser.'
+        keywords='beställa bokföring, bokföring online, redovisningstjänster, momsrapport, årsbokslut'
         ogUrl='https://billigbokforing.se/order'
       />
-      <Box as='main' minH='100vh' role='main'>
-        {/* Hero Section - Full Width */}
+
+      <Box as='main' minH='100vh'>
         <Box
           bg='blue.50'
-          py={20}
+          py={{ base: 12, md: 16, lg: 20 }}
           width='100vw'
           position='relative'
           left='50%'
@@ -24,26 +24,42 @@ const Order = () => {
           marginLeft='-50vw'
           marginRight='-50vw'
         >
-          <Box maxW='xl' mx='auto'>
-            <VStack
-              spacing={4}
-              textAlign={{ base: 'left', md: 'center' }}
-              p={{ base: 4, md: 0 }}
-            >
-              <Heading as='h1' size={{ base: 'xl', md: '2xl' }}>
+          <Container maxW='container.xl' px={{ base: 4, md: 6 }}>
+            <VStack spacing={4} textAlign={{ base: 'left', md: 'center' }}>
+              <Heading
+                as='h1'
+                size={{ base: 'xl', lg: '2xl' }}
+                lineHeight='shorter'
+              >
                 Beställ bokföringstjänster
               </Heading>
-              <Text fontSize={{ base: 'lg', md: 'xl' }} color='gray.600' mt={4}>
+              <Text
+                fontSize={{ base: 'md', md: 'lg', lg: 'xl' }}
+                color='gray.600'
+                maxW='3xl'
+              >
                 Välj de tjänster som passar företaget. Ett kostnadsförslag
                 skickas inom 24 timmar. Ingen bindning gäller förrän förslaget
-                godkänns. Flera tjänster i samma beställning kan ge kombirabatt.
+                godkänns.
+              </Text>
+              <Text
+                fontSize={{ base: 'md', md: 'lg' }}
+                fontWeight='bold'
+                color='blue.600'
+              >
+                Vid beställning av flera tjänster ges rabatt.
               </Text>
             </VStack>
-          </Box>
+          </Container>
         </Box>
 
-        {/* Order Form Section */}
-        <OrderForm />
+        <Container
+          maxW='container.md'
+          py={{ base: 8, md: 12, lg: 16 }}
+          px={{ base: 4, md: 6 }}
+        >
+          <OrderForm />
+        </Container>
       </Box>
     </>
   )
