@@ -13,6 +13,7 @@ import { useEffect, useState } from 'react'
 import { Link as RouterLink, useLocation } from 'react-router-dom'
 
 import Meta from '../components/Meta'
+import IntroSection from '../components/sections/IntroSection'
 import Dropdown from '../components/ui/Dropdown'
 import ServiceCard from '../components/ui/ServiceCard'
 import TabMenu from '../components/ui/TabMenu'
@@ -53,28 +54,8 @@ const Services = () => {
         ogUrl='https://billigbokforing.se/services'
       />
       <Box as='main' minH='100vh' role='main'>
-        {/* Hero Section - Full Width */}
-        <Box
-          bg='blue.50'
-          py={20}
-          width='100vw'
-          position='relative'
-          left='50%'
-          right='50%'
-          marginLeft='-50vw'
-          marginRight='-50vw'
-        >
-          <Container maxW='container.xl'>
-            <VStack spacing={4} textAlign={{ base: 'left', md: 'center' }}>
-              <Heading as='h1' size='2xl'>
-                Tjänster
-              </Heading>
-              <Text color='gray.600' fontSize={{ base: 'lg', md: 'xl' }} mt={4}>
-                {introText}
-              </Text>
-            </VStack>
-          </Container>
-        </Box>
+        <IntroSection heading='Tjänster' introText={introText || ''} />
+
         {/* Services Section */}
         <Box
           maxW={{ base: '100%', md: 'container.md', lg: 'container.xl' }}

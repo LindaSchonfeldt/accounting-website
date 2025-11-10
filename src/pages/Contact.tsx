@@ -11,6 +11,7 @@ import {
 import { Mail, MapPin } from 'lucide-react'
 
 import Meta from '../components/Meta'
+import IntroSection from '../components/sections/IntroSection'
 import ContactForm from '../components/ui/ContactForm'
 
 const Contact = () => {
@@ -24,30 +25,12 @@ const Contact = () => {
       />
 
       <Box as='main' minH='100vh'>
-        {/* Hero Section - Full Width */}
-        <Box
-          bg='blue.50'
-          py={24}
-          width='100vw'
-          position='relative'
-          left='50%'
-          right='50%'
-          marginLeft='-50vw'
-          marginRight='-50vw'
-        >
-          <Container maxW='container.xl'>
-            <VStack spacing={4} textAlign={{ base: 'left', md: 'center' }}>
-              <Heading as='h1' size='2xl'>
-                Kontakta oss
-              </Heading>
-              <Text color='gray.600' fontSize={{ base: 'lg', md: 'xl' }} mt={4}>
-                Har du frågor om bokföring, priser eller våra tjänster? Vi
+        <IntroSection
+          heading='Kontakta oss'
+          introText=' Har du frågor om bokföring, priser eller våra tjänster? Vi
                 hjälper dig gärna! Fyll i formuläret så återkommer vi inom 24
-                timmar.
-              </Text>
-            </VStack>
-          </Container>
-        </Box>
+                timmar.'
+        />
 
         {/* Contact Info & Form Section */}
         <Container maxW='container.xl' py={16}>
@@ -121,7 +104,7 @@ const Contact = () => {
             {/* Contact Form */}
             <Box>
               <Heading as='h2' size='lg' mb={6}>
-                Skicka oss ett meddelande
+                Skicka ett meddelande
               </Heading>
               <ContactForm />
             </Box>
