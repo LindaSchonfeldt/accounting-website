@@ -8,6 +8,8 @@ const Integritetspolicy = () => {
       <Meta
         title='Integritetspolicy | Enkel Bokföring AB'
         description='Läs om hur vi hanterar dina personuppgifter enligt GDPR.'
+        keywords='integritetspolicy, GDPR, personuppgifter, dataskydd'
+        ogUrl='https://enkelbokforing.example/integritetspolicy'
       />
       <Box as='main' minH='100vh' role='main' py={8}>
         <Container maxW='container.md'>

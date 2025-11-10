@@ -71,18 +71,6 @@ const HeroSection = () => {
         >
           <Button
             as={RouterLink}
-            to='/'
-            colorScheme='blue'
-            size='lg'
-            px={8}
-            py={{ base: 4, md: 6 }}
-            fontSize='lg'
-            variant='outline'
-          >
-            Boka ett möte
-          </Button>
-          <Button
-            as={RouterLink}
             to='/bestall'
             colorScheme='blue'
             size='lg'

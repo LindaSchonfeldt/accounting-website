@@ -8,6 +8,8 @@ const Cookies = () => {
       <Meta
         title='Cookie-policy | Enkel Bokföring AB'
         description='Information om hur vi använder cookies på vår webbplats.'
+        keywords='cookie-policy, cookies, webbplatscookies, hantering av cookies'
+        ogUrl='https://enkelbokforing.example/cookies'
       />
       <Box as='main' minH='100vh' role='main' py={8}>
         <Container maxW='container.md'>

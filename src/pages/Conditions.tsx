@@ -9,6 +9,8 @@ const Conditions = () => {
       <Meta
         title='Användarvillkor | Enkel Bokföring AB'
         description='Läs våra användarvillkor för tjänsten.'
+        keywords='användarvillkor, villkor, tjänstevillkor'
+        ogUrl='https://enkelbokforing.example/villkor'
       />
       <Box as='main' minH='100vh' role='main' py={16}>
         <Container maxW='container.md'>

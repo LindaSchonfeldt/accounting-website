@@ -109,14 +109,14 @@ const Footer: React.FC = () => {
             <Heading as='h4' size='sm' mb={2} color='white'>
               Kom igång
             </Heading>
-            <ChakraLink
+            {/* <ChakraLink
               as={RouterLink}
               to='/boka-mote'
               fontSize='sm'
               _hover={{ color: 'blue.200' }}
             >
               Boka möte
-            </ChakraLink>
+            </ChakraLink> */}
             <ChakraLink
               as={RouterLink}
               to='/bestall'

@@ -14,7 +14,7 @@ const FAQ = () => {
         title='Vanliga frågor - Enkel Bokföring AB'
         description='Här hittar du svar på de vanligaste frågorna om våra tjänster, priser och processer.'
         keywords='vanliga frågor bokföring, FAQ bokföringsbyrå, bokföringstjänster frågor, priser bokföring'
-        ogUrl='https://enkelbokforing.example/faq'
+        ogUrl='https://enkelbokforing.example/vanliga-fragor'
       />
       <PageWrapper>
         <IntroSection
