@@ -31,6 +31,7 @@ const FAQ = () => {
           text='Tveka inte att kontakta oss för mer information eller hjälp.'
           buttonText='Kontakta oss'
           buttonLink='/kontakt'
+          bgColor='blue.700'
         />
       </PageWrapper>
     </>
