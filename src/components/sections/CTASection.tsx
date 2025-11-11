@@ -32,7 +32,7 @@ const CTASection: React.FC<CTASectionProps> = ({
         <Heading as='h2' size='xl' color='whiteAlpha.900' mb={1}>
           {heading}
         </Heading>
-        <Text fontSize='lg' color='whiteAlpha.900'>
+        <Text fontSize='lg' color='whiteAlpha.900' mb={2}>
           {text}
         </Text>
         <Button
