@@ -77,7 +77,7 @@ const ServicesSection = () => (
                 {service.title}
               </Heading>
               <Text color='gray.600' mb={4} flex='1' textAlign='center'>
-                {service.desc}
+                {service.description}
               </Text>
 
               <Button

@@ -54,7 +54,11 @@ const Services = () => {
         ogUrl='https://billigbokforing.se/tjanster'
       />
       <PageWrapper>
-        <IntroSection heading='Tjänster' introText={introText || ''} />
+        <IntroSection
+          heading='Tjänster'
+          introText={introText || ''}
+          highlightedText='Alla priser är exkl. moms.'
+        />
 
         {/* Services Section */}
         <PageWrapper>
