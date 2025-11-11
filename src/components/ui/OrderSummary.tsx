@@ -96,21 +96,6 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
     })
   }
 
-  const getPeriodText = (period: string) => {
-    switch (period) {
-      case 'månad':
-        return '/mån'
-      case 'år':
-        return '/år'
-      case 'engång':
-        return 'engångsavgift'
-      case 'tillfälle':
-        return '/tillfälle'
-      default:
-        return ''
-    }
-  }
-
   return (
     <Box
       borderWidth='1px'
@@ -125,43 +110,60 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
         Sammanfattning
       </Heading>
 
-      <VStack spacing={3} align='stretch'>
-        {items.map((item, index) => (
-          <Box key={index}>
-            <HStack justify='space-between' align='flex-start'>
-              <Text
-                fontSize='sm'
-                fontWeight='semibold'
-                fontFamily='body'
-                flex='1'
-              >
-                {item.service}
-                {item.hasDiscount && (
-                  <Badge ml={2} colorScheme='green' fontSize='xs'>
-                    -10%
-                  </Badge>
+      {/* Selected Services */}
+      <VStack spacing={4} align='stretch' width='100%' mb={4}>
+        {selectedServices.map((serviceTitle) => {
+          const service = services_full.find((s) => s.title === serviceTitle)
+          const planName = selectedPlans[serviceTitle]
+          const plan = service?.plans?.find((p) => p.name === planName)
+
+          return (
+            <Box key={serviceTitle} width='100%'>
+              <HStack justify='space-between' align='flex-start' width='100%'>
+                <VStack align='flex-start' spacing={1} flex={1}>
+                  <Text fontWeight='semibold' fontSize='md' textAlign='left'>
+                    {serviceTitle}
+                  </Text>
+                  {planName && (
+                    <Text fontSize='sm' color='gray.600' textAlign='left'>
+                      {planName}
+                    </Text>
+                  )}
+                  {plan && 'revenue' in plan && plan.revenue && (
+                    <Text fontSize='xs' color='gray.500' textAlign='left'>
+                      {plan.revenue}
+                    </Text>
+                  )}
+                </VStack>
+
+                {plan && 'price' in plan && plan.price && (
+                  <Text
+                    fontWeight='bold'
+                    fontSize='md'
+                    whiteSpace='nowrap'
+                    ml={2}
+                  >
+                    {plan.price.toLocaleString('sv-SE')} kr
+                    {plan.period === 'månad' && ' /mån'}
+                    {plan.period === 'år' && ' /år'}
+                    {plan.period === 'tillfälle' && ' /tillfälle'}
+                  </Text>
                 )}
-              </Text>
-            </HStack>
-            <HStack justify='space-between' mt={1} align='flex-start'>
-              <Text fontSize='xs' color='gray.600' fontFamily='body' flex='1'>
-                {item.plan}
-              </Text>
-              <Text
-                fontSize='sm'
-                fontWeight='medium'
-                fontFamily='body'
-                textAlign='right'
-                whiteSpace='nowrap'
-              >
-                {formatPrice(item.price)} kr {getPeriodText(item.period)}
-              </Text>
-            </HStack>
-          </Box>
-        ))}
+              </HStack>
 
-        <Divider borderColor='blue.300' my={2} />
+              {plan && 'discount' in plan && plan.discount && (
+                <Badge colorScheme='green' mt={1}>
+                  {plan.discount}
+                </Badge>
+              )}
+            </Box>
+          )
+        })}
+      </VStack>
 
+      <Divider borderColor='blue.300' my={4} />
+
+      <VStack spacing={2} align='stretch'>
         <HStack justify='space-between'>
           <Text fontSize='sm' fontFamily='body'>
             Delsumma:
@@ -222,48 +224,48 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
             {formatPrice(tax)} kr
           </Text>
         </HStack>
+      </VStack>
 
-        <Divider borderColor='blue.300' my={2} />
+      <Divider borderColor='blue.300' my={4} />
 
-        <HStack justify='space-between'>
-          <Text fontSize='lg' fontWeight='bold' fontFamily='body'>
-            Totalt:
-          </Text>
-          <Text
-            fontSize='lg'
-            fontWeight='bold'
-            color='blue.600'
-            fontFamily='body'
-            textAlign='right'
-          >
-            {formatPrice(total)} kr
-          </Text>
-        </HStack>
+      <HStack justify='space-between' mb={2}>
+        <Text fontSize='lg' fontWeight='bold' fontFamily='body'>
+          Totalt:
+        </Text>
+        <Text
+          fontSize='lg'
+          fontWeight='bold'
+          color='blue.600'
+          fontFamily='body'
+          textAlign='right'
+        >
+          {formatPrice(total)} kr
+        </Text>
+      </HStack>
 
-        {discountAmount > 0 && (
-          <Text
-            fontSize='xs'
-            color='green.600'
-            fontWeight='semibold'
-            mt={2}
-            fontFamily='body'
-            textAlign='center'
-          >
-            Du sparar {formatPrice(discountAmount + discountAmount * TAX_RATE)}{' '}
-            kr inkl. moms!
-          </Text>
-        )}
-
+      {discountAmount > 0 && (
         <Text
           fontSize='xs'
-          color='gray.600'
+          color='green.600'
+          fontWeight='semibold'
           mt={2}
           fontFamily='body'
           textAlign='center'
         >
-          * Detta är en uppskattning. Exakt pris bekräftas i offert.
+          Du sparar {formatPrice(discountAmount + discountAmount * TAX_RATE)} kr
+          inkl. moms!
         </Text>
-      </VStack>
+      )}
+
+      <Text
+        fontSize='xs'
+        color='gray.600'
+        mt={2}
+        fontFamily='body'
+        textAlign='center'
+      >
+        * Detta är en uppskattning. Exakt pris bekräftas i offert.
+      </Text>
     </Box>
   )
 }
