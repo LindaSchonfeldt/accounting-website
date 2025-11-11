@@ -1,18 +1,18 @@
-import { Heading, Text, Image, Box, VStack, HStack } from '@chakra-ui/react'
 import { CheckCircleIcon } from '@chakra-ui/icons'
+import { Box, Heading, HStack, Image, Text, VStack } from '@chakra-ui/react'
 
-import Meta from '../components/Meta'
-import PageWrapper from '../components/layout/PageWrapper'
-import PageSection from '../components/layout/PageSection'
-import richardImgMobile from '../assets/richard-mobile-240.webp'
 import richardImgDesktop from '../assets/richard-desktop-424.webp'
+import richardImgMobile from '../assets/richard-mobile-240.webp'
+import PageSection from '../components/layout/PageSection'
+import PageWrapper from '../components/layout/PageWrapper'
+import Meta from '../components/Meta'
 
 const About: React.FC = () => {
   return (
     <>
       <Meta
         title='Om oss | Billig Bokföring'
-        description='Lär känna Richard Heidenberg och Billig Bokföring - din partner för enkel och prisvärd bokföring.'
+        description='Lär känna Richard Heijdenberg och Billig Bokföring - din partner för enkel och prisvärd bokföring.'
         keywords='om oss, billig bokföring, bokföringstjänster, redovisningsbyrå'
         ogUrl='https://billigbokforing.se/om-oss'
       />
@@ -42,7 +42,7 @@ const About: React.FC = () => {
                   src={richardImgDesktop}
                   srcSet={`${richardImgMobile} 240w, ${richardImgDesktop} 240w`}
                   sizes='(max-width: 768px) 240px, 240px'
-                  alt='Richard Heidenberg'
+                  alt='Richard Heijdenberg'
                   borderRadius='lg'
                   boxShadow='lg'
                   width='240px'
@@ -61,7 +61,7 @@ const About: React.FC = () => {
               >
                 <Box textAlign={{ base: 'center', md: 'left' }}>
                   <Heading as='h2' size='lg' mb={2} color='blue.800'>
-                    Richard Heidenberg
+                    Richard Heijdenberg
                   </Heading>
                   <Text fontSize='md' color='blue.600' fontWeight='600' mb={4}>
                     Auktoriserad Redovisningskonsult
