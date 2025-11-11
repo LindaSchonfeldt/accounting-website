@@ -1,4 +1,4 @@
-import { Box, Container, Heading, Text, Spinner } from '@chakra-ui/react'
+import { Box, Heading, Text, Spinner } from '@chakra-ui/react'
 import { lazy, Suspense } from 'react'
 
 // Lazy load the ContactForm component
@@ -6,8 +6,8 @@ const ContactForm = lazy(() => import('../ui/ContactForm'))
 
 const ContactSection = () => {
   return (
-    <Box as='section' id='contact' py={16} bg='white'>
-      <Container maxW='container.md' textAlign='center'>
+    <Box as='section' py={16} bg='white'>
+      <Box textAlign='center'>
         <Heading as='h2' size='xl' mb={4}>
           Kontakta oss
         </Heading>
@@ -24,7 +24,7 @@ const ContactSection = () => {
         >
           <ContactForm showContactReason={false} />
         </Suspense>
-      </Container>
+      </Box>
     </Box>
   )
 }
