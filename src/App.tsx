@@ -9,6 +9,7 @@ import Nav from './components/layout/Nav'
 import ScrollToTop from './components/ui/ScrollToTop'
 import theme from './theme'
 
+// Lazy load pages
 const Home = lazy(() => import('./pages/Home'))
 const About = lazy(() => import('./pages/About'))
 const Contact = lazy(() => import('./pages/Contact'))
@@ -20,6 +21,20 @@ const NotFound = lazy(() => import('./pages/NotFound'))
 const IntegrityPolicy = lazy(() => import('./pages/IntegrityPolicy'))
 const Conditions = lazy(() => import('./pages/Conditions'))
 const Cookies = lazy(() => import('./pages/Cookies'))
+
+// Extracted loading component for better performance
+const LoadingFallback = () => (
+  <Box
+    display='flex'
+    alignItems='center'
+    justifyContent='center'
+    minH='80vh'
+    role='status'
+    aria-label='Laddar innehåll'
+  >
+    <Spinner size='xl' color='blue.500' thickness='4px' speed='0.65s' />
+  </Box>
+)
 
 export const App = () => {
   return (
@@ -34,19 +49,8 @@ export const App = () => {
           <ScrollToTop />
           <Box display='flex' flexDirection='column' minHeight='100vh'>
             <Nav />
-            <Box flex='1'>
-              <Suspense
-                fallback={
-                  <Box
-                    display='flex'
-                    alignItems='center'
-                    justifyContent='center'
-                    minH='80vh'
-                  >
-                    <Spinner size='xl' color='blue.500' thickness='4px' />
-                  </Box>
-                }
-              >
+            <Box flex='1' as='main'>
+              <Suspense fallback={<LoadingFallback />}>
                 <Routes>
                   <Route path='/' element={<Home />} />
                   <Route path='/tjanster' element={<Services />} />
