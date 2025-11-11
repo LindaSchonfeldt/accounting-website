@@ -13,6 +13,8 @@ import { Mail, MapPin } from 'lucide-react'
 import Meta from '../components/Meta'
 import IntroSection from '../components/sections/IntroSection'
 import ContactForm from '../components/ui/ContactForm'
+import PageSection from '../components/layout/PageSection'
+import PageWrapper from '../components/layout/PageWrapper'
 
 const Contact = () => {
   return (
@@ -24,7 +26,7 @@ const Contact = () => {
         ogUrl='https://billigbokforing.se/kontakt'
       />
 
-      <Box as='main' minH='100vh'>
+      <PageWrapper>
         <IntroSection
           heading='Kontakta oss'
           introText=' Har du frågor om bokföring, priser eller våra tjänster? Vi
@@ -32,8 +34,8 @@ const Contact = () => {
                 timmar.'
         />
 
-        {/* Contact Info & Form Section */}
-        <Container maxW='container.xl' py={16}>
+        <PageSection>
+          {/* Contact Info & Form Section */}
           <Box
             display='grid'
             gridTemplateColumns={{ base: '1fr', lg: '1fr 2fr' }}
@@ -109,7 +111,7 @@ const Contact = () => {
               <ContactForm />
             </Box>
           </Box>
-        </Container>
+        </PageSection>
 
         {/* FAQ Suggestion - Full Width */}
         <Box
@@ -140,7 +142,7 @@ const Contact = () => {
             </Link>
           </Container>
         </Box>
-      </Box>
+      </PageWrapper>
     </>
   )
 }
