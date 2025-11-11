@@ -15,39 +15,32 @@ const theme = extendTheme({
     global: {
       body: {
         bg: 'white',
-        h1: {
-          color: 'blue.800',
-          fontWeight: 800 // or 'bold'
-        },
-        h2: {
-          color: 'blue.800',
-          fontWeight: 600 // or 'semibold'
-        },
-        h3: {
-          color: 'blue.800',
-          fontWeight: 500 // or 'medium'
-        },
-        h4: {
-          color: 'blue.800',
-          fontWeight: 400
-        },
-        h5: {
-          color: 'blue.800',
-          fontWeight: 400
-        },
-        h6: {
-          color: 'blue.800',
-          fontWeight: 400
-        },
-        p: {
-          color: 'gray.600'
-        },
-        a: {
-          color: 'blue.500'
-        }
+        color: 'gray.700'
       },
       html: {
         scrollBehavior: 'smooth'
+      },
+      // Use CSS selectors instead of nested objects
+      'h1, h2, h3, h4, h5, h6': {
+        color: 'blue.800'
+      },
+      h1: {
+        fontWeight: 800
+      },
+      h2: {
+        fontWeight: 600
+      },
+      'h3, h4, h5, h6': {
+        fontWeight: 500
+      },
+      p: {
+        color: 'gray.600'
+      },
+      a: {
+        color: 'blue.500',
+        _hover: {
+          textDecoration: 'underline'
+        }
       }
     }
   },
