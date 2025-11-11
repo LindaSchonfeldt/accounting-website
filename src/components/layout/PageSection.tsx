@@ -15,7 +15,12 @@ const PageSection: React.FC<PageSectionProps> = ({
   px = { base: 4, md: 6 }
 }) => {
   return (
-    <Container maxW={maxW} py={py} px={px}>
+    <Container
+      maxW={maxW}
+      py={py}
+      px={px}
+      textAlign={{ base: 'left', md: 'center' }}
+    >
       {children}
     </Container>
   )

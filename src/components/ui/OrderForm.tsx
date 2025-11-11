@@ -35,13 +35,6 @@ interface FormInputs {
 }
 
 const OrderForm: React.FC = () => {
-  console.log('🔍 Environment Variables Test:', {
-    SERVICE_ID: import.meta.env.VITE_EMAILJS_SERVICE_ID,
-    ORDER_TEMPLATE: import.meta.env.VITE_EMAILJS_ORDER_TEMPLATE_ID,
-    PUBLIC_KEY: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
-    ALL_ENV: import.meta.env
-  })
-
   const {
     register,
     handleSubmit,
@@ -177,23 +170,13 @@ const OrderForm: React.FC = () => {
       const templateId = import.meta.env.VITE_EMAILJS_ORDER_TEMPLATE_ID
       const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 
-      console.log('EmailJS Config Check:', {
-        serviceId: serviceId ? 'Loaded ✓' : 'MISSING ✗',
-        templateId: templateId ? 'Loaded ✓' : 'MISSING ✗',
-        publicKey: publicKey ? 'Loaded ✓' : 'MISSING ✗'
-      })
-
       if (!serviceId || !templateId || !publicKey) {
         throw new Error(
           'EmailJS configuration is missing. Check your .env file.'
         )
       }
 
-      console.log('Sending email with params:', templateParams)
-
       const response = await emailjs.send(serviceId, templateId, templateParams)
-
-      console.log('Email sent successfully:', response)
 
       toast({
         title: 'Beställning skickad!',

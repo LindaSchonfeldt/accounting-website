@@ -1,5 +1,19 @@
 import { Tooltip as ChakraTooltip, Portal } from '@chakra-ui/react'
 import * as React from 'react'
+import PropTypes from 'prop-types'
+
+Tooltip.propTypes = {
+  showArrow: PropTypes.bool,
+  children: PropTypes.node,
+  disabled: PropTypes.bool,
+  portalled: PropTypes.bool,
+  content: PropTypes.node,
+  contentProps: PropTypes.object,
+  portalRef: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.any })
+  ])
+}
 
 export const Tooltip = React.forwardRef(function Tooltip(props, ref) {
   const {
