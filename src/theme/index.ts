@@ -14,7 +14,7 @@ const theme = extendTheme({
   styles: {
     global: {
       body: {
-        bg: 'gray.50',
+        bg: 'white',
         h1: {
           color: 'blue.800',
           fontWeight: 800 // or 'bold'

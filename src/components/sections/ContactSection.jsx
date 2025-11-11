@@ -6,7 +6,7 @@ const ContactForm = lazy(() => import('../ui/ContactForm'))
 
 const ContactSection = () => {
   return (
-    <Box as='section' py={16} bg='white'>
+    <Box as='section' py={16}>
       <Box textAlign='center'>
         <Heading as='h2' size='xl' mb={4}>
           Kontakta oss
