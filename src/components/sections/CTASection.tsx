@@ -29,16 +29,10 @@ const CTASection: React.FC<CTASectionProps> = ({
   >
     <Container maxW='container.md' textAlign='center'>
       <VStack spacing={6}>
-        <Heading
-          as='h2'
-          size='xl'
-          color='whiteAlpha.900'
-          textAlign='center'
-          mb={2}
-        >
+        <Heading as='h2' size='xl' color='whiteAlpha.900' mb={1}>
           {heading}
         </Heading>
-        <Text fontSize='lg' color='whiteAlpha.900' textAlign='center'>
+        <Text fontSize='lg' color='whiteAlpha.900'>
           {text}
         </Text>
         <Button
