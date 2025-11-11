@@ -80,7 +80,7 @@ const Footer: React.FC = () => {
               fontSize='sm'
               _hover={{ color: 'blue.200' }}
             >
-              Om mig
+              Om oss
             </ChakraLink>
             <ChakraLink
               as={RouterLink}
