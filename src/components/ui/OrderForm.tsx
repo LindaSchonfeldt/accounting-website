@@ -184,16 +184,14 @@ const OrderForm: React.FC = () => {
       })
 
       if (!serviceId || !templateId || !publicKey) {
-        throw new Error('EmailJS configuration is missing. Check your .env file.')
+        throw new Error(
+          'EmailJS configuration is missing. Check your .env file.'
+        )
       }
 
       console.log('Sending email with params:', templateParams)
 
-      const response = await emailjs.send(
-        serviceId,
-        templateId,
-        templateParams
-      )
+      const response = await emailjs.send(serviceId, templateId, templateParams)
 
       console.log('Email sent successfully:', response)
 
@@ -217,10 +215,13 @@ const OrderForm: React.FC = () => {
     } catch (error: any) {
       console.error('Full EmailJS error:', error)
       console.error('Error text:', error.text || error.message)
-      
+
       toast({
         title: 'Något gick fel',
-        description: error.text || error.message || 'Kunde inte skicka beställningen. Försök igen.',
+        description:
+          error.text ||
+          error.message ||
+          'Kunde inte skicka beställningen. Försök igen.',
         status: 'error',
         duration: 5000,
         isClosable: true
