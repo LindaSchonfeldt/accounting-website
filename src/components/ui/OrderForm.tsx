@@ -20,7 +20,6 @@ import {
 import { X } from 'lucide-react'
 import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
-import emailjs from '@emailjs/browser'
 
 import { services_full } from '../../data/services_full'
 import OrderSummary from './OrderSummary'
@@ -53,11 +52,6 @@ const OrderForm: React.FC = () => {
   }>({})
 
   const toast = useToast()
-
-  // Initialize EmailJS
-  useEffect(() => {
-    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY)
-  }, [])
 
   const handleServiceChange = (values: string[]) => {
     setSelectedServices(values)
@@ -165,18 +159,17 @@ const OrderForm: React.FC = () => {
     }
 
     try {
-      // Check if environment variables are loaded
-      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
-      const templateId = import.meta.env.VITE_EMAILJS_ORDER_TEMPLATE_ID
-      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      const response = await fetch('/.netlify/functions/send-order', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ templateParams })
+      })
 
-      if (!serviceId || !templateId || !publicKey) {
-        throw new Error(
-          'EmailJS configuration is missing. Check your .env file.'
-        )
+      if (!response.ok) {
+        throw new Error('Failed to send email')
       }
-
-      const response = await emailjs.send(serviceId, templateId, templateParams)
 
       toast({
         title: 'Beställning skickad!',
@@ -195,16 +188,11 @@ const OrderForm: React.FC = () => {
       setValue('email', '')
       setValue('phone', '')
       setValue('message', '')
-    } catch (error: any) {
-      console.error('Full EmailJS error:', error)
-      console.error('Error text:', error.text || error.message)
-
+    } catch (error) {
+      console.error('Error:', error)
       toast({
         title: 'Något gick fel',
-        description:
-          error.text ||
-          error.message ||
-          'Kunde inte skicka beställningen. Försök igen.',
+        description: 'Kunde inte skicka beställningen. Försök igen.',
         status: 'error',
         duration: 5000,
         isClosable: true
