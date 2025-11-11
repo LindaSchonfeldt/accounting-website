@@ -4,8 +4,8 @@ import { CheckCircleIcon } from '@chakra-ui/icons'
 import Meta from '../components/Meta'
 import PageWrapper from '../components/layout/PageWrapper'
 import PageSection from '../components/layout/PageSection'
-import richardImgMobile from '../assets/richard-mobile.webp'
-import richardImgDesktop from '../assets/richard-desktop.webp'
+import richardImgMobile from '../assets/richard-mobile-240.webp'
+import richardImgDesktop from '../assets/richard-desktop-424.webp'
 
 const About: React.FC = () => {
   return (
@@ -39,24 +39,16 @@ const About: React.FC = () => {
                 minW={{ base: '100%', md: '200px' }}
               >
                 <Image
-                  src={richardImgMobile}
-                  alt='Richard Heidenberg'
-                  borderRadius='lg'
-                  boxShadow='lg'
-                  maxW='240px'
-                  w='100%'
-                  h='auto'
-                  display={{ base: 'block', md: 'none' }}
-                />
-                <Image
                   src={richardImgDesktop}
+                  srcSet={`${richardImgMobile} 240w, ${richardImgDesktop} 240w`}
+                  sizes='(max-width: 768px) 240px, 240px'
                   alt='Richard Heidenberg'
                   borderRadius='lg'
                   boxShadow='lg'
-                  maxW='240px'
-                  w='100%'
-                  h='auto'
-                  display={{ base: 'none', md: 'block' }}
+                  width='240px'
+                  height={{ base: '320px', md: '424px' }}
+                  objectFit='cover'
+                  loading='lazy'
                 />
               </VStack>
 
