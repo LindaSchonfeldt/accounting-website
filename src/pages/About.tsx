@@ -1,11 +1,11 @@
-import { Heading, Text, Image, Box, VStack, HStack } from '@chakra-ui/react'
 import { CheckCircleIcon } from '@chakra-ui/icons'
+import { Box, Heading, HStack, Image, Text, VStack } from '@chakra-ui/react'
 
-import Meta from '../components/Meta'
-import PageWrapper from '../components/layout/PageWrapper'
-import PageSection from '../components/layout/PageSection'
-import profileImgMobile from '../assets/profile-mobile-240.webp'
 import profileImgDesktop from '../assets/profile-desktop-424.webp'
+import profileImgMobile from '../assets/profile-mobile-240.webp'
+import PageSection from '../components/layout/PageSection'
+import PageWrapper from '../components/layout/PageWrapper'
+import Meta from '../components/Meta'
 
 const About: React.FC = () => {
   return (
