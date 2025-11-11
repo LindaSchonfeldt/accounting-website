@@ -11,9 +11,11 @@ import {
   VStack
 } from '@chakra-ui/react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import emailjs from '@emailjs/browser'
+import { useToast } from '@chakra-ui/react'
 
 interface ContactFormProps {
-  showContactReason?: boolean // Add optional prop
+  showContactReason?: boolean
 }
 
 enum ContactReason {
@@ -37,11 +39,51 @@ const ContactForm: React.FC<ContactFormProps> = ({
   const {
     register,
     handleSubmit,
-    formState: { errors }
+    reset,
+    formState: { errors, isSubmitting }
   } = useForm<FormInputs>()
 
-  const onSubmit: SubmitHandler<FormInputs> = (data: FormInputs) =>
-    console.log(data)
+  const toast = useToast()
+
+  const onSubmit: SubmitHandler<FormInputs> = async (data: FormInputs) => {
+    const templateParams = {
+      from_name: data.name,
+      from_email: data.email,
+      phone: data.phone || 'Ej angivet',
+      contact_reason: data.contactReason || 'Ej vald',
+      message: data.message,
+      to_email: 'info@billigbokforing.se'
+    }
+
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_CONTACT_TEMPLATE_ID,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+
+      toast({
+        title: 'Meddelande skickat!',
+        description: 'Vi återkommer så snart som möjligt.',
+        status: 'success',
+        duration: 5000,
+        isClosable: true
+      })
+
+      // Reset form
+      reset()
+    } catch (error) {
+      console.error('EmailJS error:', error)
+      toast({
+        title: 'Något gick fel',
+        description: 'Kunde inte skicka meddelandet. Försök igen.',
+        status: 'error',
+        duration: 5000,
+        isClosable: true
+      })
+    }
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -73,7 +115,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
         <FormControl isInvalid={!!errors.name} mb={4}>
           <FormLabel>Namn</FormLabel>
           <Input
-            placeholder='Namn'
+            placeholder='Ditt namn'
             {...register('name', { required: 'Namn är obligatoriskt' })}
           />
           <FormErrorMessage>
@@ -84,8 +126,15 @@ const ContactForm: React.FC<ContactFormProps> = ({
         <FormControl isInvalid={!!errors.email} mb={4}>
           <FormLabel>E-post</FormLabel>
           <Input
-            placeholder='E-post'
-            {...register('email', { required: 'E-post är obligatoriskt' })}
+            type='email'
+            placeholder='Din e-post'
+            {...register('email', {
+              required: 'E-post är obligatoriskt',
+              pattern: {
+                value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                message: 'Ogiltig e-postadress'
+              }
+            })}
           />
           <FormErrorMessage>
             {errors.email && errors.email.message}
@@ -99,13 +148,15 @@ const ContactForm: React.FC<ContactFormProps> = ({
               (frivilligt)
             </Text>
           </FormLabel>
-          <Input placeholder='Telefonnummer' {...register('phone')} />
+          <Input placeholder='Ditt telefonnummer' {...register('phone')} />
         </FormControl>
 
         <FormControl isInvalid={!!errors.message} mb={4}>
           <FormLabel>Meddelande</FormLabel>
           <Textarea
-            placeholder='Meddelande'
+            placeholder='Ditt meddelande'
+            minH='120px'
+            resize='vertical'
             {...register('message', {
               required: 'Meddelande är obligatoriskt'
             })}
@@ -115,7 +166,14 @@ const ContactForm: React.FC<ContactFormProps> = ({
           </FormErrorMessage>
         </FormControl>
 
-        <Button type='submit' colorScheme='blue' size='lg' w='full'>
+        <Button
+          type='submit'
+          colorScheme='blue'
+          size='lg'
+          w='full'
+          isLoading={isSubmitting}
+          loadingText='Skickar...'
+        >
           Skicka
         </Button>
       </VStack>

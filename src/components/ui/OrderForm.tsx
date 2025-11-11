@@ -20,6 +20,7 @@ import {
 import { X } from 'lucide-react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import emailjs from '@emailjs/browser'
 
 import { services_full } from '../../data/services_full'
 import OrderSummary from './OrderSummary'
@@ -107,18 +108,93 @@ const OrderForm: React.FC = () => {
       return
     }
 
-    console.log('Form data:', {
-      ...data,
-      servicesWithPlans
-    })
+    // Calculate total price
+    let totalPrice = 0
+    const priceBreakdown: string[] = []
 
-    toast({
-      title: 'Beställning skickad!',
-      description: 'Vi återkommer inom 24 timmar.',
-      status: 'success',
-      duration: 5000,
-      isClosable: true
-    })
+    // Format services with plans and prices for email
+    const servicesText = servicesWithPlans
+      .map((item) => {
+        if (!item) return ''
+
+        const service = services_full.find((s) => s.title === item.service)
+        if (!service) return item.service
+
+        if (item.plan) {
+          const plan = service.plans?.find((p) => p.name === item.plan)
+          if (plan && 'price' in plan && plan.price) {
+            totalPrice += plan.price
+            const periodText =
+              plan.period === 'månad'
+                ? '/mån'
+                : plan.period === 'år'
+                ? '/år'
+                : plan.period === 'tillfälle'
+                ? '/tillfälle'
+                : ' engångsavgift'
+
+            return `${item.service} - ${item.plan} (${plan.price.toLocaleString(
+              'sv-SE'
+            )} kr${periodText})`
+          }
+          return `${item.service} - ${item.plan}`
+        }
+        return item.service
+      })
+      .join('\n')
+
+    // Calculate VAT (25%)
+    const vatAmount = totalPrice * 0.25
+    const totalWithVat = totalPrice + vatAmount
+
+    // EmailJS configuration
+    const templateParams = {
+      from_name: data.name,
+      from_email: data.email,
+      phone: data.phone || 'Ej angivet',
+      message: data.message || 'Inget meddelande',
+      services: servicesText,
+      total_excl_vat: totalPrice.toLocaleString('sv-SE'),
+      vat_amount: vatAmount.toLocaleString('sv-SE'),
+      total_incl_vat: totalWithVat.toLocaleString('sv-SE'),
+      to_email: 'info@billigbokforing.se'
+    }
+
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+
+      toast({
+        title: 'Beställning skickad!',
+        description: 'Vi återkommer inom 24 timmar.',
+        status: 'success',
+        duration: 5000,
+        isClosable: true
+      })
+
+      // Reset form
+      setSelectedServices([])
+      setSelectedPlans({})
+      setValue('services', [])
+      setValue('selectedPlans', {})
+      setValue('name', '')
+      setValue('email', '')
+      setValue('phone', '')
+      setValue('message', '')
+    } catch (error) {
+      console.error('EmailJS error:', error)
+      toast({
+        title: 'Något gick fel',
+        description: 'Kunde inte skicka beställningen. Försök igen.',
+        status: 'error',
+        duration: 5000,
+        isClosable: true
+      })
+    }
   }
 
   return (
