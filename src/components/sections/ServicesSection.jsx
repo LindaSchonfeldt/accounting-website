@@ -33,7 +33,7 @@ const iconMap = {
 
 const ServicesSection = () => (
   <Box as='section' id='services' py={16} bg='white'>
-    <Container maxW='container.lg'>
+    <Container maxW='100vw' px={0}>
       <Heading as='h2' size='xl' textAlign='center' mb={8}>
         Våra tjänster
       </Heading>
@@ -48,7 +48,7 @@ const ServicesSection = () => (
         Vi erbjuder flexibla paket för att passa just ditt företags behov och
         budget.
       </Text>
-      <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6}>
+      <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6} px={0}>
         {services.map((service, index) => {
           const IconComponent = iconMap[service.icon]
 
@@ -60,7 +60,7 @@ const ServicesSection = () => (
               exit={fadeInUp.exit}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ ...transitions.smooth, delay: index * 0.1 }}
-              p={6}
+              p={{ base: 4, md: 6 }}
               borderWidth='1px'
               borderRadius='lg'
               boxShadow='md'

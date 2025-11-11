@@ -1,10 +1,13 @@
 import { Box } from '@chakra-ui/react'
+import PageSection from '../components/layout/PageSection'
 
 import Meta from '../components/Meta'
 import ContactSection from '../components/sections/ContactSection'
 import FAQSection from '../components/sections/FAQSection'
 import HeroSection from '../components/sections/HeroSection'
 import ServicesSection from '../components/sections/ServicesSection'
+import CTASection from '../components/sections/CTASection'
+import PageWrapper from '../components/layout/PageWrapper'
 
 const Home = () => {
   return (
@@ -15,25 +18,26 @@ const Home = () => {
         keywords='bokföring, redovisning, småföretag, bokföringsbyrå, ekonomi'
         ogUrl='https://billigbokforing.se/'
       />
-      <Box
-        as='main'
-        minH='100vh'
-        bgGradient='linear(to-br, blue.50, gray.50)'
-        role='main'
-      >
-        <Box id='hero'>
+      <PageWrapper>
+        <Box>
           <HeroSection />
         </Box>
-        <Box id='tjanster'>
+        <PageSection>
           <ServicesSection />
-        </Box>
-        <Box id='vanligafragor'>
-          <FAQSection />
-        </Box>
-        <Box id='kontakt'>
+        </PageSection>
+        <FAQSection />
+
+        <PageSection>
           <ContactSection />
-        </Box>
-      </Box>
+        </PageSection>
+        <CTASection
+          heading='Redo att komma igång?'
+          text='Beställ dina tjänster idag och få professionell bokföring till fast pris.'
+          buttonText='Beställ nu'
+          buttonLink='/order'
+          bgColor='blue.600'
+        />
+      </PageWrapper>
     </>
   )
 }
