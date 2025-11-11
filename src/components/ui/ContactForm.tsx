@@ -18,8 +18,8 @@ interface ContactFormProps {
 
 enum ContactReason {
   QUESTION = 'Fråga',
-  CONTACT = 'Kontakt',
   ORDER = 'Beställning',
+  SUPPORT = 'Support',
   OTHER = 'Annat'
 }
 
