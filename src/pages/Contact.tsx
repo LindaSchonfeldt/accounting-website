@@ -56,7 +56,7 @@ const Contact = () => {
               {/* Email */}
               <HStack align='flex-start' spacing={4}>
                 <Icon as={Mail} boxSize={6} color='blue.600' mt={1} />
-                <Box>
+                <Box textAlign='left'>
                   <Text fontWeight='bold' mb={1}>
                     E-post
                   </Text>
@@ -73,7 +73,7 @@ const Contact = () => {
               {/* Business Hours */}
               <HStack align='flex-start' spacing={4}>
                 <Icon as={MapPin} boxSize={6} color='blue.600' mt={1} />
-                <Box>
+                <Box textAlign='left'>
                   <Text fontWeight='bold' mb={1}>
                     Öppettider
                   </Text>
