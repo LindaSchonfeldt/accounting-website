@@ -13,6 +13,7 @@ import {
 import { SubmitHandler, useForm } from 'react-hook-form'
 import emailjs from '@emailjs/browser'
 import { useToast } from '@chakra-ui/react'
+import { useEffect } from 'react'
 
 interface ContactFormProps {
   showContactReason?: boolean
@@ -45,23 +46,30 @@ const ContactForm: React.FC<ContactFormProps> = ({
 
   const toast = useToast()
 
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY)
+  }, [])
+
   const onSubmit: SubmitHandler<FormInputs> = async (data: FormInputs) => {
     const templateParams = {
       from_name: data.name,
       from_email: data.email,
       phone: data.phone || 'Ej angivet',
       contact_reason: data.contactReason || 'Ej vald',
-      message: data.message,
-      to_email: 'info@billigbokforing.se'
+      message: data.message
     }
 
     try {
-      await emailjs.send(
+      console.log('Sending contact email with params:', templateParams)
+
+      const response = await emailjs.send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_CONTACT_TEMPLATE_ID,
-        templateParams,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+        templateParams
       )
+
+      console.log('Email sent successfully:', response)
 
       toast({
         title: 'Meddelande skickat!',
@@ -74,7 +82,7 @@ const ContactForm: React.FC<ContactFormProps> = ({
       // Reset form
       reset()
     } catch (error) {
-      console.error('EmailJS error:', error)
+      console.error('Full EmailJS error:', error)
       toast({
         title: 'Något gick fel',
         description: 'Kunde inte skicka meddelandet. Försök igen.',
