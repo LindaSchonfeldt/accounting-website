@@ -1,9 +1,5 @@
 [] Vanliga frågor-sektion
-[] Setup EmailJS:
-Go to emailjs.com
-Create account (free tier: 200 emails/month)
-Create email service (Gmail, Outlook, etc.)
-Create email template with variables
+[] Setup EmailJS
 
 Ny beställning från {{from_name}}
 
