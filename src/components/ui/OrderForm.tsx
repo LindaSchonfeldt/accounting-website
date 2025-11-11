@@ -12,6 +12,7 @@ import {
   RadioGroup,
   Stack,
   Text,
+  Textarea, // ← Add this
   useToast,
   VStack
 } from '@chakra-ui/react'
@@ -124,7 +125,7 @@ const OrderForm: React.FC = () => {
         <FormControl isInvalid={!!errors.services}>
           <FormLabel
             fontFamily='heading'
-            fontSize='lg'
+            fontSize='xl'
             fontWeight='bold'
             textAlign='left'
             color='blue.800'
@@ -221,6 +222,9 @@ const OrderForm: React.FC = () => {
                                         {plan.period === 'månad' && '/mån'}
                                         {plan.period === 'engång' &&
                                           ' engångsavgift'}
+                                        {plan.period === 'år' && '/år'}
+                                        {plan.period === 'tillfälle' &&
+                                          '/tillfälle'}
                                         )
                                       </Text>
                                     )}
@@ -245,7 +249,17 @@ const OrderForm: React.FC = () => {
                               size='sm'
                               variant='ghost'
                               colorScheme='red'
-                              onClick={() => handleClearPlan(service.title)}
+                              onClick={() => {
+                                // Remove the service from selected services
+                                const newServices = selectedServices.filter(
+                                  (s) => s !== service.title
+                                )
+                                setSelectedServices(newServices)
+                                setValue('services', newServices)
+
+                                // Remove the plan
+                                handleClearPlan(service.title)
+                              }}
                               mt={3}
                               leftIcon={<X size={14} />}
                               fontFamily='body'
@@ -363,10 +377,10 @@ const OrderForm: React.FC = () => {
               (frivilligt)
             </Text>
           </FormLabel>
-          <Input
-            as='textarea'
+          <Textarea
             placeholder='Ditt meddelande'
-            rows={4}
+            minH='120px'
+            resize='vertical'
             fontFamily='body'
             {...register('message')}
           />
