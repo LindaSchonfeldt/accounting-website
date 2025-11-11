@@ -1,6 +1,5 @@
-import { Box, Container, Heading, Text, VStack } from '@chakra-ui/react'
-
 import PageWrapper from '../components/layout/PageWrapper'
+import PageSection from '../components/layout/PageSection'
 import Meta from '../components/Meta'
 import IntroSection from '../components/sections/IntroSection'
 import OrderForm from '../components/ui/OrderForm'
@@ -22,13 +21,9 @@ const Order = () => {
           highlightedText='Beställ löpande bokföring och få 10 % rabatt på tilläggstjänster.'
         />
 
-        <Container
-          maxW='container.md'
-          py={{ base: 8, md: 12, lg: 16 }}
-          px={{ base: 4, md: 6 }}
-        >
+        <PageSection>
           <OrderForm />
-        </Container>
+        </PageSection>
       </PageWrapper>
     </>
   )
