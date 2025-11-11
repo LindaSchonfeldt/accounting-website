@@ -18,7 +18,7 @@ import {
   Grid
 } from '@chakra-ui/react'
 import { X } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import emailjs from '@emailjs/browser'
 
@@ -35,6 +35,13 @@ interface FormInputs {
 }
 
 const OrderForm: React.FC = () => {
+  console.log('🔍 Environment Variables Test:', {
+    SERVICE_ID: import.meta.env.VITE_EMAILJS_SERVICE_ID,
+    ORDER_TEMPLATE: import.meta.env.VITE_EMAILJS_ORDER_TEMPLATE_ID,
+    PUBLIC_KEY: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+    ALL_ENV: import.meta.env
+  })
+
   const {
     register,
     handleSubmit,
@@ -53,6 +60,11 @@ const OrderForm: React.FC = () => {
   }>({})
 
   const toast = useToast()
+
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY)
+  }, [])
 
   const handleServiceChange = (values: string[]) => {
     setSelectedServices(values)
@@ -156,17 +168,34 @@ const OrderForm: React.FC = () => {
       services: servicesText,
       total_excl_vat: totalPrice.toLocaleString('sv-SE'),
       vat_amount: vatAmount.toLocaleString('sv-SE'),
-      total_incl_vat: totalWithVat.toLocaleString('sv-SE'),
-      to_email: 'info@enkelbokforing.example'
+      total_incl_vat: totalWithVat.toLocaleString('sv-SE')
     }
 
     try {
-      await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        templateParams,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      // Check if environment variables are loaded
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+      const templateId = import.meta.env.VITE_EMAILJS_ORDER_TEMPLATE_ID
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+      console.log('EmailJS Config Check:', {
+        serviceId: serviceId ? 'Loaded ✓' : 'MISSING ✗',
+        templateId: templateId ? 'Loaded ✓' : 'MISSING ✗',
+        publicKey: publicKey ? 'Loaded ✓' : 'MISSING ✗'
+      })
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error('EmailJS configuration is missing. Check your .env file.')
+      }
+
+      console.log('Sending email with params:', templateParams)
+
+      const response = await emailjs.send(
+        serviceId,
+        templateId,
+        templateParams
       )
+
+      console.log('Email sent successfully:', response)
 
       toast({
         title: 'Beställning skickad!',
@@ -185,11 +214,13 @@ const OrderForm: React.FC = () => {
       setValue('email', '')
       setValue('phone', '')
       setValue('message', '')
-    } catch (error) {
-      console.error('EmailJS error:', error)
+    } catch (error: any) {
+      console.error('Full EmailJS error:', error)
+      console.error('Error text:', error.text || error.message)
+      
       toast({
         title: 'Något gick fel',
-        description: 'Kunde inte skicka beställningen. Försök igen.',
+        description: error.text || error.message || 'Kunde inte skicka beställningen. Försök igen.',
         status: 'error',
         duration: 5000,
         isClosable: true
