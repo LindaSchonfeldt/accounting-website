@@ -4,7 +4,8 @@ import { CheckCircleIcon } from '@chakra-ui/icons'
 import Meta from '../components/Meta'
 import PageWrapper from '../components/layout/PageWrapper'
 import PageSection from '../components/layout/PageSection'
-import profileImg from '../assets/profile.webp'
+import profileImgMobile from '../assets/profile-mobile.webp'
+import profileImgDesktop from '../assets/profile-desktop.webp'
 
 const About: React.FC = () => {
   return (
@@ -38,13 +39,24 @@ const About: React.FC = () => {
                 minW={{ base: '100%', md: '200px' }}
               >
                 <Image
-                  src={profileImg}
+                  src={profileImgMobile}
                   alt='Anna Andersson'
                   borderRadius='lg'
                   boxShadow='lg'
                   maxW='240px'
                   w='100%'
                   h='auto'
+                  display={{ base: 'block', md: 'none' }}
+                />
+                <Image
+                  src={profileImgDesktop}
+                  alt='Anna Andersson'
+                  borderRadius='lg'
+                  boxShadow='lg'
+                  maxW='240px'
+                  w='100%'
+                  h='auto'
+                  display={{ base: 'none', md: 'block' }}
                 />
               </VStack>
 
