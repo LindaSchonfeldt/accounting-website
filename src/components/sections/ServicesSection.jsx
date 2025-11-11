@@ -19,7 +19,7 @@ import { Link as RouterLink } from 'react-router-dom'
 
 import { fadeInUp, transitions } from '../animations'
 import { MotionBox } from '../ui/MotionBox'
-import { services } from '../../data/services'
+import { services_full } from '../../data/services_full'
 
 // Icon mapping
 const iconMap = {
@@ -49,7 +49,7 @@ const ServicesSection = () => (
         budget.
       </Text>
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6} px={0}>
-        {services.map((service, index) => {
+        {services_full.map((service, index) => {
           const IconComponent = iconMap[service.icon]
 
           return (
