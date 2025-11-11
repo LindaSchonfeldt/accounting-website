@@ -37,5 +37,5 @@ export const faqs = [
 ]
 
 export const selectedFaqs = faqs.filter(
-  (faq, index) => [1, 5, 7].includes(index) // Select questions at these positions
+  (faq, index) => [1, 5, 6].includes(index) // Select questions at these positions
 )
