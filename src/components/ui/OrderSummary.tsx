@@ -131,7 +131,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
                   )}
                   {plan && 'revenue' in plan && plan.revenue && (
                     <Text fontSize='xs' color='gray.500' textAlign='left'>
-                      {plan.revenue}
+                      {String(plan.revenue)}
                     </Text>
                   )}
                 </VStack>
@@ -144,16 +144,16 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
                     ml={2}
                   >
                     {plan.price.toLocaleString('sv-SE')} kr
-                    {plan.period === 'månad' && ' /mån'}
-                    {plan.period === 'år' && ' /år'}
-                    {plan.period === 'tillfälle' && ' /tillfälle'}
+                    {plan.period === 'månad' ? ' /mån' : ''}
+                    {plan.period === 'år' ? ' /år' : ''}
+                    {plan.period === 'tillfälle' ? ' /tillfälle' : ''}
                   </Text>
                 )}
               </HStack>
 
               {plan && 'discount' in plan && plan.discount && (
                 <Badge colorScheme='green' mt={1}>
-                  {plan.discount}
+                  {String(plan.discount)}
                 </Badge>
               )}
             </Box>
