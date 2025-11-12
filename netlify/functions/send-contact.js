@@ -1,57 +1,46 @@
 /* eslint-env node */
+const nodemailer = require('nodemailer')
 
 exports.handler = async (event) => {
-  console.log('Function called:', event.httpMethod)
-
   if (event.httpMethod !== 'POST') {
     return { statusCode: 405, body: 'Method Not Allowed' }
   }
 
   try {
-    const data = JSON.parse(event.body)
-    console.log('Received data:', data)
+    const { templateParams } = JSON.parse(event.body)
 
-    // Check env vars
-    console.log('Env vars present:', {
-      serviceId: !!process.env.EMAILJS_SERVICE_ID,
-      templateId: !!process.env.EMAILJS_CONTACT_TEMPLATE_ID,
-      publicKey: !!process.env.EMAILJS_PUBLIC_KEY
+    // Create transporter for one.com
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port: process.env.SMTP_PORT,
+      secure: false, // true for 465, false for other ports
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASSWORD
+      }
     })
 
-    const payload = {
-      service_id: process.env.EMAILJS_SERVICE_ID,
-      template_id: process.env.EMAILJS_CONTACT_TEMPLATE_ID,
-      user_id: process.env.EMAILJS_PUBLIC_KEY,
-      template_params: data.templateParams
+    // Email content
+    const mailOptions = {
+      from: `"Billig Bokföring" <${process.env.SMTP_USER}>`,
+      to: process.env.RECIPIENT_EMAIL,
+      replyTo: templateParams.from_email,
+      subject: `Nytt kontaktformulär: ${
+        templateParams.contact_reason || 'Allmän fråga'
+      }`,
+      html: `
+        <h2>Nytt meddelande från kontaktformuläret</h2>
+        <p><strong>Namn:</strong> ${templateParams.from_name}</p>
+        <p><strong>E-post:</strong> ${templateParams.from_email}</p>
+        <p><strong>Telefon:</strong> ${templateParams.phone}</p>
+        <p><strong>Orsak:</strong> ${templateParams.contact_reason}</p>
+        <p><strong>Meddelande:</strong></p>
+        <p>${templateParams.message.replace(/\n/g, '<br>')}</p>
+      `
     }
 
-    console.log('Sending to EmailJS:', payload)
-
-    const response = await fetch(
-      'https://api.emailjs.com/api/v1.0/email/send',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'User-Agent': 'Mozilla/5.0' // Trick EmailJS into thinking it's a browser
-        },
-        body: JSON.stringify(payload)
-      }
-    )
-
-    const responseText = await response.text()
-    console.log('EmailJS response:', response.status, responseText)
-
-    if (!response.ok) {
-      console.error('EmailJS error:', responseText)
-      return {
-        statusCode: response.status,
-        body: JSON.stringify({
-          error: 'Failed to send email',
-          details: responseText
-        })
-      }
-    }
+    // Send email
+    await transporter.sendMail(mailOptions)
 
     return {
       statusCode: 200,
@@ -62,7 +51,7 @@ exports.handler = async (event) => {
     return {
       statusCode: 500,
       body: JSON.stringify({
-        error: 'Internal server error',
+        error: 'Failed to send email',
         details: error.message
       })
     }
