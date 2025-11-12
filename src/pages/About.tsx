@@ -50,6 +50,25 @@ const About: React.FC = () => {
                   objectFit='cover'
                   loading='lazy'
                 />
+                {/* Organisation info */}
+                <VStack
+                  textAlign='center'
+                  mt={4}
+                  spacing={1}
+                  bg='gray.100'
+                  p={2}
+                  borderRadius='md'
+                >
+                  <Heading as='h2' size='md' mt={4} mb={4} color='blue.800'>
+                    Företagsinformation
+                  </Heading>
+                  <Text fontSize='sm' lineHeight='1.1'>
+                    Org.nr: 556000-0000.
+                  </Text>
+                  <Text fontSize='sm' lineHeight='1.1'>
+                    Adress: Exempelgatan 1, 123 45 Stockholm.
+                  </Text>
+                </VStack>
               </VStack>
 
               {/* Text Content */}
@@ -117,15 +136,6 @@ const About: React.FC = () => {
                 </Text>
               </VStack>
             </HStack>
-          </VStack>
-          {/* Organisation info */}
-          <VStack>
-            <Heading as='h2' size='lg' mt={12} mb={4} color='blue.800'>
-              Organisation
-            </Heading>
-            <Text fontSize='md' lineHeight='1.8'>
-              Org.nr 556000-0000. Adress Exempelgatan 1 123 45 Stockholm.
-            </Text>
           </VStack>
         </PageSection>
       </PageWrapper>
