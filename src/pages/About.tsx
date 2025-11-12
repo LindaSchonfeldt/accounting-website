@@ -84,13 +84,13 @@ const About: React.FC = () => {
                     Richard Heijdenberg
                   </Heading>
                   <Text fontSize='md' color='blue.600' fontWeight='600' mb={4}>
-                    Auktoriserad Redovisningskonsult
+                    Redovisningskonsult
                   </Text>
                 </Box>
 
                 <Text fontSize='md' lineHeight='1.8'>
-                  Med en kandidatexamen i företagsekonomi med inriktning
-                  redovisning har jag byggt en passion för att hjälpa små och
+                  Med en kandidatexamen i företagsekonomi, inriktning
+                  redovisning, har jag byggt en passion för att hjälpa små och
                   medelstora företag att få ordning på sin ekonomi.
                 </Text>
 
