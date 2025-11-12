@@ -1,6 +1,6 @@
 /* eslint-env node */
 
-export async function handler(event) {
+exports.handler = async (event) => {
   console.log('Function called:', event.httpMethod)
 
   if (event.httpMethod !== 'POST') {

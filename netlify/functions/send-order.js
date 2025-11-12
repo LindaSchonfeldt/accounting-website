@@ -1,6 +1,6 @@
 /* eslint-env node */
 
-export async function handler(event) {
+exports.handler = async (event) => {
   console.log('Function called:', event.httpMethod)
 
   if (event.httpMethod !== 'POST') {
@@ -33,7 +33,7 @@ export async function handler(event) {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'User-Agent': 'Mozilla/5.0' // Trick EmailJS into thinking it's a browser
+          'User-Agent': 'Mozilla/5.0'
         },
         body: JSON.stringify(payload)
       }
