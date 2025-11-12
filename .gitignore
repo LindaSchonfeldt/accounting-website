@@ -36,3 +36,6 @@ netlify/.env
 # Miscellaneous
 todo.md
 bundle-stats.html
+
+# Local Netlify folder
+.netlify

@@ -61,8 +61,11 @@ const ContactForm: React.FC<ContactFormProps> = ({
         body: JSON.stringify({ templateParams })
       })
 
+      const responseData = await response.json().catch(() => ({}))
+      console.log('Response:', response.status, responseData)
+
       if (!response.ok) {
-        throw new Error('Failed to send email')
+        throw new Error(responseData.error || 'Failed to send email')
       }
 
       toast({
@@ -78,7 +81,10 @@ const ContactForm: React.FC<ContactFormProps> = ({
       console.error('Error:', error)
       toast({
         title: 'Något gick fel',
-        description: 'Kunde inte skicka meddelandet. Försök igen.',
+        description:
+          error instanceof Error
+            ? error.message
+            : 'Kunde inte skicka meddelandet. Försök igen.',
         status: 'error',
         duration: 5000,
         isClosable: true
