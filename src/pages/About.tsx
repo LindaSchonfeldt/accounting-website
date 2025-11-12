@@ -118,6 +118,15 @@ const About: React.FC = () => {
               </VStack>
             </HStack>
           </VStack>
+          {/* Organisation info */}
+          <VStack>
+            <Heading as='h2' size='lg' mt={12} mb={4} color='blue.800'>
+              Organisation
+            </Heading>
+            <Text fontSize='md' lineHeight='1.8'>
+              Org.nr 19920923-XXXX. Adress Armfeltsgatan 1 11534 Stockholm.
+            </Text>
+          </VStack>
         </PageSection>
       </PageWrapper>
     </>
