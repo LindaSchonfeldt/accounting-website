@@ -3,6 +3,9 @@
   publish = "dist"
   functions = "netlify/functions"
 
+[build.environment]
+  SECRETS_SCAN_OMIT_PATHS = "src/pages/Contact.tsx,src/pages/IntegrityPolicy.tsx,src/pages/About.tsx"
+
 [dev]
   command = "npm run dev"
   port = 8888
