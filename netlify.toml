@@ -4,7 +4,7 @@
   functions = "netlify/functions"
 
 [build.environment]
-  SECRETS_SCAN_OMIT_PATHS = "src/pages/Contact.tsx,src/pages/IntegrityPolicy.tsx,src/pages/About.tsx"
+  SECRETS_SCAN_OMIT_PATHS = "src/pages/Contact.tsx,src/pages/IntegrityPolicy.tsx,src/pages/About.tsx,dist/**"
 
 [dev]
   command = "npm run dev"
@@ -16,3 +16,8 @@
   for = "/*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
