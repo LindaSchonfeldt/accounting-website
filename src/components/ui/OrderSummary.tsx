@@ -1,12 +1,13 @@
 import {
+  Badge,
   Box,
   Divider,
   Heading,
-  Text,
-  VStack,
   HStack,
-  Badge
+  Text,
+  VStack
 } from '@chakra-ui/react'
+
 import { services_full } from '../../data/services_full'
 
 interface OrderSummaryProps {
@@ -117,6 +118,16 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
           const planName = selectedPlans[serviceTitle]
           const plan = service?.plans?.find((p) => p.name === planName)
 
+          // Type narrowing - extract values before rendering
+          const revenueText =
+            plan && 'revenue' in plan && typeof plan.revenue === 'string'
+              ? plan.revenue
+              : null
+          const discountText =
+            plan && 'discount' in plan && typeof plan.discount === 'string'
+              ? plan.discount
+              : null
+
           return (
             <Box key={serviceTitle} width='100%'>
               <HStack justify='space-between' align='flex-start' width='100%'>
@@ -129,9 +140,9 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
                       {planName}
                     </Text>
                   )}
-                  {plan && 'revenue' in plan && plan.revenue && (
+                  {revenueText && (
                     <Text fontSize='xs' color='gray.500' textAlign='left'>
-                      {String(plan.revenue)}
+                      {revenueText}
                     </Text>
                   )}
                 </VStack>
@@ -151,9 +162,9 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
                 )}
               </HStack>
 
-              {plan && 'discount' in plan && plan.discount && (
+              {discountText && (
                 <Badge colorScheme='green' mt={1}>
-                  {String(plan.discount)}
+                  {discountText}
                 </Badge>
               )}
             </Box>
