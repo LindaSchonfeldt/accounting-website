@@ -25,13 +25,15 @@ dist-ssr
 
 # Environment files
 .env
-.env.test
-.env.production
 .env.local
+.env*.local
+.env.test
 .env.test.local
+.env.production
 .env.production.local
 .env.ci
 netlify/.env
+netlify/functions/.env
 
 # Miscellaneous
 todo.md
