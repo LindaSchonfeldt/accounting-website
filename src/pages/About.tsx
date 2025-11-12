@@ -64,10 +64,10 @@ const About: React.FC = () => {
                     Företagsinformation
                   </Heading>
                   <Text fontSize='sm' lineHeight='1.1'>
-                    Org.nr: 19920923-XXXX.
+                    Org.nr: 1992{'\u200B'}0923-XXXX
                   </Text>
                   <Text fontSize='sm' lineHeight='1.1'>
-                    Adress: Armfeltsgatan 1, 11534 Stockholm.
+                    Adress: Armfeltsgatan 1, 11534 Stockholm
                   </Text>
                 </VStack>
               </VStack>
@@ -152,11 +152,11 @@ const About: React.FC = () => {
             <Heading as='h2' size='sm' mt={4} mb={4} color='blue.800'>
               Företagsinformation
             </Heading>
-            <Text fontSize='sm' lineHeight='1.1'>
-              Org.nr: 19920923-XXXX.
+            <Text fontSize='sm' lineHeight='1.2'>
+              Org.nr: 1992{'\u200B'}0923-XXXX
             </Text>
-            <Text fontSize='sm' lineHeight='1.1'>
-              Adress: Armfeltsgatan 1, 11534 Stockholm.
+            <Text fontSize='sm' lineHeight='1.2'>
+              Adress: Armfeltsgatan 1, 11534 Stockholm
             </Text>
           </VStack>
         </PageSection>
