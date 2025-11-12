@@ -7,6 +7,7 @@ import {
   FormControl,
   FormErrorMessage,
   FormLabel,
+  Grid,
   Input,
   Radio,
   RadioGroup,
@@ -14,11 +15,10 @@ import {
   Text,
   Textarea,
   useToast,
-  VStack,
-  Grid
+  VStack
 } from '@chakra-ui/react'
 import { X } from 'lucide-react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { services_full } from '../../data/services_full'
@@ -109,7 +109,6 @@ const OrderForm: React.FC = () => {
 
     // Calculate total price
     let totalPrice = 0
-    const priceBreakdown: string[] = []
 
     // Format services with plans and prices for email
     const servicesText = servicesWithPlans
@@ -167,8 +166,13 @@ const OrderForm: React.FC = () => {
         body: JSON.stringify({ templateParams })
       })
 
+      const responseData = await response.json().catch(() => ({}))
+      console.log('Response:', response.status, responseData)
+
       if (!response.ok) {
-        throw new Error('Failed to send email')
+        throw new Error(
+          responseData.error || `HTTP error! status: ${response.status}`
+        )
       }
 
       toast({
@@ -192,7 +196,10 @@ const OrderForm: React.FC = () => {
       console.error('Error:', error)
       toast({
         title: 'Något gick fel',
-        description: 'Kunde inte skicka beställningen. Försök igen.',
+        description:
+          error instanceof Error
+            ? error.message
+            : 'Kunde inte skicka beställningen. Försök igen.',
         status: 'error',
         duration: 5000,
         isClosable: true
@@ -309,8 +316,6 @@ const OrderForm: React.FC = () => {
                                           ({plan.price.toLocaleString('sv-SE')}{' '}
                                           kr
                                           {plan.period === 'månad' && '/mån'}
-                                          {plan.period === 'engång' &&
-                                            ' engångsavgift'}
                                           {plan.period === 'år' && '/år'}
                                           {plan.period === 'tillfälle' &&
                                             '/tillfälle'}
@@ -324,7 +329,9 @@ const OrderForm: React.FC = () => {
                                           fontSize='xs'
                                           ml={1}
                                         >
-                                          Omsättning: {plan.revenue}
+                                          {typeof plan.revenue === 'string'
+                                            ? plan.revenue
+                                            : ''}
                                         </Text>
                                       )}
                                     </Text>
@@ -391,7 +398,10 @@ const OrderForm: React.FC = () => {
 
           <FormControl isInvalid={!!errors.name} mt={6}>
             <FormLabel textAlign='left' fontFamily='body' fontWeight='semibold'>
-              Namn
+              Namn{' '}
+              <Text as='span' color='red.500'>
+                *
+              </Text>
             </FormLabel>
             <Input
               type='text'
@@ -406,7 +416,10 @@ const OrderForm: React.FC = () => {
 
           <FormControl isInvalid={!!errors.email} mt={6}>
             <FormLabel textAlign='left' fontFamily='body' fontWeight='semibold'>
-              E-post
+              E-post{' '}
+              <Text as='span' color='red.500'>
+                *
+              </Text>
             </FormLabel>
             <Input
               type='email'
