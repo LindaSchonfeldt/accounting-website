@@ -50,8 +50,9 @@ const About: React.FC = () => {
                   objectFit='cover'
                   loading='lazy'
                 />
-                {/* Organisation info */}
+                {/* Organisation info - desktop */}
                 <VStack
+                  display={{ base: 'none', md: 'flex' }}
                   textAlign='center'
                   mt={4}
                   spacing={1}
@@ -59,7 +60,7 @@ const About: React.FC = () => {
                   p={2}
                   borderRadius='md'
                 >
-                  <Heading as='h2' size='md' mt={4} mb={4} color='blue.800'>
+                  <Heading as='h2' size='sm' mt={4} mb={4} color='blue.800'>
                     Företagsinformation
                   </Heading>
                   <Text fontSize='sm' lineHeight='1.1'>
@@ -136,6 +137,27 @@ const About: React.FC = () => {
                 </Text>
               </VStack>
             </HStack>
+          </VStack>
+
+          {/* Organisation info - mobile */}
+          <VStack
+            display={{ base: 'flex', md: 'none' }}
+            textAlign='center'
+            mt={8}
+            spacing={1}
+            bg='gray.100'
+            py={4}
+            borderRadius='md'
+          >
+            <Heading as='h2' size='sm' mt={4} mb={4} color='blue.800'>
+              Företagsinformation
+            </Heading>
+            <Text fontSize='sm' lineHeight='1.1'>
+              Org.nr: 19920923-XXXX.
+            </Text>
+            <Text fontSize='sm' lineHeight='1.1'>
+              Adress: Armfeltsgatan 1, 11534 Stockholm.
+            </Text>
           </VStack>
         </PageSection>
       </PageWrapper>
