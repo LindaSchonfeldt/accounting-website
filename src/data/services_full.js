@@ -174,7 +174,7 @@ export const services_full = [
           'Personlig rådgivning',
           'Analys av nuvarande ekonomiska situation',
           'Rekommendationer för förbättringar',
-          'Debiteras sker per påbörjad timme'
+          'Debiteras per påbörjad timme'
         ]
       }
     ]
