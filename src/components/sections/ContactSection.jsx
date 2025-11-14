@@ -1,4 +1,4 @@
-import { Box, Heading, Text, Spinner } from '@chakra-ui/react'
+import { Box, Heading, Spinner, Text } from '@chakra-ui/react'
 import { lazy, Suspense } from 'react'
 
 // Lazy load the ContactForm component
@@ -12,8 +12,8 @@ const ContactSection = () => {
           Kontakta oss
         </Heading>
         <Text fontSize='lg' color='gray.600' mb={8} maxW='2xl' mx='auto'>
-          Har du frågor eller vill du veta mer om våra tjänster? Fyll i
-          formuläret nedan så återkommer vi till dig så snart som möjligt.
+          Hittar du inte det du söker, eller vill du veta mer om våra tjänster?
+          Fyll i formuläret nedan så återkommer vi inom 24 timmar.
         </Text>
         <Suspense
           fallback={
