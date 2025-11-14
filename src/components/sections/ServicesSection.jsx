@@ -17,9 +17,9 @@ import {
 } from 'lucide-react'
 import { Link as RouterLink } from 'react-router-dom'
 
+import { services_full } from '../../data/services_full'
 import { fadeInUp, transitions } from '../animations'
 import { MotionBox } from '../ui/MotionBox'
-import { services_full } from '../../data/services_full'
 
 // Icon mapping
 const iconMap = {
@@ -45,8 +45,8 @@ const ServicesSection = () => (
         mx='auto'
         textAlign='center'
       >
-        Vi erbjuder flexibla paket för att passa just ditt företags behov och
-        budget.
+        Få full kontroll över din ekonomi med flexibla bokföringstjänster
+        anpassade efter ditt företag.
       </Text>
       <SimpleGrid columns={{ base: 1, md: 3 }} spacing={6} px={0}>
         {services_full.map((service, index) => {

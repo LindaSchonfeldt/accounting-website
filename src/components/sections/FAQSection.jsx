@@ -1,4 +1,4 @@
-import { Box, Button, Container, Heading, Link, Text } from '@chakra-ui/react'
+import { Box, Button, Container, Heading, Text } from '@chakra-ui/react'
 import { Link as RouterLink } from 'react-router-dom'
 
 import { selectedFaqs } from '../../data/faqs'
@@ -12,17 +12,8 @@ const FAQSection = () => {
           Vanliga frågor
         </Heading>
         <Text fontSize='lg' color='gray.50' mb={8} maxW='2xl' mx='auto'>
-          Här hittar du svar på de vanligaste frågorna vi får. Vill du veta mer
-          eller saknar du något svar? Du är alltid välkommen att{' '}
-          <Link
-            as={RouterLink}
-            to='/kontakt'
-            color='gray.100'
-            fontWeight='bold'
-          >
-            kontakta oss
-          </Link>
-          .
+          Här hittar du svar på de vanligaste frågorna om våra tjänster, priser
+          och hur det funkar att komma igång.
         </Text>
         <CustomAccordion variant='light' faqs={selectedFaqs} />
         <Text fontSize='md' color='gray.50' mt={8} mb={4} maxW='2xl' mx='auto'>

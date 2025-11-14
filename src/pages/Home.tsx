@@ -1,13 +1,14 @@
 import { Box } from '@chakra-ui/react'
-import PageSection from '../components/layout/PageSection'
 
+import PageSection from '../components/layout/PageSection'
+import PageWrapper from '../components/layout/PageWrapper'
 import Meta from '../components/Meta'
 import ContactSection from '../components/sections/ContactSection'
+import CTASection from '../components/sections/CTASection'
 import FAQSection from '../components/sections/FAQSection'
 import HeroSection from '../components/sections/HeroSection'
 import ServicesSection from '../components/sections/ServicesSection'
-import CTASection from '../components/sections/CTASection'
-import PageWrapper from '../components/layout/PageWrapper'
+import WhyUsSection from '../components/sections/WhyUsSection'
 
 const Home = () => {
   return (
@@ -25,18 +26,20 @@ const Home = () => {
         <PageSection>
           <ServicesSection />
         </PageSection>
-        <FAQSection />
-
         <PageSection>
-          <ContactSection />
+          <WhyUsSection />
         </PageSection>
+        <FAQSection />
         <CTASection
-          heading='Redo att komma igång?'
-          text='Beställ dina tjänster idag och få professionell bokföring till fast pris.'
-          buttonText='Beställ nu'
+          heading='Redo att förenkla din bokföring?'
+          text='Kom igång på några minuter. Beställ dina tjänster och få personlig, professionell bokföring till ett fast och förutsägbart pris.'
+          buttonText='Beställ tjänster'
           buttonLink='/order'
           bgColor='blue.600'
         />
+        <PageSection>
+          <ContactSection />
+        </PageSection>
       </PageWrapper>
     </>
   )
