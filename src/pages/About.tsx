@@ -67,7 +67,7 @@ const About: React.FC = () => {
                     Org.nr: 1992{'\u200B'}0923-XXXX
                   </Text>
                   <Text fontSize='sm' lineHeight='1.1'>
-                    Adress: Armfeltsgatan 1, 11534 Stockholm
+                    Adress: Singsjön 205, 83191 Östersund
                   </Text>
                 </VStack>
               </VStack>

@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react'
 import { Link as RouterLink } from 'react-router-dom'
 
-// import Banner from '../ui/Banner'
+import Banner from '../ui/Banner'
 
 const HeroSection = () => {
   return (
@@ -96,9 +96,9 @@ const HeroSection = () => {
       </Container>
 
       {/* Banner at bottom - full width, outside Container */}
-      {/*       <Box position='relative' zIndex={1} w='100%'>
+      <Box position='relative' zIndex={1} w='100%'>
         <Banner />
-      </Box> */}
+      </Box>
     </Box>
   )
 }
