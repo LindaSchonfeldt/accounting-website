@@ -96,9 +96,9 @@ const HeroSection = () => {
       </Container>
 
       {/* Banner at bottom - full width, outside Container */}
-      <Box position='relative' zIndex={1} w='100%'>
+      {/*       <Box position='relative' zIndex={1} w='100%'>
         <Banner />
-      </Box>
+      </Box> */}
     </Box>
   )
 }
