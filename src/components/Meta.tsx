@@ -12,8 +12,8 @@ const Meta = ({
   title = 'Billig Bokföring - Din personliga redovisningskonsult',
   description = 'Kostnadseffektiv bokföring och redovisning för småföretag. Få professionell hjälp med din bokföring till ett fast pris.',
   keywords = 'bokföring, redovisning, småföretag, bokföringsbyrå, ekonomi',
-  ogImage = '/og-image.png',
-  ogUrl = 'https://billigbokforing.se'
+    ogImage = 'https://billigbokforing.se/og-image.png',
+    ogUrl = 'https://billigbokforing.se'
 }: MetaProps) => {
   return (
     <Helmet>
