@@ -1,12 +1,4 @@
-import {
-  Box,
-  Button,
-  Container,
-  Heading,
-  Image,
-  Stack,
-  Text
-} from '@chakra-ui/react'
+import { Box, Button, Container, Heading, Image, Stack, Text } from '@chakra-ui/react'
 import { Link as RouterLink } from 'react-router-dom'
 
 // import Banner from '../ui/Banner'
