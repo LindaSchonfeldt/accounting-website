@@ -34,7 +34,7 @@ const Home = () => {
           heading='Redo att förenkla din bokföring?'
           text='Kom igång på några minuter. Beställ dina tjänster och få personlig, professionell bokföring till ett fast och förutsägbart pris.'
           buttonText='Beställ tjänster'
-          buttonLink='/order'
+          buttonLink='/bestall'
           bgColor='blue.600'
         />
         <PageSection>
