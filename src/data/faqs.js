@@ -15,6 +15,10 @@ export const faqs = [
       'Underlaget kan laddas upp digitalt via e-post, Dropbox eller direkt i systemet. Det går att välja det alternativ som passar bäst.'
   },
   {
+    question: 'Vilket bokföringsprogram använder ni?',
+    answer: 'Vi använder Fortnox.'
+  },
+  {
     question: 'Erbjuds stöd till nystartade företag?',
     answer:
       'Ja, tjänsterna lämpar sig även för nystartade verksamheter. Hjälp kan ges med registrering och val av bolagsform.'
@@ -37,5 +41,5 @@ export const faqs = [
 ]
 
 export const selectedFaqs = faqs.filter(
-  (faq, index) => [3, 5, 6].includes(index) // Select questions at these positions
+  (faq, index) => [2, 3, 5, 6].includes(index) // Select questions at these positions
 )
