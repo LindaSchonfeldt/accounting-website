@@ -16,7 +16,7 @@ export const faqs = [
   },
   {
     question: 'Vilket bokföringsprogram använder ni?',
-    answer: 'Vi använder Fortnox.'
+    answer: 'Vi jobbar i Fortnox – enkelt och smidigt.'
   },
   {
     question: 'Erbjuds stöd till nystartade företag?',
