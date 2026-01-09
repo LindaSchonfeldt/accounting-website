@@ -49,12 +49,24 @@
     />
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXXXX"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXXXX"
+    ></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'AW-XXXXXXXXXXX');
+      window.dataLayer = window.dataLayer || []
+      function gtag() {
+        dataLayer.push(arguments)
+      }
+      gtag('js', new Date())
+      gtag('config', 'AW-XXXXXXXXXXX')
+    </script>
+
+    <!-- Google tag (gtag.js) event -->
+    <script>
+      gtag('event', 'ads_conversion_Kontakt_1', {
+        // <event_parameters>
+      })
     </script>
   </head>
   <body>
