@@ -6,6 +6,14 @@ exports.handler = async (event) => {
     return { statusCode: 405, body: 'Method Not Allowed' }
   }
 
+  // Sending is disabled while the site is kept as a portfolio example
+  if (process.env.EMAIL_ENABLED !== 'true') {
+    return {
+      statusCode: 503,
+      body: JSON.stringify({ error: 'Email sending is disabled' })
+    }
+  }
+
   try {
     const { templateParams } = JSON.parse(event.body)
 

@@ -12,6 +12,8 @@ import {
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { useToast } from '@chakra-ui/react'
 
+import { DEMO_MODE } from '../../config'
+
 interface ContactFormProps {
   showContactReason?: boolean
 }
@@ -50,6 +52,19 @@ const ContactForm: React.FC<ContactFormProps> = ({
       phone: data.phone || 'Ej angivet',
       contact_reason: data.contactReason || 'Ej vald',
       message: data.message
+    }
+
+    if (DEMO_MODE) {
+      toast({
+        title: 'Demoläge',
+        description:
+          'Formuläret är avaktiverat på den här exempelsidan. Inget meddelande skickades.',
+        status: 'info',
+        duration: 5000,
+        isClosable: true
+      })
+      reset()
+      return
     }
 
     try {

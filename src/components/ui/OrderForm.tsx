@@ -21,6 +21,7 @@ import { X } from 'lucide-react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
+import { DEMO_MODE } from '../../config'
 import { services_full } from '../../data/services_full'
 import OrderSummary from './OrderSummary'
 
@@ -157,6 +158,30 @@ const OrderForm: React.FC = () => {
       total_incl_vat: totalWithVat.toLocaleString('sv-SE')
     }
 
+    const resetForm = () => {
+      setSelectedServices([])
+      setSelectedPlans({})
+      setValue('services', [])
+      setValue('selectedPlans', {})
+      setValue('name', '')
+      setValue('email', '')
+      setValue('phone', '')
+      setValue('message', '')
+    }
+
+    if (DEMO_MODE) {
+      toast({
+        title: 'Demoläge',
+        description:
+          'Beställningsformuläret är avaktiverat på den här exempelsidan. Ingen beställning skickades.',
+        status: 'info',
+        duration: 5000,
+        isClosable: true
+      })
+      resetForm()
+      return
+    }
+
     try {
       const response = await fetch('/.netlify/functions/send-order', {
         method: 'POST',
@@ -183,15 +208,7 @@ const OrderForm: React.FC = () => {
         isClosable: true
       })
 
-      // Reset form
-      setSelectedServices([])
-      setSelectedPlans({})
-      setValue('services', [])
-      setValue('selectedPlans', {})
-      setValue('name', '')
-      setValue('email', '')
-      setValue('phone', '')
-      setValue('message', '')
+      resetForm()
     } catch (error) {
       console.error('Error:', error)
       toast({
