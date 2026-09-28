@@ -1,8 +1,7 @@
 import { CheckCircleIcon } from '@chakra-ui/icons'
-import { Box, Heading, HStack, Image, Text, VStack } from '@chakra-ui/react'
+import { Box, Flex, Heading, HStack, Text, VStack } from '@chakra-ui/react'
+import { UserRound } from 'lucide-react'
 
-import profileImgDesktop from '../assets/profile-desktop-424.webp'
-import profileImgMobile from '../assets/profile-mobile-240.webp'
 import PageSection from '../components/layout/PageSection'
 import PageWrapper from '../components/layout/PageWrapper'
 import Meta from '../components/Meta'
@@ -38,18 +37,20 @@ const About: React.FC = () => {
                 flex={{ base: '1', md: '0.4' }}
                 minW={{ base: '100%', md: '200px' }}
               >
-                <Image
-                  src={profileImgDesktop}
-                  srcSet={`${profileImgMobile} 240w, ${profileImgDesktop} 240w`}
-                  sizes='(max-width: 768px) 240px, 240px'
-                  alt='Anna Andersson'
+                <Flex
+                  role='img'
+                  aria-label='Anna Andersson'
+                  align='center'
+                  justify='center'
+                  bg='blue.50'
+                  color='blue.300'
                   borderRadius='lg'
                   boxShadow='lg'
                   width='240px'
                   height={{ base: '320px', md: '424px' }}
-                  objectFit='cover'
-                  loading='lazy'
-                />
+                >
+                  <UserRound size={120} strokeWidth={1.25} />
+                </Flex>
                 {/* Organisation info - desktop */}
                 <VStack
                   display={{ base: 'none', md: 'flex' }}

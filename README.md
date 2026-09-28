@@ -1,12 +1,8 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/123a7ad6-7a35-4c97-9c1e-9e8659805068/deploy-status)](https://app.netlify.com/projects/gleeful-pixie-2c3de9/deploys)
-
 # Enkel Bokföring AB - Accounting Website
 
 A modern, responsive accounting services website built with React, TypeScript, and Chakra UI. This website offers professional bookkeeping services for Swedish small businesses with transparent pricing and easy online ordering.
 
-## 🚀 Demo
-
-[Live Website](https://enkelbokforing.example)
+> **Portfolio project:** This site was originally built for a real bookkeeping business that has since closed. It has been anonymized for use as a portfolio example — the company name, person, contact details, organisation number and addresses are all fictional.
 
 ## ✨ Features
 
