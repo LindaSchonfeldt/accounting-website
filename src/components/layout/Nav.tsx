@@ -60,7 +60,11 @@ const Nav = () => {
       bg='white'
       boxShadow='sm'
     >
-      <Container maxW='container.lg' py={1}>
+      <Container
+        maxW={{ base: 'container.lg', lg: 'container.xl' }}
+        px={{ base: 4, lg: 8 }}
+        py={1}
+      >
         <Flex
           as='nav'
           align='center'
