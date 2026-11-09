@@ -1,5 +1,7 @@
 # Enkel Bokföring AB - Accounting Website
 
+**🔗 Live demo: [enkel-bokforing.netlify.app](https://enkel-bokforing.netlify.app/)**
+
 A modern, responsive accounting services website built with React, TypeScript, and Chakra UI. This website offers professional bookkeeping services for Swedish small businesses with transparent pricing and easy online ordering.
 
 > **Portfolio project:** This site was originally built for a real bookkeeping business that has since closed. It has been anonymized for use as a portfolio example — the company name, person, contact details, organisation number and addresses are all fictional.
@@ -53,7 +55,7 @@ src/
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/yourusername/accounting-website.git
+git clone https://github.com/LindaSchonfeldt/accounting-website.git
 cd accounting-website
 ```
 
